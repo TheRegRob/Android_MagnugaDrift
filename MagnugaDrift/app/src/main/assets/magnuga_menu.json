@@ -1,0 +1,277 @@
+{
+  "food_list":
+    {
+      "pizze_napoletane": [
+        {
+          "nome": "Margerita",
+          "ingredienti": [
+            "Pomodoro",
+            "Mozzarella"
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA",
+            "MAXI"
+          ],
+          "prezzo": [
+            2.7,
+            3.8,
+            5.0
+          ],
+          "tipo": 2
+        },
+        {
+          "nome": "Biancaneve",
+          "ingredienti": [
+            "Mozzarella"
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA",
+            "MAXI"
+          ],
+          "prezzo": [
+            2.7,
+            3.8,
+            5.0
+          ],
+          "tipo": 2
+        },
+        {
+          "nome": "Pomodoro",
+          "ingredienti": [
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA",
+            "MAXI"
+          ],
+          "prezzo": [
+            2.4,
+            3.5,
+            4.4
+          ],
+          "tipo": 2
+        },
+        {
+          "nome": "Marinara",
+          "ingredienti": [
+            "Pomodoro",
+            "Aglio"
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA",
+            "MAXI"
+          ],
+          "prezzo": [
+            2.7,
+            3.7,
+            4.9
+          ],
+          "tipo": 2
+        },
+        {
+          "nome": "Prosciutto",
+          "ingredienti": [
+            "Pomodoro",
+            "Mozzarella",
+            "Prosciutto"
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA",
+            "MAXI"
+          ],
+          "prezzo": [
+            3.7,
+            4.8,
+            7.3
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Funghi Freschi",
+          "ingredienti": [
+            "Pomodoro",
+            "Mozzarella",
+            "Funghi freschi"
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA",
+            "MAXI"
+          ],
+          "prezzo": [
+            3.7,
+            4.8,
+            7.3
+          ],
+          "tipo": 0
+        }
+        ],
+      "spianate": [
+        {
+          "nome": "Vuota",
+          "ingredienti": [
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA",
+            "MAXI"
+          ],
+          "prezzo": [
+            1.2,
+            1.9,
+            2.9
+          ],
+          "tipo": 2
+        },
+        {
+          "nome": "Prosciutto",
+          "ingredienti": [
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA"
+          ],
+          "prezzo": [
+            4.0,
+            5
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Prosciutto e Formaggio",
+          "ingredienti": [
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA"
+          ],
+          "prezzo": [
+            4.2,
+            5.2
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Prosciutto e Mozzarella",
+          "ingredienti": [
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA"
+          ],
+          "prezzo": [
+            4.5,
+            5.6
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Prosciutto cotto e Formaggio fresco",
+          "ingredienti": [
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA"
+          ],
+          "prezzo": [
+            4.2,
+            5.2
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Pancetta",
+          "ingredienti": [
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA"
+          ],
+          "prezzo": [
+            4.0,
+            5.0
+          ],
+          "tipo": 0
+        }
+      ],
+      "spianate_ripiene": [
+        {
+          "nome": "Cinese",
+          "ingredienti": [
+            "fontina",
+            "funghi",
+            "prosciutto crudo",
+            "salsa rosa"
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA"
+          ],
+          "prezzo": [
+            4.3,
+            5.5
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Goloso",
+          "ingredienti": [
+            "fontina",
+            "funghi",
+            "prosciutto crudo",
+            "salsiccia",
+            "salsa rosa"
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA"
+          ],
+          "prezzo": [
+            4.5,
+            5.8
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Tonnaro",
+          "ingredienti": [
+            "pomodoro",
+            "tonno",
+            "insalata",
+            "maionese"
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA"
+          ],
+          "prezzo": [
+            4.3,
+            5.5
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Freschezza",
+          "ingredienti": [
+            "prosciutto cotto",
+            "fontina",
+            "insalata",
+            "maionese"
+          ],
+          "taglie": [
+            "PICCOLA",
+            "MEDIA"
+          ],
+          "prezzo": [
+            4.3,
+            5.5
+          ],
+          "tipo": 0
+        }
+      ]
+    }
+}

@@ -12,8 +12,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.magnugadrift.classes.UIContent
 import com.example.magnugadrift.databinding.ActivityMainBinding
+import com.example.magnugadrift.utils.ReadJSONFromAssets
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val jsonStr = loadMenuEntries()
+        val data = Gson().fromJson(jsonStr, UIContent::class.java)
         supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -38,5 +43,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+    }
+
+    private fun loadMenuEntries() : String {
+        return ReadJSONFromAssets(baseContext, "magnuga_menu.json")
     }
 }
