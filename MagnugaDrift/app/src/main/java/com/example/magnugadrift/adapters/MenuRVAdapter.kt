@@ -11,7 +11,7 @@ import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
 
 
-class MenuRVAdapter(private val menuList: ArrayList<PizzaNapoletanaMI>) : RecyclerView.Adapter<MenuRVAdapter.MenuViewHolder>() {
+class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) : RecyclerView.Adapter<MenuRVAdapter.MenuViewHolder>() {
     class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val menuItemImage : ImageView = itemView.findViewById(R.id.ivMenuItemImage)
         val menuItemName : TextView = itemView.findViewById(R.id.tvMenuItemName)

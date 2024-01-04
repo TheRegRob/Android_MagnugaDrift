@@ -2,7 +2,7 @@ package com.example.magnugadrift.classes.Menu
 
 import com.example.magnugadrift.classes.FoodType
 
-abstract class MagnugaMenuItem(imgResId: Int,
+ open class MagnugaMenuItem(imgResId: Int,
                                name: String,
                                price: Array<Float>,
                                type: FoodType

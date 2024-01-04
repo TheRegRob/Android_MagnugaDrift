@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.magnugadrift.classes.FoodType
 import com.example.magnugadrift.classes.Menu.MagnugaMenu
+import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
 import com.example.magnugadrift.classes.PizzaSizes
 import com.example.magnugadrift.classes.UIContent
@@ -66,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun createMenu(jsonFile: UIContent) {
-        val pizzeNapoletane = ArrayList<PizzaNapoletanaMI>()
+        val pizzeNapoletane = ArrayList<MagnugaMenuItem>()
         val pizzeNapoletaneJson = jsonFile.food_list.pizze_napoletane
         for (p in pizzeNapoletaneJson) {
             val nPizza = PizzaNapoletanaMI(0, p.nome, p.prezzo.toTypedArray(),
