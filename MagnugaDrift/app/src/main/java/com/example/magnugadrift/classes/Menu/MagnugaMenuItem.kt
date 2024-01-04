@@ -1,4 +1,6 @@
-package com.example.magnugadrift.classes
+package com.example.magnugadrift.classes.Menu
+
+import com.example.magnugadrift.classes.FoodType
 
 abstract class MagnugaMenuItem(imgResId: Int,
                                name: String,

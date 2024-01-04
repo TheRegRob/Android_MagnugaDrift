@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/border">
 
     <TextView
         android:id="@+id/tvMenuItemName"
@@ -13,6 +14,7 @@
         android:layout_marginEnd="153dp"
         android:text="Pizza margherita"
         android:textSize="20sp"
+        android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivMenuItemImage"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,9 +31,10 @@
 
     <ImageView
         android:id="@+id/ivMenuItemImage"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toStartOf="@+id/tvMenuItemName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

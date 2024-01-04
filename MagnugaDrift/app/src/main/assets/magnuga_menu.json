@@ -9,9 +9,9 @@
             "Mozzarella"
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA",
-            "MAXI"
+            0,
+            1,
+            2
           ],
           "prezzo": [
             2.7,
@@ -26,9 +26,9 @@
             "Mozzarella"
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA",
-            "MAXI"
+            0,
+            1,
+            2
           ],
           "prezzo": [
             2.7,
@@ -42,9 +42,9 @@
           "ingredienti": [
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA",
-            "MAXI"
+            0,
+            1,
+            2
           ],
           "prezzo": [
             2.4,
@@ -60,9 +60,9 @@
             "Aglio"
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA",
-            "MAXI"
+            0,
+            1,
+            2
           ],
           "prezzo": [
             2.7,
@@ -79,9 +79,9 @@
             "Prosciutto"
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA",
-            "MAXI"
+            0,
+            1,
+            2
           ],
           "prezzo": [
             3.7,
@@ -98,9 +98,9 @@
             "Funghi freschi"
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA",
-            "MAXI"
+            0,
+            1,
+            2
           ],
           "prezzo": [
             3.7,
@@ -116,9 +116,9 @@
           "ingredienti": [
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA",
-            "MAXI"
+            0,
+            1,
+            2
           ],
           "prezzo": [
             1.2,
@@ -132,8 +132,8 @@
           "ingredienti": [
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA"
+            0,
+            1
           ],
           "prezzo": [
             4.0,
@@ -146,8 +146,8 @@
           "ingredienti": [
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA"
+            0,
+            1
           ],
           "prezzo": [
             4.2,
@@ -160,8 +160,8 @@
           "ingredienti": [
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA"
+            0,
+            1
           ],
           "prezzo": [
             4.5,
@@ -174,8 +174,8 @@
           "ingredienti": [
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA"
+            0,
+            1
           ],
           "prezzo": [
             4.2,
@@ -188,8 +188,8 @@
           "ingredienti": [
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA"
+            0,
+            1
           ],
           "prezzo": [
             4.0,
@@ -208,8 +208,8 @@
             "salsa rosa"
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA"
+            0,
+            1
           ],
           "prezzo": [
             4.3,
@@ -227,8 +227,8 @@
             "salsa rosa"
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA"
+            0,
+            1
           ],
           "prezzo": [
             4.5,
@@ -245,8 +245,8 @@
             "maionese"
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA"
+            0,
+            1
           ],
           "prezzo": [
             4.3,
@@ -263,8 +263,8 @@
             "maionese"
           ],
           "taglie": [
-            "PICCOLA",
-            "MEDIA"
+            0,
+            1
           ],
           "prezzo": [
             4.3,
