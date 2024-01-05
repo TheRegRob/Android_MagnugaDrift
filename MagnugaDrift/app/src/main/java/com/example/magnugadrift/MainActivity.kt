@@ -1,27 +1,21 @@
 package com.example.magnugadrift
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.LinearLayoutCompat
-import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.FragmentActivity
-import androidx.navigation.NavHost
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.magnugadrift.classes.FoodType
+import com.example.magnugadrift.classes.FoodFamilies
+import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.MagnugaMenu
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
-import com.example.magnugadrift.classes.PizzaSizes
+import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
+import com.example.magnugadrift.classes.Menu.SpianataMI
+import com.example.magnugadrift.classes.Menu.SpianataRipienaMI
 import com.example.magnugadrift.classes.UIContent
 import com.example.magnugadrift.databinding.ActivityMainBinding
-import com.example.magnugadrift.ui.menu.MenuFragment
 import com.example.magnugadrift.utils.ReadJSONFromAssets
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
@@ -69,13 +63,48 @@ class MainActivity : AppCompatActivity() {
     fun createMenu(jsonFile: UIContent) {
         val pizzeNapoletane = ArrayList<MagnugaMenuItem>()
         val pizzeNapoletaneJson = jsonFile.food_list.pizze_napoletane
-        for (p in pizzeNapoletaneJson) {
-            val nPizza = PizzaNapoletanaMI(0, p.nome, p.prezzo.toTypedArray(),
-                FoodType.values()[p.tipo], p.ingredienti, sizesToArray(p.taglie))
-            pizzeNapoletane.add(nPizza)
-        }
+        val spianate = ArrayList<MagnugaMenuItem>()
+        val spianateJson = jsonFile.food_list.spianate
+        val spianateRipiene = ArrayList<MagnugaMenuItem>()
+        val spianateRipieneJson = jsonFile.food_list.spianate_ripiene
 
-        magnuMenu = MagnugaMenu(pizzeNapoletane)
+        getPizzeNapoletane(pizzeNapoletaneJson, pizzeNapoletane)
+        getSpianate(spianateJson, spianate)
+        getSpianateRipiene(spianateRipieneJson, spianateRipiene)
+
+        magnuMenu = MagnugaMenu(pizzeNapoletane, spianate, spianateRipiene)
+    }
+
+    fun getPizzeNapoletane(pizzeNapoletane: List<FoodFamilies.FoodEntry>,
+                           lst: ArrayList<MagnugaMenuItem>) {
+        for (p in pizzeNapoletane) {
+            val nPizza = PizzaNapoletanaMI(
+                p.nome, p.prezzo.toTypedArray(),
+                FoodType.values()[p.tipo], p.ingredienti, sizesToArray(p.taglie)
+            )
+            lst.add(nPizza)
+        }
+    }
+
+    fun getSpianate(spianate: List<FoodFamilies.FoodEntry>, lst: ArrayList<MagnugaMenuItem>) {
+        for (s in spianate) {
+            val nSpianata = SpianataMI(
+                s.nome, s.prezzo.toTypedArray(),
+                FoodType.values()[s.tipo], s.ingredienti, sizesToArray(s.taglie)
+            )
+            lst.add(nSpianata)
+        }
+    }
+
+    fun getSpianateRipiene(spianateRipiene: List<FoodFamilies.FoodEntry>,
+                           lst: ArrayList<MagnugaMenuItem>) {
+        for (s in spianateRipiene) {
+            val nSpianata = SpianataRipienaMI(
+                s.nome, s.prezzo.toTypedArray(),
+                FoodType.values()[s.tipo], s.ingredienti, sizesToArray(s.taglie)
+            )
+            lst.add(nSpianata)
+        }
     }
 
     fun sizesToArray(taglie: List<Int>): Array<PizzaSizes> {

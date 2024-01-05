@@ -33,7 +33,7 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) : Recycler
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
         val currentMenuItem = menuList[position]
-        //holder.menuItemImage.setImageResource(currentMenuItem.menuItemImage())
+        holder.menuItemImage.setImageResource(currentMenuItem.getResourceImage())
         holder.menuItemName.text = currentMenuItem.menuItemName()
         holder.menuItemPrice.text = currentMenuItem.menuItemPrice()[0].toString()
     }

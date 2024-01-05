@@ -1,4 +1,4 @@
-package com.example.magnugadrift.classes
+package com.example.magnugadrift.classes.Menu.Enums
 
 enum class FoodType {
     NORMALE,

@@ -38,7 +38,7 @@ class MenuFragment : Fragment() {
             ViewModelProvider(this).get(MenuViewModel::class.java)
 
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
-        val rvAdapter = MenuRVAdapter((activity as MainActivity).getMenuList().getPizzeNapoletane())
+        val rvAdapter = MenuRVAdapter((activity as MainActivity).getMenuList().getAllMenu())
         val recyclerView = binding.rvMenuList
         val dd = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
         ContextCompat.getDrawable(activity as MainActivity, R.drawable.divider)
