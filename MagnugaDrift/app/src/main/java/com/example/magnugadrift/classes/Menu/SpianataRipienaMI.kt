@@ -6,16 +6,16 @@ import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 class SpianataRipienaMI (name: String,
                          price: Array<Float>,
                          type: FoodType,
-                         ingredients: List<String>,
+                         ingredients: ArrayList<String>,
                          sizes: Array<PizzaSizes>) :
-    MagnugaMenuItem(FoodImages.SPIANATE_RIPIENE, name, price, type) {
+    MagnugaMenuItem(FoodImages.SPIANATE_RIPIENE, name, ingredients, price, type) {
     //region Properties
-    private val _ingredients: List<String>
+    private val _ingredients: ArrayList<String>
     private val _sizes: Array<PizzaSizes>
     //endregion
 
     //region Getters and Setters
-    fun spianataIngredients(): List<String> {
+    fun spianataIngredients(): ArrayList<String> {
         return _ingredients
     }
     fun spianataSizes(): Array<PizzaSizes> {

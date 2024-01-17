@@ -5,6 +5,7 @@ import com.example.magnugadrift.classes.Menu.Enums.FoodType
 
  open class MagnugaMenuItem(imgResId: FoodImages,
                                name: String,
+                               ingredients: ArrayList<String>,
                                price: Array<Float>,
                                type: FoodType
 ) {
@@ -12,6 +13,7 @@ import com.example.magnugadrift.classes.Menu.Enums.FoodType
     val _menuItemImageIdx: FoodImages
     val _menuItemName: String
     val _menuItemPrice: Array<Float>
+    val _menuItemIngredients: ArrayList<String>
     val _foodType: FoodType
     //endregion
 
@@ -22,6 +24,9 @@ import com.example.magnugadrift.classes.Menu.Enums.FoodType
     fun menuItemName(): String {
         return _menuItemName
     }
+     fun menuItemIngredients(): ArrayList<String> {
+         return _menuItemIngredients
+     }
     fun menuItemPrice(): Array<Float> {
         return _menuItemPrice
     }
@@ -34,6 +39,7 @@ import com.example.magnugadrift.classes.Menu.Enums.FoodType
     init {
         _menuItemImageIdx = imgResId
         _menuItemName = name
+        _menuItemIngredients = ingredients
         _menuItemPrice = price
         _foodType = type
     }

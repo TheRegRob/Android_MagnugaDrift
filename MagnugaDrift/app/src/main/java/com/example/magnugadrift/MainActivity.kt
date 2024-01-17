@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         for (p in pizzeNapoletane) {
             val nPizza = PizzaNapoletanaMI(
                 p.nome, p.prezzo.toTypedArray(),
-                FoodType.values()[p.tipo], p.ingredienti, sizesToArray(p.taglie)
+                FoodType.values()[p.tipo], ArrayList(p.ingredienti), sizesToArray(p.taglie)
             )
             lst.add(nPizza)
         }
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         for (s in spianate) {
             val nSpianata = SpianataMI(
                 s.nome, s.prezzo.toTypedArray(),
-                FoodType.values()[s.tipo], s.ingredienti, sizesToArray(s.taglie)
+                FoodType.values()[s.tipo], ArrayList(s.ingredienti), sizesToArray(s.taglie)
             )
             lst.add(nSpianata)
         }
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
         for (s in spianateRipiene) {
             val nSpianata = SpianataRipienaMI(
                 s.nome, s.prezzo.toTypedArray(),
-                FoodType.values()[s.tipo], s.ingredienti, sizesToArray(s.taglie)
+                FoodType.values()[s.tipo], ArrayList(s.ingredienti), sizesToArray(s.taglie)
             )
             lst.add(nSpianata)
         }

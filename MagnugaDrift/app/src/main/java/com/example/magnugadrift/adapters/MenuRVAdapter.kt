@@ -15,6 +15,7 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) : Recycler
     class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val menuItemImage : ImageView = itemView.findViewById(R.id.ivMenuItemImage)
         val menuItemName : TextView = itemView.findViewById(R.id.tvMenuItemName)
+        val menuItemIngredienti: TextView = itemView.findViewById(R.id.tvMenuItemIngredienti)
         val menuItemPrice : TextView = itemView.findViewById(R.id.tvMenuItemPrice)
     }
 
@@ -35,7 +36,19 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) : Recycler
         val currentMenuItem = menuList[position]
         holder.menuItemImage.setImageResource(currentMenuItem.getResourceImage())
         holder.menuItemName.text = currentMenuItem.menuItemName()
-        holder.menuItemPrice.text = currentMenuItem.menuItemPrice()[0].toString()
+        holder.menuItemIngredienti.text = getIngredientsString(currentMenuItem)
+        holder.menuItemPrice.text = currentMenuItem.menuItemPrice()[0].toString() + "€"
+    }
+
+    fun getIngredientsString(item: MagnugaMenuItem): String {
+        val ingredientsLst = StringBuilder()
+        for (i in item.menuItemIngredients())
+            ingredientsLst.append(i + ", ")
+        var ingredients = ingredientsLst.toString()
+        if (ingredients != "") {
+            ingredients = ingredients.substring(0, ingredients.length - 2)
+        }
+        return ingredients
     }
 
 }
