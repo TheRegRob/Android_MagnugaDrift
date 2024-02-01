@@ -107,11 +107,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun sizesToArray(taglie: List<Int>): Array<PizzaSizes> {
+    fun sizesToArray(taglie: List<Int>): ArrayList<PizzaSizes> {
         val lst = mutableListOf<PizzaSizes>()
         for (t in taglie) {
             lst.add(PizzaSizes.values()[t])
         }
-        return lst.toTypedArray()
+        return ArrayList(lst)
     }
 }

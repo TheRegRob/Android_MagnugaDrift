@@ -7,18 +7,18 @@ class SpianataMI(name: String,
                  price: Array<Float>,
                  type: FoodType,
                  ingredients: ArrayList<String>,
-                 sizes: Array<PizzaSizes>) :
-    MagnugaMenuItem(FoodImages.SPIANATE, name, ingredients, price, type) {
+                 sizes: ArrayList<PizzaSizes>) :
+    MagnugaMenuItem(FoodImages.SPIANATE, name, ingredients, price, type, false, arrayListOf()) {
     //region Properties
     private val _ingredients: ArrayList<String>
-    private val _sizes: Array<PizzaSizes>
+    private val _sizes: ArrayList<PizzaSizes>
     //endregion
 
     //region Getters and Setters
     fun spianataIngredients(): ArrayList<String> {
         return _ingredients
     }
-    fun spianataSizes(): Array<PizzaSizes> {
+    fun spianataSizes(): ArrayList<PizzaSizes> {
         return _sizes
     }
     //endregion

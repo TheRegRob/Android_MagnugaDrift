@@ -1,13 +1,17 @@
 package com.example.magnugadrift.classes.Menu
 
 import com.example.magnugadrift.R
+import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
+import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 
- open class MagnugaMenuItem(imgResId: FoodImages,
+open class MagnugaMenuItem(imgResId: FoodImages,
                                name: String,
                                ingredients: ArrayList<String>,
                                price: Array<Float>,
-                               type: FoodType
+                               type: FoodType,
+                                enrichable: Boolean,
+                                aggiunte: ArrayList<AggiunteEntry>
 ) {
     //region Properties
     val _menuItemImageIdx: FoodImages
@@ -46,6 +50,9 @@ import com.example.magnugadrift.classes.Menu.Enums.FoodType
     //endregion
 
      //region Methods
+     /** Returns the food index image of this menu item.
+      *@return      the index image _menuItemImageIdx
+      */
      fun getResourceImage(): Int {
          when (_menuItemImageIdx) {
              FoodImages.PIZZA_NAPOLETANA -> return R.drawable.pizzenapoletane_img
@@ -53,5 +60,52 @@ import com.example.magnugadrift.classes.Menu.Enums.FoodType
              FoodImages.SPIANATE_RIPIENE -> return R.drawable.spianateripiene_img
          }
      }
-     //endregion
+
+    open fun getCurrentSize(): PizzaSizes? {
+        return null
+    }
+
+    open fun increaseCurrSize() {}
+
+    open fun getCurrentPieces(): Int? {
+        return null
+    }
+
+    /**
+     *
+     */
+    open fun getFoodType(): FoodType {
+        return _foodType
+    }
+
+    /** Returns the available sizes of the menu item.
+      * If it's null, then no sizes are available
+      * @return     the value of the available sizes
+      */
+    open fun getTaglie(): ArrayList<PizzaSizes>? {
+         return null
+     }
+
+    /** Returns the available pieces of the menu item.
+     * If it's null, then no sizes are available
+     * @return     the value of the available sizes
+     */
+    open fun getPieces(): ArrayList<Int>? {
+        return null
+    }
+
+    /** Return the available addable foods to enrich the order.
+     *  If it's null, then no items can be added
+     */
+    open fun getEnricheables(): ArrayList<AggiunteEntry>? {
+        return null
+    }
+
+    /** Return the number of addable foods to enrich the order.
+     *  If it's null, then no items have been added to the food
+     */
+    open fun getAggiunte(): ArrayList<AggiunteEntry>? {
+        return null
+    }
+    //endregion
 }

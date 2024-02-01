@@ -1,0 +1,14 @@
+package com.example.magnugadrift.classes.Menu.Enums
+
+enum class AggiunteEntry {
+    PZ_DOPPIA_MOZZARELLA,
+    PZ_MOZZARELLA_BUFALA,
+    PZ_BURRATA,
+    PZ_AGGIUNTA_DI_VERDURE,
+    PZ_AGGIUNTA_DI_PROSCIUTTO,
+    PZ_IMPASTO_DI_KAMUT,
+    HM_AGGIUNTE,
+    HM_DOPPIA_CARNE,
+    HM_DOPPIA_CARNE_MAXI,
+    HM_DOPPIA_CARNE_GIGA
+}
