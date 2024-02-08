@@ -1,5 +1,6 @@
 package com.example.magnugadrift.classes.Menu
 
+import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 
@@ -12,6 +13,7 @@ class SpianataMI(name: String,
     //region Properties
     private val _ingredients: ArrayList<String>
     private val _sizes: ArrayList<PizzaSizes>
+    private var _curSize: PizzaSizes
     //endregion
 
     //region Getters and Setters
@@ -27,7 +29,29 @@ class SpianataMI(name: String,
     init {
         _ingredients = ingredients
         _sizes = sizes
+        _curSize = sizes[0]
     }
     //endregion
+    //region Methods and functions
+    override fun getCurrentSize(): PizzaSizes? {
+        return _curSize
+    }
 
+    override fun increaseCurrSize() {
+        _curSize = if (_curSize == _sizes.last()) {
+            _sizes[0]
+        } else {
+            _sizes[_sizes.indexOf(_curSize) + 1]
+        }
+    }
+
+    override fun getFoodType(): FoodType {
+        return _foodType
+    }
+
+    override fun getTaglie(): ArrayList<PizzaSizes> {
+        return _sizes
+    }
+
+    //endregion
 }

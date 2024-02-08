@@ -54,10 +54,10 @@
             android:id="@+id/tvMenuItemPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="78dp"
-            android:layout_marginEnd="24dp"
-            android:textSize="18sp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="16dp"
             android:text="PREZZO"
+            android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,13 +65,15 @@
             android:id="@+id/bt_size_qnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minHeight="0dp"
             android:text="SWITCH"
+            android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/tvMenuItemPrice"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.838"
+            app:layout_constraintHorizontal_bias="0.97"
             app:layout_constraintStart_toEndOf="@+id/tvMenuItemName"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.533" />
+            app:layout_constraintVertical_bias="0.119" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

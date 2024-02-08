@@ -3,6 +3,7 @@ package com.example.magnugadrift.adapters
 import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
@@ -15,14 +16,30 @@ import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
 
 
-class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) : RecyclerView.Adapter<MenuRVAdapter.MenuViewHolder>() {
-    class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
+    RecyclerView.Adapter<MenuRVAdapter.MenuViewHolder>() {
+
+    private lateinit var mListener: RecyclerViewEvent
+    interface RecyclerViewEvent {
+        fun onItemClick(position: Int)
+    }
+
+    fun setRecyclerViewEvent(clickListener: RecyclerViewEvent) {
+        mListener = clickListener
+    }
+    inner class MenuViewHolder(itemView: View, clickListener: RecyclerViewEvent) : RecyclerView.ViewHolder(itemView){
         val menuItemImage : ImageView = itemView.findViewById(R.id.ivMenuItemImage)
         val menuItemName : TextView = itemView.findViewById(R.id.tvMenuItemName)
         val menuItemIngredienti: TextView = itemView.findViewById(R.id.tvMenuItemIngredienti)
         val menuItemPrice : TextView = itemView.findViewById(R.id.tvMenuItemPrice)
         val menuItemSwitch: Button = itemView.findViewById(R.id.bt_size_qnt)
         lateinit var curMenuItem: MagnugaMenuItem
+
+        init {
+                itemView.setOnClickListener {
+                    clickListener.onItemClick(adapterPosition)
+            }
+        }
 
     }
 
@@ -32,7 +49,7 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) : Recycler
             parent,
             false
         )
-        return MenuViewHolder(viewLayout)
+        return MenuViewHolder(viewLayout, mListener)
     }
 
     override fun getItemCount(): Int {

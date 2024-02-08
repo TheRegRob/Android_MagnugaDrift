@@ -68,10 +68,6 @@ class PizzaNapoletanaMI(name: String,
         return _sizes
     }
 
-    override fun getPieces(): ArrayList<Int>? {
-        return super.getPieces()
-    }
-
     override fun getEnricheables(): ArrayList<AggiunteEntry> {
         return _enricheables
     }
