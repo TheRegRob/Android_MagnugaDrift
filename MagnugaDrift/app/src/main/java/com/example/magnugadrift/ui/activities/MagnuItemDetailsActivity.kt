@@ -10,8 +10,11 @@ class MagnuItemDetailsActivity : AppCompatActivity() {
     private lateinit var iv_Image: ImageView
     private lateinit var tv_Name: TextView
     private lateinit var tv_Ingredients: TextView
+    private lateinit var tv_Aggiunte: TextView
     private lateinit var tv_Size: TextView
+    private lateinit var tv_Family: TextView
     private lateinit var tv_Price: TextView
+    private lateinit var tv_Note: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +25,17 @@ class MagnuItemDetailsActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        iv_Image = findViewById(R.id.iv_ItemImage);
-        tv_Name = findViewById(R.id.tv_ItemName);
-        tv_Ingredients = findViewById(R.id.tv_Ingredients);
-        tv_Size = findViewById(R.id.tv_Size);
-        tv_Price = findViewById(R.id.tv_Price);
+        iv_Image = findViewById(R.id.iv_ItemImage)
+        tv_Name = findViewById(R.id.tv_ItemName)
+        tv_Ingredients = findViewById(R.id.tv_Ingredients)
+        tv_Aggiunte = findViewById(R.id.tv_Aggiunte)
+        tv_Size = findViewById(R.id.tv_Size)
+        tv_Price = findViewById(R.id.tv_Price)
+        tv_Note = findViewById(R.id.tv_Note)
+        tv_Family = findViewById(R.id.tv_FoodFamily)
+        tv_Ingredients.text = "Ingredienti"
+        tv_Aggiunte.text = "Aggiunte"
+        tv_Note.text = "Note"
     }
 
     private fun setValuesToViews() {
@@ -35,8 +44,9 @@ class MagnuItemDetailsActivity : AppCompatActivity() {
             iv_Image.setImageResource(imgIdx)
         }
         tv_Name.text = intent.getStringExtra("itemName")
-        tv_Ingredients.text = intent.getStringExtra("itemIngredients")
+        //tv_Ingredients.text = intent.getStringExtra("itemIngredients")
         tv_Size.text = intent.getStringExtra("itemSize")
         tv_Price.text = intent.getStringExtra("itemPrice")
+        tv_Family.text = intent.getStringExtra("itemFamily")
     }
 }

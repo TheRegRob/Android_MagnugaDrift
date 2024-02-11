@@ -5,16 +5,16 @@ import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 
-open class MagnugaMenuItem(imgResId: FoodImages,
-                               name: String,
-                               ingredients: ArrayList<String>,
-                               price: Array<Float>,
-                               type: FoodType,
-                                enrichable: Boolean,
-                                aggiunte: ArrayList<AggiunteEntry>
+open class MagnugaMenuItem(foodFamily: FoodFamilies,
+                           name: String,
+                           ingredients: ArrayList<String>,
+                           price: Array<Float>,
+                           type: FoodType,
+                           enrichable: Boolean,
+                           aggiunte: ArrayList<AggiunteEntry>
 ) {
     //region Properties
-    val _menuItemImageIdx: FoodImages
+    val _menuItemImageIdx: FoodFamilies
     val _menuItemName: String
     val _menuItemPrice: Array<Float>
     val _menuItemIngredients: ArrayList<String>
@@ -22,7 +22,7 @@ open class MagnugaMenuItem(imgResId: FoodImages,
     //endregion
 
     //region Getters and Setters
-    fun menuItemImage(): FoodImages {
+    fun menuItemFamily(): FoodFamilies {
         return _menuItemImageIdx
     }
     fun menuItemName(): String {
@@ -41,7 +41,7 @@ open class MagnugaMenuItem(imgResId: FoodImages,
 
     //region Constructors
     init {
-        _menuItemImageIdx = imgResId
+        _menuItemImageIdx = foodFamily
         _menuItemName = name
         _menuItemIngredients = ingredients
         _menuItemPrice = price
@@ -55,14 +55,18 @@ open class MagnugaMenuItem(imgResId: FoodImages,
       */
      fun getResourceImage(): Int {
          when (_menuItemImageIdx) {
-             FoodImages.PIZZA_NAPOLETANA -> return R.drawable.pizzenapoletane_img
-             FoodImages.SPIANATE -> return R.drawable.spianate_img
-             FoodImages.SPIANATE_RIPIENE -> return R.drawable.spianateripiene_img
+             FoodFamilies.PIZZA_NAPOLETANA -> return R.drawable.pizzenapoletane_img
+             FoodFamilies.SPIANATE -> return R.drawable.spianate_img
+             FoodFamilies.SPIANATE_RIPIENE -> return R.drawable.spianateripiene_img
          }
      }
 
     open fun getCurrentSize(): PizzaSizes? {
         return null
+    }
+
+    open fun getCurrentPrice(): Float {
+        return 0.0f
     }
 
     open fun increaseCurrSize() {}

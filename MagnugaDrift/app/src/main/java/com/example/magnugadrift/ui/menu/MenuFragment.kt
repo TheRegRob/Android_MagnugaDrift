@@ -63,7 +63,8 @@ class MenuFragment : Fragment() {
                 intent.putExtra("itemName", menuList[position].menuItemName())
                 intent.putExtra("itemIngredients", getIngredientsString(menuList[position]))
                 intent.putExtra("itemSize", menuList[position].getCurrentSize().toString())
-                intent.putExtra("itemPrice", getPrice(menuList[position]).toString() + "€")
+                intent.putExtra("itemFamily", menuList[position].menuItemFamily().toString())
+                intent.putExtra("itemPrice", menuList[position].getCurrentPrice().toString() + "€")
 
                 startActivity(intent)
 
@@ -76,23 +77,6 @@ class MenuFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    fun getPrice(curMenuItem: MagnugaMenuItem): Float {
-        return if (curMenuItem.getCurrentSize() != null) {
-            when (curMenuItem.getCurrentSize()) {
-                PizzaSizes.PICCOLA -> curMenuItem.menuItemPrice()[0]
-                PizzaSizes.MEDIA -> curMenuItem.menuItemPrice()[1]
-                PizzaSizes.MAXI -> curMenuItem.menuItemPrice()[2]
-                else -> {
-                    0.0f
-                }
-            }
-        } else if (curMenuItem.getCurrentSize() != null) {
-            0.0f
-        } else {
-            curMenuItem.menuItemPrice()[0]
-        }
     }
 
     fun getIngredientsString(item: MagnugaMenuItem): String {

@@ -1,6 +1,5 @@
 package com.example.magnugadrift.classes.Menu
 
-import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Enrich.isEnrichable
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
@@ -11,12 +10,13 @@ class PizzaNapoletanaMI(name: String,
                         type: FoodType,
                         ingredients: ArrayList<String>,
                         sizes: ArrayList<PizzaSizes>) :
-                        MagnugaMenuItem(FoodImages.PIZZA_NAPOLETANA, name, ingredients, price, type,
+                        MagnugaMenuItem(FoodFamilies.PIZZA_NAPOLETANA, name, ingredients, price, type,
                             true, arrayListOf()),
                         isEnrichable {
     //region Properties
     private val _ingredients: ArrayList<String>
     private val _sizes: ArrayList<PizzaSizes>
+    private val _prices: Array<Float>
     private val _enricheables: ArrayList<AggiunteEntry>
     private val _aggiunte: ArrayList<AggiunteEntry>
     private var _curSize: PizzaSizes
@@ -35,6 +35,7 @@ class PizzaNapoletanaMI(name: String,
     init {
         _ingredients = ingredients
         _sizes = sizes
+        _prices = price
         _aggiunte = ArrayList<AggiunteEntry>()
         _curSize = sizes[0]
         _enricheables = arrayListOf(
@@ -74,6 +75,17 @@ class PizzaNapoletanaMI(name: String,
 
     override fun getAggiunte(): ArrayList<AggiunteEntry> {
         return _aggiunte
+    }
+
+    override fun getCurrentPrice(): Float {
+        when (_curSize) {
+            PizzaSizes.PICCOLA -> return _prices[0]
+            PizzaSizes.MEDIA -> return _prices[1]
+            PizzaSizes.MAXI -> return _prices[2]
+            else -> {
+                return 0.0f
+            }
+        }
     }
     //endregion
 }

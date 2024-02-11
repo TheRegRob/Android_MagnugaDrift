@@ -42,21 +42,52 @@ class AggiuntaType(aggiuntaEntry: AggiunteEntry) {
             }
             AggiunteEntry.HM_AGGIUNTE -> {
                 name = "Aggiunte"
-                price = arrayListOf(0.5f)
+                price = arrayListOf(0.50f)
             }
             AggiunteEntry.HM_DOPPIA_CARNE -> {
                 name = "Aggiunta doppia carne"
-                price = arrayListOf(1.5f)
+                price = arrayListOf(1.50f)
             }
             AggiunteEntry.HM_DOPPIA_CARNE_MAXI -> {
                 name = "Aggiunta doppia carne maxi"
-                price = arrayListOf(5.0f)
+                price = arrayListOf(5.00f)
             }
             AggiunteEntry.HM_DOPPIA_CARNE_GIGA -> {
                 name = "Aggiunta doppia carne giga"
-                price = arrayListOf(6.5f)
+                price = arrayListOf(6.50f)
             }
-
+            AggiunteEntry.FC_AGGIUNTA_VERDURE -> {
+                name = "Aggiunta verdure"
+                price = arrayListOf(0.70f)
+            }
+            AggiunteEntry.FC_AGGIUNTA_FORMAGGI -> {
+                name = "Aggiunta formaggi"
+                price = arrayListOf(0.70f)
+            }
+            AggiunteEntry.FC_AGGIUNTA_SALSE -> {
+                name = "Aggiunta salse"
+                price = arrayListOf(0.70f)
+            }
+            AggiunteEntry.FC_AGGIUNTA_SALSICCIA -> {
+                name = "Aggiunta salsiccia"
+                price = arrayListOf(1.20f)
+            }
+            AggiunteEntry.FC_AGGIUNTA_AFFETTATI -> {
+                name = "Aggiunta affettati"
+                price = arrayListOf(1.20f)
+            }
+            AggiunteEntry.SL_AGGIUNTE -> {
+                name = "Aggiunte"
+                price = arrayListOf(0.70f)
+            }
+            AggiunteEntry.SL_AGGIUNTA_PIADINA -> {
+                name = "Aggiunta piadina"
+                price = arrayListOf(1.10f)
+            }
+            AggiunteEntry.SL_AGGIUNTA_SPIANATA -> {
+                name = "Aggiunta spianata"
+                price = arrayListOf(1.20f)
+            }
         }
     }
 

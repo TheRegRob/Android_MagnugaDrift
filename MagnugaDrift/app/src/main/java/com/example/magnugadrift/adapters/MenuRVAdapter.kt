@@ -62,7 +62,7 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
         holder.menuItemImage.setImageResource(currentMenuItem.getResourceImage())
         holder.menuItemName.text = currentMenuItem.menuItemName()
         holder.menuItemIngredienti.text = getIngredientsString(currentMenuItem)
-        holder.menuItemPrice.text = getPrice(currentMenuItem).toString() + "€"
+        holder.menuItemPrice.text = currentMenuItem.getCurrentPrice().toString() + "€"
         holder.menuItemSwitch.setOnClickListener(View.OnClickListener {
             currentMenuItem.increaseCurrSize()
             refreshRowData(holder, currentMenuItem)
@@ -89,25 +89,8 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
         return ingredients
     }
 
-    fun getPrice(curMenuItem: MagnugaMenuItem): Float {
-        return if (curMenuItem.getCurrentSize() != null) {
-            when (curMenuItem.getCurrentSize()) {
-                PizzaSizes.PICCOLA -> curMenuItem.menuItemPrice()[0]
-                PizzaSizes.MEDIA -> curMenuItem.menuItemPrice()[1]
-                PizzaSizes.MAXI -> curMenuItem.menuItemPrice()[2]
-                else -> {
-                    0.0f
-                }
-            }
-        } else if (curMenuItem.getCurrentSize() != null) {
-            0.0f
-        } else {
-            curMenuItem.menuItemPrice()[0]
-        }
-    }
-
     fun refreshRowData(holder: MenuViewHolder, currentMenuItem: MagnugaMenuItem) {
-        holder.menuItemPrice.text = getPrice(currentMenuItem).toString() + "€"
+        holder.menuItemPrice.text = currentMenuItem.getCurrentPrice().toString() + "€"
         setSwitchButtonTxt(holder, currentMenuItem)
     }
 

@@ -1,60 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:fillViewport="false">
 
-    <ImageView
-        android:id="@+id/iv_ItemImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_ItemName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.212"
-        tools:srcCompat="@tools:sample/avatars" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_ItemName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/tv_Ingredients"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/iv_ItemImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/general_border"
+            app:layout_constraintBottom_toTopOf="@+id/tv_FoodFamily"
+            app:layout_constraintEnd_toStartOf="@+id/ratingBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
 
-    <TextView
-        android:id="@+id/tv_Ingredients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="337dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_ItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="32dp"
+            android:text="TextView"
+            android:textSize="22dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_Aggiunte"
+            app:layout_constraintEnd_toStartOf="@+id/tv_Aggiunte"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_FoodFamily" />
 
-    <TextView
-        android:id="@+id/tv_Size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Ingredients" />
+        <TextView
+            android:id="@+id/tv_Ingredients"
+            android:layout_width="165dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:textSize="22dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/lv_Ingredients"
+            app:layout_constraintStart_toStartOf="@+id/lv_Ingredients" />
 
-    <TextView
-        android:id="@+id/tv_Price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Size" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_Size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="18dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Type" />
+
+        <TextView
+            android:id="@+id/tv_Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:text="TextView"
+            android:textSize="24dp"
+            app:layout_constraintStart_toStartOf="@+id/ratingBar"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+        <TextView
+            android:id="@+id/tv_Type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.352"
+            app:layout_constraintStart_toEndOf="@+id/tv_Price"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_ItemImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView2"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginEnd="11dp"
+            android:background="@drawable/general_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/lv_Ingredients"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_FoodFamily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:textSize="20dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_Size"
+            app:layout_constraintStart_toStartOf="@+id/iv_ItemImage"
+            app:layout_constraintTop_toTopOf="@+id/tv_Size" />
+
+        <TextView
+            android:id="@+id/tv_Aggiunte"
+            android:layout_width="165dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="49dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:textSize="22dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
+            app:layout_constraintEnd_toEndOf="@+id/tv_Size"
+            app:layout_constraintStart_toStartOf="@+id/recyclerView2" />
+
+        <ListView
+            android:id="@+id/lv_Ingredients"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="11dp"
+            android:background="@drawable/general_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/recyclerView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_Note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="22dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/et_Notes"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/et_Notes"
+            android:layout_width="0dp"
+            android:layout_height="116dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="53dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="70dp"
+            android:gravity="top"
+            android:ems="10"
+            android:hint="Note sul piatto"
+            android:background="@drawable/general_border"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lv_Ingredients" />
+
+        <Button
+            android:id="@+id/bt_AddToOrder"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="53dp"
+            android:background="@drawable/roundedbg"
+            android:drawableLeft="@drawable/ic_add"
+            android:gravity="center"
+            android:text="Aggiungi all'ordine"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_Notes" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
