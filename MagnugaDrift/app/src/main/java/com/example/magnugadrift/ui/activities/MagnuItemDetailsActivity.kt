@@ -1,12 +1,18 @@
 package com.example.magnugadrift.ui.activities
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.magnugadrift.R
 
 class MagnuItemDetailsActivity : AppCompatActivity() {
+    private var favourite: Boolean = true
     private lateinit var iv_Image: ImageView
     private lateinit var tv_Name: TextView
     private lateinit var tv_Ingredients: TextView
@@ -18,10 +24,38 @@ class MagnuItemDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_magnu_item_details)
+        supportActionBar!!.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        supportActionBar!!.setCustomView(R.layout.item_details_barlayout)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
+        setContentView(R.layout.activity_magnu_item_details)
         initView()
         setValuesToViews()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.item_details_supportactionbar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_fav_unfav-> {
+                favourite = !favourite
+                if (favourite) {
+                    item.setIcon(R.drawable.ic_favourite_on)
+                } else {
+                    item.setIcon(R.drawable.ic_favourite_off)
+                }
+                return true
+            }
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initView() {
