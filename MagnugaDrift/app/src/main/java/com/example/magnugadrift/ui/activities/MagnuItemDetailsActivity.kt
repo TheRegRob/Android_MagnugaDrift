@@ -1,5 +1,6 @@
 package com.example.magnugadrift.ui.activities
 
+import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -38,6 +39,7 @@ class MagnuItemDetailsActivity : AppCompatActivity() {
         return true
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_fav_unfav-> {
@@ -75,7 +77,7 @@ class MagnuItemDetailsActivity : AppCompatActivity() {
     private fun setValuesToViews() {
         var imgIdx = intent.getStringExtra("itemImage")?.toInt()
         if (imgIdx != null) {
-            iv_Image.setImageResource(imgIdx)
+            //iv_Image.setImageResource(imgIdx)
         }
         tv_Name.text = intent.getStringExtra("itemName")
         //tv_Ingredients.text = intent.getStringExtra("itemIngredients")
