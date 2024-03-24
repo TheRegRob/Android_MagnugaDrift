@@ -1,8 +1,5 @@
 package com.example.magnugadrift.ui.activities
 
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -29,7 +26,7 @@ class MagnuItemDetailsActivity : AppCompatActivity() {
         supportActionBar!!.setCustomView(R.layout.item_details_barlayout)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        setContentView(R.layout.activity_magnu_item_details)
+        setContentView(R.layout.item_details_activity)
         initView()
         setValuesToViews()
     }
@@ -62,13 +59,13 @@ class MagnuItemDetailsActivity : AppCompatActivity() {
 
     private fun initView() {
         iv_Image = findViewById(R.id.iv_ItemImage)
-        tv_Name = findViewById(R.id.tv_ItemName)
+        tv_Name = findViewById(R.id.tv_food_name)
         tv_Ingredients = findViewById(R.id.tv_Ingredients)
         tv_Aggiunte = findViewById(R.id.tv_Aggiunte)
-        tv_Size = findViewById(R.id.tv_Size)
-        tv_Price = findViewById(R.id.tv_Price)
+        tv_Size = findViewById(R.id.tv_food_size)
+        tv_Price = findViewById(R.id.tb_food_price)
         tv_Note = findViewById(R.id.tv_Note)
-        tv_Family = findViewById(R.id.tv_FoodFamily)
+        tv_Family = findViewById(R.id.tv_food_family)
         tv_Ingredients.text = "Ingredienti"
         tv_Aggiunte.text = "Aggiunte"
         tv_Note.text = "Note"

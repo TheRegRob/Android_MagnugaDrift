@@ -8,19 +8,16 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.cardview.widget.CardView
-import androidx.core.view.allViews
-import androidx.core.view.iterator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.magnugadrift.R
-import com.example.magnugadrift.databinding.FragmentOrderBinding
-import org.w3c.dom.Text
+import com.example.magnugadrift.databinding.OrdersFragmentBinding
 
 
 class OrderFragment : Fragment(), View.OnClickListener {
 
-    private var _binding: FragmentOrderBinding? = null
+    private var _binding: OrdersFragmentBinding? = null
     var sv: LinearLayoutCompat? = null
     private var totalOrders = 0
     lateinit var btnAdd: Button
@@ -51,7 +48,7 @@ class OrderFragment : Fragment(), View.OnClickListener {
     ): View {
         val dashboardViewModel =
             ViewModelProvider(this).get(OrderViewModel::class.java)
-        _binding = FragmentOrderBinding.inflate(inflater, container, false)
+        _binding = OrdersFragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
     }
@@ -64,7 +61,7 @@ class OrderFragment : Fragment(), View.OnClickListener {
     override fun onClick(p0: View?) {
         val newCard = activity?.let { CardView(it) }
         if (newCard != null) {
-            layoutInflater.inflate(R.layout.cardview_base, newCard)
+            layoutInflater.inflate(R.layout.orders_cardview, newCard)
             totalOrders++
             tvOrders.text = "Ordini: " + totalOrders
             val cv_name = newCard.findViewById<TextView>(R.id.menu_item_name)
@@ -80,7 +77,7 @@ class OrderFragment : Fragment(), View.OnClickListener {
         for (cv: String in viewModel.getOrders()) {
             val newCard = activity?.let { CardView(it) }
             if (newCard != null) {
-                layoutInflater.inflate(R.layout.cardview_base, newCard)
+                layoutInflater.inflate(R.layout.orders_cardview, newCard)
                 val cv_name = newCard.findViewById<TextView>(R.id.menu_item_name)
                 cv_name.setText(cv)
                 sv?.addView(newCard)

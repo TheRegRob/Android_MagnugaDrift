@@ -9,17 +9,17 @@
         android:id="@+id/navigation_menu"
         android:name="com.example.magnugadrift.ui.menu.MenuFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/menu_fragment" />
 
     <fragment
         android:id="@+id/navigation_order"
         android:name="com.example.magnugadrift.ui.order.OrderFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_order" />
+        tools:layout="@layout/orders_fragment" />
 
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.example.magnugadrift.ui.history.HistoryFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/history_fragment" />
 </navigation>

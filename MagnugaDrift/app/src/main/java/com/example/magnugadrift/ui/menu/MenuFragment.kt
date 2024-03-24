@@ -22,12 +22,12 @@ import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
 import com.example.magnugadrift.classes.UIContent
-import com.example.magnugadrift.databinding.FragmentMenuBinding
+import com.example.magnugadrift.databinding.MenuFragmentBinding
 import com.example.magnugadrift.ui.activities.MagnuItemDetailsActivity
 
 class MenuFragment : Fragment() {
 
-    private var _binding: FragmentMenuBinding? = null
+    private var _binding: MenuFragmentBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -42,7 +42,7 @@ class MenuFragment : Fragment() {
         val homeViewModel =
             ViewModelProvider(this).get(MenuViewModel::class.java)
 
-        _binding = FragmentMenuBinding.inflate(inflater, container, false)
+        _binding = MenuFragmentBinding.inflate(inflater, container, false)
         //var view: View = inflater.inflate(R.layout.activity_magnu_item_details, container, false)
         var menuList = (activity as MainActivity).getMenuList().getAllMenu()
         val rvAdapter = MenuRVAdapter(menuList)

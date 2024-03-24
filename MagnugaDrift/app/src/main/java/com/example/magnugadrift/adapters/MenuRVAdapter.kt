@@ -1,19 +1,15 @@
 package com.example.magnugadrift.adapters
 
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
-import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
 
 
 class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
@@ -45,7 +41,7 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         val viewLayout = LayoutInflater.from(parent.context).inflate(
-            R.layout.recyclerview_row,
+            R.layout.orders_recyclerview_row,
             parent,
             false
         )
