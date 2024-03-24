@@ -3,14 +3,18 @@ package com.example.magnugadrift.ui.activities
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.magnugadrift.R
+import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
-class MagnuItemDetailsActivity : AppCompatActivity() {
+class MagnuItemDetailsActivity(magnu_item: MagnugaOrderItem) : AppCompatActivity() {
     private var favourite: Boolean = true
+    private var lst_ingredients: ArrayList<String> = ArrayList<String>()
+    private var lst_additions: ArrayList<String> = ArrayList<String>()
     private lateinit var iv_Image: ImageView
     private lateinit var tv_Name: TextView
     private lateinit var tv_Ingredients: TextView
@@ -57,11 +61,15 @@ class MagnuItemDetailsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    /*public fun addItems(view: View) {
+        for (ing in )
+    }*/
+
     private fun initView() {
         iv_Image = findViewById(R.id.iv_ItemImage)
         tv_Name = findViewById(R.id.tv_food_name)
-        tv_Ingredients = findViewById(R.id.tv_Ingredients)
-        tv_Aggiunte = findViewById(R.id.tv_Aggiunte)
+        tv_Ingredients = findViewById(R.id.tv_ingredients_header)
+        tv_Aggiunte = findViewById(R.id.tv_additions_header)
         tv_Size = findViewById(R.id.tv_food_size)
         tv_Price = findViewById(R.id.tb_food_price)
         tv_Note = findViewById(R.id.tv_Note)
@@ -72,6 +80,8 @@ class MagnuItemDetailsActivity : AppCompatActivity() {
     }
 
     private fun setValuesToViews() {
+        gfdhsgds
+        /*TODO: PROVA A CHIAMARE LA VIEW CON IL MENUORDERITEM INVECE DI USARE L'INTENT*/
         var imgIdx = intent.getStringExtra("itemImage")?.toInt()
         if (imgIdx != null) {
             //iv_Image.setImageResource(imgIdx)
