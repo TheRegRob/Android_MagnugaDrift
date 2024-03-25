@@ -18,8 +18,10 @@
     </TextView>
 
     <ListView
+        android:id="@+id/lv_ingredients"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/black"
         tools:listitem="@layout/ingredients_list_item">
     </ListView>
 </LinearLayout>

@@ -21,9 +21,11 @@ import com.example.magnugadrift.adapters.MenuRVAdapter
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
+import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 import com.example.magnugadrift.classes.UIContent
 import com.example.magnugadrift.databinding.MenuFragmentBinding
 import com.example.magnugadrift.ui.activities.MagnuItemDetailsActivity
+import java.io.Serializable
 
 class MenuFragment : Fragment() {
 
@@ -59,12 +61,16 @@ class MenuFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 val intent = Intent(activity, MagnuItemDetailsActivity::class.java)
 
-                intent.putExtra("itemImage", menuList[position].getResourceImage().toString())
+                val magnugaOrderItem = MagnugaOrderItem(menuList[position])
+
+                intent.putExtra("order_item", magnugaOrderItem)
+
+                /*intent.putExtra("itemImage", menuList[position].getResourceImage().toString())
                 intent.putExtra("itemName", menuList[position].menuItemName())
                 intent.putExtra("itemIngredients", getIngredientsString(menuList[position]))
                 intent.putExtra("itemSize", menuList[position].getCurrentSize().toString())
                 intent.putExtra("itemFamily", menuList[position].menuItemFamily().toString())
-                intent.putExtra("itemPrice", menuList[position].getCurrentPrice().toString() + "€")
+                intent.putExtra("itemPrice", menuList[position].getCurrentPrice().toString() + "€")*/
 
                 startActivity(intent)
 

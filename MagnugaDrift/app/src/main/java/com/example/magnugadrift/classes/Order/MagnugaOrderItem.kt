@@ -5,8 +5,9 @@ import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 import com.example.magnugadrift.classes.Menu.FoodFamilies
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
+import java.io.Serializable
 
-class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) {
+class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
     //region Properties
     private val _foodImage: Int
     private val _rating: Int
@@ -22,12 +23,44 @@ class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) {
     //endregion
 
     //region Getters and Setters
-
+    fun getOrderItemFoodImage(): Int {
+        return _foodImage
+    }
+    fun getOrderItemRating(): Int {
+        return _rating
+    }
+    fun getOrderItemPrice(): Float {
+        return _price
+    }
+    fun getOrderItemType(): FoodType {
+        return _type
+    }
+    fun getOrderItemFamily(): FoodFamilies {
+        return _family
+    }
+    fun getOrderItemName(): String {
+        return _name
+    }
+    fun getOrderItemSize():PizzaSizes? {
+        return _size
+    }
+    fun getOrderItemPieces(): Int? {
+        return _pieces
+    }
+    fun getOrderItemIngredients(): ArrayList<String>? {
+        return _ingredients
+    }
+    fun getOrderItemAggiunte(): ArrayList<AggiunteEntry>? {
+        return _aggiunte
+    }
+    fun getOrderItemNote(): String {
+        return _note
+    }
     //endregion
 
     //region Constructors
     init {
-        _foodImage = OrderImageSetter(magnugaMenuItem).getImageIdx()
+        _foodImage = magnugaMenuItem.getResourceImage()
         _rating = 0 // Dovrà essere recuperato dalla memoria
         _price = magnugaMenuItem.getCurrentPrice()
         _type = magnugaMenuItem.getFoodType()
