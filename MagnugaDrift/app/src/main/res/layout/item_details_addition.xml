@@ -35,8 +35,9 @@
     </LinearLayout>
 
     <ListView
+        android:id="@+id/lv_additions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/ingredients_list_item">
+        tools:listitem="@layout/additions_list_item">
     </ListView>
 </LinearLayout>

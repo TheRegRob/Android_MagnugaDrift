@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.magnugadrift.R
 
-class ItemDetailsLVAdapter(val ctx: Context, private val ingredientsList: ArrayList<String>) :  BaseAdapter() {
+class DetailsIngredientsLVAdapter(val ctx: Context, private val ingredientsList: ArrayList<String>) :  BaseAdapter() {
     override fun getCount(): Int {
         return ingredientsList.size
     }

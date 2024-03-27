@@ -4,8 +4,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
@@ -13,13 +11,16 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.magnugadrift.R
-import com.example.magnugadrift.adapters.ItemDetailsLVAdapter
+import com.example.magnugadrift.adapters.DetailsAdditionsLVAdapter
+import com.example.magnugadrift.adapters.DetailsIngredientsLVAdapter
+import com.example.magnugadrift.classes.AggiuntaType
+import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
 class MagnuItemDetailsActivity() : AppCompatActivity() {
     private var favourite: Boolean = true
     private var lst_ingredients: ArrayList<String> = ArrayList<String>()
-    private var lst_additions: ArrayList<String> = ArrayList<String>()
+    private var lst_additions: ArrayList<AggiuntaType> = ArrayList<AggiuntaType>()
     private lateinit var iv_Image: ImageView
     private lateinit var tv_Name: TextView
     private lateinit var tv_Ingredients: TextView
@@ -29,7 +30,9 @@ class MagnuItemDetailsActivity() : AppCompatActivity() {
     private lateinit var tv_Price: TextView
     private lateinit var tv_Note: TextView
     private lateinit var lv_ingredients: ListView
-    private lateinit var adapter: ItemDetailsLVAdapter
+    private lateinit var lv_additions: ListView
+    private lateinit var ingredientsAdapter: DetailsIngredientsLVAdapter
+    private lateinit var additionAdapter: DetailsAdditionsLVAdapter
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,9 +44,10 @@ class MagnuItemDetailsActivity() : AppCompatActivity() {
         initView()
         setValuesToViews()
 
-        adapter = ItemDetailsLVAdapter(this, lst_ingredients)
-        lv_ingredients.adapter = adapter
-
+        ingredientsAdapter = DetailsIngredientsLVAdapter(this, lst_ingredients)
+        additionAdapter = DetailsAdditionsLVAdapter(this, lst_additions)
+        lv_ingredients.adapter = ingredientsAdapter
+        lv_additions.adapter = additionAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -82,6 +86,7 @@ class MagnuItemDetailsActivity() : AppCompatActivity() {
         tv_Note = findViewById(R.id.tv_Note)
         tv_Family = findViewById(R.id.tv_food_family)
         lv_ingredients = findViewById(R.id.lv_ingredients)
+        lv_additions = findViewById(R.id.lv_additions)
         tv_Ingredients.text = "Ingredienti"
         tv_Aggiunte.text = "Aggiunte"
         tv_Note.text = "Note"
@@ -91,13 +96,17 @@ class MagnuItemDetailsActivity() : AppCompatActivity() {
     private fun setValuesToViews() {
         var orderItem = intent.getSerializableExtra("order_item") as? MagnugaOrderItem
         if (orderItem != null) {
-            iv_Image.setImageResource(orderItem.getOrderItemFoodImage())
+            //iv_Image.setImageResource(orderItem.getOrderItemFoodImage()) Non setto perché tengo la pizza mo
             tv_Name.text = orderItem.getOrderItemName()
             tv_Size.text = orderItem.getOrderItemSize().toString()
             tv_Price.text = orderItem.getOrderItemPrice().toString()
             tv_Family.text = orderItem.getOrderItemFamily().toString()
             for(food in orderItem.getOrderItemIngredients()!!) {
                 lst_ingredients.add(food)
+            }
+            for (addition in orderItem.getOrderItemAggiunte()!!) {
+                var _addition = AggiuntaType(addition)
+                lst_additions.add(_addition)
             }
             //tv_Ingredients.text =
         }

@@ -29,11 +29,11 @@ class AggiuntaType(aggiuntaEntry: AggiunteEntry) {
                 price = arrayListOf(0.60f, 1.10f, 1.90f)
             }
             AggiunteEntry.PZ_AGGIUNTA_DI_VERDURE -> {
-                name = "Aggiunta di verdure"
+                name = "Verdure"
                 price = arrayListOf(0.50f, 0.70f, 1.00f)
             }
             AggiunteEntry.PZ_AGGIUNTA_DI_PROSCIUTTO -> {
-                name = "Aggiunta di prosciutto"
+                name = "Prosciutto"
                 price = arrayListOf(0.70f, 1.00f, 1.30f)
             }
             AggiunteEntry.PZ_IMPASTO_DI_KAMUT -> {
@@ -45,35 +45,35 @@ class AggiuntaType(aggiuntaEntry: AggiunteEntry) {
                 price = arrayListOf(0.50f)
             }
             AggiunteEntry.HM_DOPPIA_CARNE -> {
-                name = "Aggiunta doppia carne"
+                name = "Doppia carne"
                 price = arrayListOf(1.50f)
             }
             AggiunteEntry.HM_DOPPIA_CARNE_MAXI -> {
-                name = "Aggiunta doppia carne maxi"
+                name = "Doppia carne maxi"
                 price = arrayListOf(5.00f)
             }
             AggiunteEntry.HM_DOPPIA_CARNE_GIGA -> {
-                name = "Aggiunta doppia carne giga"
+                name = "Doppia carne giga"
                 price = arrayListOf(6.50f)
             }
             AggiunteEntry.FC_AGGIUNTA_VERDURE -> {
-                name = "Aggiunta verdure"
+                name = "Verdure"
                 price = arrayListOf(0.70f)
             }
             AggiunteEntry.FC_AGGIUNTA_FORMAGGI -> {
-                name = "Aggiunta formaggi"
+                name = "Formaggi"
                 price = arrayListOf(0.70f)
             }
             AggiunteEntry.FC_AGGIUNTA_SALSE -> {
-                name = "Aggiunta salse"
+                name = "Salse"
                 price = arrayListOf(0.70f)
             }
             AggiunteEntry.FC_AGGIUNTA_SALSICCIA -> {
-                name = "Aggiunta salsiccia"
+                name = "Salsiccia"
                 price = arrayListOf(1.20f)
             }
             AggiunteEntry.FC_AGGIUNTA_AFFETTATI -> {
-                name = "Aggiunta affettati"
+                name = "Affettati"
                 price = arrayListOf(1.20f)
             }
             AggiunteEntry.SL_AGGIUNTE -> {
@@ -81,11 +81,11 @@ class AggiuntaType(aggiuntaEntry: AggiunteEntry) {
                 price = arrayListOf(0.70f)
             }
             AggiunteEntry.SL_AGGIUNTA_PIADINA -> {
-                name = "Aggiunta piadina"
+                name = "Piadina"
                 price = arrayListOf(1.10f)
             }
             AggiunteEntry.SL_AGGIUNTA_SPIANATA -> {
-                name = "Aggiunta spianata"
+                name = "Spianata"
                 price = arrayListOf(1.20f)
             }
         }
