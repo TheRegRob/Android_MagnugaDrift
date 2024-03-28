@@ -4,7 +4,12 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.View.MeasureSpec
+import android.widget.ExpandableListAdapter
+import android.widget.ExpandableListView
 import android.widget.ImageView
+import android.widget.ListAdapter
 import android.widget.ListView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -14,8 +19,8 @@ import com.example.magnugadrift.R
 import com.example.magnugadrift.adapters.DetailsAdditionsLVAdapter
 import com.example.magnugadrift.adapters.DetailsIngredientsLVAdapter
 import com.example.magnugadrift.classes.AggiuntaType
-import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
+
 
 class MagnuItemDetailsActivity() : AppCompatActivity() {
     private var favourite: Boolean = true
@@ -83,13 +88,11 @@ class MagnuItemDetailsActivity() : AppCompatActivity() {
         tv_Aggiunte = findViewById(R.id.tv_additions_header)
         tv_Size = findViewById(R.id.tv_food_size)
         tv_Price = findViewById(R.id.tb_food_price)
-        tv_Note = findViewById(R.id.tv_Note)
         tv_Family = findViewById(R.id.tv_food_family)
         lv_ingredients = findViewById(R.id.lv_ingredients)
         lv_additions = findViewById(R.id.lv_additions)
         tv_Ingredients.text = "Ingredienti"
         tv_Aggiunte.text = "Aggiunte"
-        tv_Note.text = "Note"
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -108,16 +111,6 @@ class MagnuItemDetailsActivity() : AppCompatActivity() {
                 var _addition = AggiuntaType(addition)
                 lst_additions.add(_addition)
             }
-            //tv_Ingredients.text =
         }
-        /*var imgIdx = intent.getStringExtra("itemImage")?.toInt()
-        if (imgIdx != null) {
-            //iv_Image.setImageResource(imgIdx)
-        }*/
-        /*tv_Name.text = intent.getStringExtra("itemName")
-        //tv_Ingredients.text = intent.getStringExtra("itemIngredients")
-        tv_Size.text = intent.getStringExtra("itemSize")
-        tv_Price.text = intent.getStringExtra("itemPrice")
-        tv_Family.text = intent.getStringExtra("itemFamily")*/
     }
 }

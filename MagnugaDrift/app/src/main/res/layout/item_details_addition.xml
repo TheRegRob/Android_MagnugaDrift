@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="300dp">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,6 +38,15 @@
         android:id="@+id/lv_additions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbarSize="3dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        android:scrollingCache="true"
+        android:smoothScrollbar="true"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="2dp"
+        android:background="@drawable/rounded_edges_listview"
         tools:listitem="@layout/additions_list_item">
     </ListView>
 </LinearLayout>

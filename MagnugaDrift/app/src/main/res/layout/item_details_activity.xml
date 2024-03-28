@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestedScroll"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:nestedScrollingEnabled="true"
-    android:fillViewport="false">
+    android:fillViewport="true"
+    android:padding="10dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +17,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/food_image"
             android:layout_width="0dp"
-            android:layout_height="250dp"
+            android:layout_height="200dp"
             android:layout_margin="5dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
@@ -55,27 +55,27 @@
             android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/details_tb" />
+            app:layout_constraintTop_toBottomOf="@+id/details_tb"
+            app:layout_constraintBottom_toTopOf="@+id/ll_list_group"/>
 
         <LinearLayout
             android:id="@+id/ll_list_group"
             android:layout_width="wrap_content"
             android:layout_height="300dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/tv_Note"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_Note"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar">
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+            app:layout_constraintBottom_toTopOf="@+id/bt_AddToOrder">
 
             <include
                 android:id="@+id/lvcustom_ingredients"
                 layout="@layout/item_details_ingredients"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1">
             </include>
@@ -84,44 +84,17 @@
                 android:id="@+id/lvcustom_additions"
                 layout="@layout/item_details_addition"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1">
             </include>
         </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/tv_Note"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="198dp"
-            android:text="TextView"
-            android:textSize="22dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/et_Notes"
-            android:layout_width="0dp"
-            android:layout_height="116dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="74dp"
-            android:background="@drawable/general_border"
-            android:ems="10"
-            android:gravity="top"
-            android:hint="Note sul piatto"
-            android:inputType="textMultiLine"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_Note" />
-
         <Button
             android:id="@+id/bt_AddToOrder"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
             android:layout_marginStart="52dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="52dp"
@@ -130,9 +103,9 @@
             android:gravity="center"
             android:text="Aggiungi all'ordine"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_Notes" />
+            app:layout_constraintTop_toBottomOf="@+id/ll_list_group"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</android.widget.RelativeLayout>
