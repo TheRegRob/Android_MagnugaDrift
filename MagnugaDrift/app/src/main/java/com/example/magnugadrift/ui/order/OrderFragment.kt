@@ -34,7 +34,7 @@ class OrderFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         btnAdd = view.findViewById<Button>(R.id.bt_CloseOrder)
         tvOrders = view.findViewById<TextView>(R.id.tv_ordersNumber)
-        sv = view.findViewById<LinearLayoutCompat>(R.id.sv_OrderView)
+        sv = view.findViewById<LinearLayoutCompat>(R.id.lc_LayoutCompact)
         totalOrders = viewModel.getOrders().count()
         tvOrders.text = "Ordini: " + totalOrders
         btnAdd.setOnClickListener(this)

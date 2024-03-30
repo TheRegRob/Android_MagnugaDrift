@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:layout_margin="12dp"
     app:cardCornerRadius="20dp"
+    app:cardBackgroundColor="@color/lst_item_background"
     android:elevation="2dp">
 
     <LinearLayout
@@ -31,6 +32,7 @@
                 android:layout_height="20dp"
                 android:id="@+id/tv_additionName"
                 android:textSize="15sp"
+                android:textColor="@color/lst_item_text"
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="_INGREDIENT_NAME_">
@@ -46,6 +48,7 @@
                 android:layout_height="20dp"
                 android:id="@+id/tv_additionPrice"
                 android:textSize="12sp"
+                android:textColor="@color/lst_item_text"
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="_INGREDIENT_PRICE_">

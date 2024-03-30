@@ -37,6 +37,12 @@ class PizzaNapoletanaMI(name: String,
         _sizes = sizes
         _prices = price
         _aggiunte = ArrayList<AggiunteEntry>()
+        _aggiunte.add(AggiunteEntry.PZ_IMPASTO_DI_KAMUT)
+        _aggiunte.add(AggiunteEntry.PZ_BURRATA)
+        _aggiunte.add(AggiunteEntry.PZ_DOPPIA_MOZZARELLA)
+        _aggiunte.add(AggiunteEntry.PZ_AGGIUNTA_DI_VERDURE)
+        _aggiunte.add(AggiunteEntry.PZ_MOZZARELLA_BUFALA)
+        _aggiunte.add(AggiunteEntry.PZ_AGGIUNTA_DI_PROSCIUTTO)
         _curSize = sizes[0]
         _enricheables = arrayListOf(
             AggiunteEntry.PZ_AGGIUNTA_DI_PROSCIUTTO,

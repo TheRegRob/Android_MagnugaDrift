@@ -38,6 +38,7 @@ class MagnuItemDetailsActivity() : AppCompatActivity() {
     private lateinit var lv_additions: ListView
     private lateinit var ingredientsAdapter: DetailsIngredientsLVAdapter
     private lateinit var additionAdapter: DetailsAdditionsLVAdapter
+    private lateinit var orderItem: MagnugaOrderItem
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +51,7 @@ class MagnuItemDetailsActivity() : AppCompatActivity() {
         setValuesToViews()
 
         ingredientsAdapter = DetailsIngredientsLVAdapter(this, lst_ingredients)
-        additionAdapter = DetailsAdditionsLVAdapter(this, lst_additions)
+        additionAdapter = DetailsAdditionsLVAdapter(this, lst_additions, orderItem.getOrderItemSize())
         lv_ingredients.adapter = ingredientsAdapter
         lv_additions.adapter = additionAdapter
     }
@@ -97,7 +98,7 @@ class MagnuItemDetailsActivity() : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun setValuesToViews() {
-        var orderItem = intent.getSerializableExtra("order_item") as? MagnugaOrderItem
+        orderItem = intent.getSerializableExtra("order_item") as MagnugaOrderItem
         if (orderItem != null) {
             //iv_Image.setImageResource(orderItem.getOrderItemFoodImage()) Non setto perché tengo la pizza mo
             tv_Name.text = orderItem.getOrderItemName()

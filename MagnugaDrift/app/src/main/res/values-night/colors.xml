@@ -14,14 +14,14 @@
     <color name="dull_light_gray">#CDCDCD</color>
     <color name="dull_gray">#A5A5A5</color>
     <!-- Text color that differs based on UI mode -->
-    <color name="lst_header_text">#FFFFFFFF</color>
-    <color name="lst_item_text">#FF000000</color>
+    <color name="lst_header_text">#FF000000</color>
+    <color name="lst_item_text">#FFFFFFFF</color>
     <!-- Controls color that differs based on UI mode -->
     <color name="rating_bar_empty">#F8939393</color>
     <color name="rating_bar_filled">#FFE500</color>
-    <color name="lst_header_background">#F8292929</color>
-    <color name="lst_background">#CDCDCD</color>
-    <color name="lst_item_background">#FFFFFFFF</color>
-    <color name="nav_bar_color">#FAFAFA</color>
-    <color name="add_addition">#3DE144</color>
+    <color name="lst_header_background">#F8EAEAEA</color>
+    <color name="lst_background">#F8888888</color>
+    <color name="lst_item_background">#F83C3C3C</color>
+    <color name="nav_bar_color">#F82C2C2C</color>
+    <color name="add_addition">#216924</color>
 </resources>
