@@ -1,5 +1,6 @@
 package com.example.magnugadrift.ui.activities
 
+import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
@@ -46,6 +47,7 @@ class MagnuItemDetailsActivity() : AppCompatActivity(), View.OnClickListener {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
         supportActionBar!!.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
         supportActionBar!!.setCustomView(R.layout.item_details_barlayout)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)

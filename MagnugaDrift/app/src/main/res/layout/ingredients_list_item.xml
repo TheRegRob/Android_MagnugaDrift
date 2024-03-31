@@ -14,6 +14,7 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/bt_exclude_ingredient"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_remove"
