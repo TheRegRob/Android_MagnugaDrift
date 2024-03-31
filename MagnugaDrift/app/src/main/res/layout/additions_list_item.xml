@@ -14,6 +14,7 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id= "@+id/bt_delete_addition"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_remove"
@@ -40,6 +41,7 @@
 
             <View
                 android:layout_width="match_parent"
+                android:layout_marginRight="30dp"
                 android:layout_height="1dp"
                 android:background="@color/dull_gray"/>
 

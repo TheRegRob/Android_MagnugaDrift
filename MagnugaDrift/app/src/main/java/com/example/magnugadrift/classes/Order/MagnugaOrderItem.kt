@@ -1,5 +1,6 @@
 package com.example.magnugadrift.classes.Order
 
+import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
@@ -19,6 +20,7 @@ class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
     private var _pieces: Int?
     private var _ingredients: ArrayList<String>?
     private var _aggiunte: ArrayList<AggiunteEntry>?
+    private var _enricheables: ArrayList<AggiuntaType>?
     private var _note: String
     //endregion
 
@@ -53,6 +55,9 @@ class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
     fun getOrderItemAggiunte(): ArrayList<AggiunteEntry>? {
         return _aggiunte
     }
+    fun getOrderItemEnricheables(): ArrayList<AggiuntaType>? {
+        return _enricheables
+    }
     fun getOrderItemNote(): String {
         return _note
     }
@@ -69,6 +74,13 @@ class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
         _size = magnugaMenuItem.getCurrentSize()
         _pieces = magnugaMenuItem.getCurrentPieces()
         _ingredients = magnugaMenuItem.menuItemIngredients()
+        var lst_enricheables = arrayListOf<AggiuntaType>()
+        if (magnugaMenuItem.getEnricheables() != null) {
+            for (enrich in magnugaMenuItem.getEnricheables()!!) {
+                lst_enricheables.add(AggiuntaType(enrich))
+            }
+        }
+        _enricheables = lst_enricheables
         _aggiunte = magnugaMenuItem.getAggiunte()
         _note = "" // Dovrà essere recuperato dalla memoria
     }

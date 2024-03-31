@@ -1,8 +1,9 @@
 package com.example.magnugadrift.classes
 
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
+import java.io.Serializable
 
-class AggiuntaType(aggiuntaEntry: AggiunteEntry) {
+class AggiuntaType(aggiuntaEntry: AggiunteEntry) : Serializable {
     private val name: String
     private val price: ArrayList<Float>
 

@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import com.example.magnugadrift.R
 import com.example.magnugadrift.classes.AggiuntaType
@@ -47,6 +49,11 @@ private val size: PizzaSizes? = null) :  BaseAdapter()  {
         val addition = additionsList[p0]
         additionName.text = addition.getName()
         additionPrice.text = getCurrentPrice(addition).toString() + "€"
+        val bt_delete = view.findViewById<ImageButton>(R.id.bt_delete_addition)
+        bt_delete.setOnClickListener(View.OnClickListener {
+            this.additionsList.remove(additionsList[p0])
+            notifyDataSetChanged()
+        })
         return view
     }
 }
