@@ -12,7 +12,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
@@ -21,13 +20,17 @@ import com.example.magnugadrift.R
 import com.example.magnugadrift.adapters.DetailsAdditionsLVAdapter
 import com.example.magnugadrift.adapters.DetailsIngredientsLVAdapter
 import com.example.magnugadrift.classes.AggiuntaType
+import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
 
-class MagnuItemDetailsActivity() : AppCompatActivity(), View.OnClickListener {
+class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private var favourite: Boolean = true
     private var lst_ingredients: ArrayList<String> = ArrayList<String>()
     private var lst_additions: ArrayList<AggiuntaType> = ArrayList<AggiuntaType>()
+    companion object  {
+        var currentPrice: Float = 0.0f
+    }
     private lateinit var iv_Image: ImageView
     private lateinit var tv_Name: TextView
     private lateinit var tv_Ingredients: TextView
@@ -36,6 +39,7 @@ class MagnuItemDetailsActivity() : AppCompatActivity(), View.OnClickListener {
     private lateinit var tv_Family: TextView
     private lateinit var tv_Price: TextView
     private lateinit var tv_Note: TextView
+    private lateinit var tv_finalPrice: TextView
     private lateinit var lv_ingredients: ListView
     private lateinit var lv_additions: ListView
     private lateinit var ib_addAddition: ImageButton
@@ -47,15 +51,18 @@ class MagnuItemDetailsActivity() : AppCompatActivity(), View.OnClickListener {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        currentPrice = 0.0f
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-        supportActionBar!!.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
-        supportActionBar!!.setCustomView(R.layout.item_details_barlayout)
+        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar!!.setCustomView(R.layout.barlayout_item_details)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        setContentView(R.layout.item_details_activity)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_back_arrow)
+        setContentView(R.layout.activity_item_details)
         initView()
         setValuesToViews()
         ingredientsAdapter = DetailsIngredientsLVAdapter(this, lst_ingredients)
-        additionAdapter = DetailsAdditionsLVAdapter(this, lst_additions, orderItem.getOrderItemSize())
+        additionAdapter = DetailsAdditionsLVAdapter(this,
+            lst_additions, orderItem.getOrderItemSize(), tv_finalPrice)
         lv_ingredients.adapter = ingredientsAdapter
         lv_additions.adapter = additionAdapter
         ib_addAddition.setOnClickListener{ onClick(ib_addAddition) }
@@ -65,7 +72,6 @@ class MagnuItemDetailsActivity() : AppCompatActivity(), View.OnClickListener {
         menuInflater.inflate(R.menu.item_details_supportactionbar, menu)
         return true
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -95,6 +101,7 @@ class MagnuItemDetailsActivity() : AppCompatActivity(), View.OnClickListener {
         tv_Size = findViewById(R.id.tv_food_size)
         tv_Price = findViewById(R.id.tb_food_price)
         tv_Family = findViewById(R.id.tv_food_family)
+        tv_finalPrice = findViewById(R.id.tv_finalPrice)
         lv_ingredients = findViewById(R.id.lv_ingredients)
         lv_additions = findViewById(R.id.lv_additions)
         ib_addAddition = findViewById(R.id.ib_add_addition)
@@ -115,6 +122,7 @@ class MagnuItemDetailsActivity() : AppCompatActivity(), View.OnClickListener {
                 tv_Size.visibility = GONE
             }
             tv_Price.text = orderItem.getOrderItemPrice().toString()
+            currentPrice += orderItem.getOrderItemPrice()
             tv_Family.text = orderItem.getOrderItemFamily().toString()
             for(food in orderItem.getOrderItemIngredients()!!) {
                 lst_ingredients.add(food)
@@ -122,12 +130,14 @@ class MagnuItemDetailsActivity() : AppCompatActivity(), View.OnClickListener {
             if (orderItem.getOrderItemAggiunte() != null) {
                 for (addition in orderItem.getOrderItemAggiunte()!!) {
                     var _addition = AggiuntaType(addition)
+                    currentPrice += getMainPrice(_addition)
                     lst_additions.add(_addition)
                 }
             } else {
                 val lv: LinearLayout = findViewById(R.id.lvcustom_additions)
                 lv.visibility = View.GONE
             }
+            tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
         }
     }
 
@@ -152,9 +162,33 @@ class MagnuItemDetailsActivity() : AppCompatActivity(), View.OnClickListener {
         builder.setItems(listItems) {
             dialog, position ->
                 lst_additions.add(orderItem.getOrderItemEnricheables()!![position])
+                currentPrice += getMainPrice(orderItem.getOrderItemEnricheables()!![position])
+                tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
                 additionAdapter.notifyDataSetChanged()
             }
         val dialog = builder.create()
         dialog.show()
+    }
+
+    private fun getMainPrice(addition: AggiuntaType): Float {
+        var _prices = addition.getPrice()
+        if (orderItem.getOrderItemSize() == null) {
+            return _prices[0]
+        } else {
+            when (orderItem.getOrderItemSize()) {
+                PizzaSizes.PICCOLA -> {
+                    return _prices[0]
+                }
+                PizzaSizes.MEDIA -> {
+                    return _prices[1]
+                }
+                PizzaSizes.MAXI -> {
+                    return _prices[2]
+                }
+                else -> {
+                    return 0.0f
+                }
+            }
+        }
     }
 }

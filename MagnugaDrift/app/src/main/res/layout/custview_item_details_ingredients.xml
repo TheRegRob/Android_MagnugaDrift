@@ -29,6 +29,6 @@
         android:scrollingCache="true"
         android:smoothScrollbar="true"
         android:background="@drawable/rounded_edges_listview"
-        tools:listitem="@layout/ingredients_list_item">
+        tools:listitem="@layout/lstview_item_ingredients">
     </ListView>
 </LinearLayout>

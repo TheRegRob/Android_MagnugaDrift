@@ -41,7 +41,7 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         val viewLayout = LayoutInflater.from(parent.context).inflate(
-            R.layout.orders_recyclerview_row,
+            R.layout.recycview_item_menu,
             parent,
             false
         )

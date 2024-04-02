@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spFilter"
-        tools:listitem="@layout/orders_recyclerview_row" />
+        tools:listitem="@layout/recycview_item_menu" />
 
     <TextView
         android:id="@+id/tvMenuTitle"

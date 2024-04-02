@@ -23,8 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.MagnuItemDetailsActivity">
-        </activity>
+        <activity android:name=".ui.activities.MagnuItemDetailsActivity"/>
+        <activity android:name=".ui.activities.NewOrderActivity"/>
 
     </application>
 

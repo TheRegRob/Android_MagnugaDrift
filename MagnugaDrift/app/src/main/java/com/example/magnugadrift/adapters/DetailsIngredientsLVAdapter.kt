@@ -27,13 +27,13 @@ class DetailsIngredientsLVAdapter(val ctx: Context, private val ingredientsList:
     }
 
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-        val view = p1 ?: LayoutInflater.from(ctx).inflate(R.layout.ingredients_list_item, p2, false)
+        val view = p1 ?: LayoutInflater.from(ctx).inflate(R.layout.lstview_item_ingredients, p2, false)
         val ingredientName = view.findViewById<TextView>(R.id.tv_ingredientName)
         val ingredient = ingredientsList[p0]
         ingredientName.text = ingredient
         val bt_exclude = view.findViewById<ImageButton>(R.id.bt_exclude_ingredient)
         bt_exclude.setOnClickListener {
-            if (ingredientStat) {
+            if (ingredientName.paintFlags == ingredientName.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()) {
                 bt_exclude.setImageResource(R.drawable.ic_add)
                 ingredientStat = false
                 ingredientName.paintFlags = ingredientName.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG

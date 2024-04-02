@@ -48,6 +48,6 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="3dp"
         android:background="@drawable/rounded_edges_listview"
-        tools:listitem="@layout/additions_list_item">
+        tools:listitem="@layout/lstview_item_additions">
     </ListView>
 </LinearLayout>

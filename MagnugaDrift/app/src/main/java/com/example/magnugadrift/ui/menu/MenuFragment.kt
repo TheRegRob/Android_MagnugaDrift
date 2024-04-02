@@ -23,13 +23,13 @@ import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 import com.example.magnugadrift.classes.UIContent
-import com.example.magnugadrift.databinding.MenuFragmentBinding
+import com.example.magnugadrift.databinding.FragmentMenuBinding
 import com.example.magnugadrift.ui.activities.MagnuItemDetailsActivity
 import java.io.Serializable
 
 class MenuFragment : Fragment() {
 
-    private var _binding: MenuFragmentBinding? = null
+    private var _binding: FragmentMenuBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -44,7 +44,7 @@ class MenuFragment : Fragment() {
         val homeViewModel =
             ViewModelProvider(this).get(MenuViewModel::class.java)
 
-        _binding = MenuFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentMenuBinding.inflate(inflater, container, false)
         //var view: View = inflater.inflate(R.layout.activity_magnu_item_details, container, false)
         var menuList = (activity as MainActivity).getMenuList().getAllMenu()
         val rvAdapter = MenuRVAdapter(menuList)
@@ -60,20 +60,9 @@ class MenuFragment : Fragment() {
         rvAdapter.setRecyclerViewEvent(object : MenuRVAdapter.RecyclerViewEvent {
             override fun onItemClick(position: Int) {
                 val intent = Intent(activity, MagnuItemDetailsActivity::class.java)
-
                 val magnugaOrderItem = MagnugaOrderItem(menuList[position])
-
                 intent.putExtra("order_item", magnugaOrderItem)
-
-                /*intent.putExtra("itemImage", menuList[position].getResourceImage().toString())
-                intent.putExtra("itemName", menuList[position].menuItemName())
-                intent.putExtra("itemIngredients", getIngredientsString(menuList[position]))
-                intent.putExtra("itemSize", menuList[position].getCurrentSize().toString())
-                intent.putExtra("itemFamily", menuList[position].menuItemFamily().toString())
-                intent.putExtra("itemPrice", menuList[position].getCurrentPrice().toString() + "€")*/
-
                 startActivity(intent)
-
             }
         })
         val root: View = binding.root
