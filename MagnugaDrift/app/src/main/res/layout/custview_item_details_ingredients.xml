@@ -17,7 +17,7 @@
         android:text="Ingredienti">
     </TextView>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lv_ingredients"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,5 +30,5 @@
         android:smoothScrollbar="true"
         android:background="@drawable/rounded_edges_listview"
         tools:listitem="@layout/lstview_item_ingredients">
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

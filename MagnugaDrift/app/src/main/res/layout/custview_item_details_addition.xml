@@ -35,11 +35,10 @@
         </ImageButton>
     </LinearLayout>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lv_additions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:scrollbarSize="3dp"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="vertical"
@@ -49,5 +48,5 @@
         android:dividerHeight="3dp"
         android:background="@drawable/rounded_edges_listview"
         tools:listitem="@layout/lstview_item_additions">
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

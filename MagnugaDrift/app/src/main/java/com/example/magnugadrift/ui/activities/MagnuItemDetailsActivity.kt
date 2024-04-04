@@ -1,6 +1,5 @@
 package com.example.magnugadrift.ui.activities
 
-import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
@@ -10,15 +9,16 @@ import android.view.View.GONE
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ListView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
-import com.example.magnugadrift.adapters.DetailsAdditionsLVAdapter
-import com.example.magnugadrift.adapters.DetailsIngredientsLVAdapter
+import com.example.magnugadrift.adapters.DetailsAdditionsRVAdapter
+import com.example.magnugadrift.adapters.DetailsIngredientsRVAdapter
 import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
@@ -40,11 +40,11 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var tv_Price: TextView
     private lateinit var tv_Note: TextView
     private lateinit var tv_finalPrice: TextView
-    private lateinit var lv_ingredients: ListView
-    private lateinit var lv_additions: ListView
+    private lateinit var rv_ingredients: RecyclerView
+    private lateinit var rv_additions: RecyclerView
     private lateinit var ib_addAddition: ImageButton
-    private lateinit var ingredientsAdapter: DetailsIngredientsLVAdapter
-    private lateinit var additionAdapter: DetailsAdditionsLVAdapter
+    private lateinit var ingredientsAdapter: DetailsIngredientsRVAdapter
+    private lateinit var additionAdapter: DetailsAdditionsRVAdapter
     private lateinit var orderItem: MagnugaOrderItem
 
 
@@ -52,7 +52,6 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         currentPrice = 0.0f
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setCustomView(R.layout.barlayout_item_details)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -60,11 +59,14 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_item_details)
         initView()
         setValuesToViews()
-        ingredientsAdapter = DetailsIngredientsLVAdapter(this, lst_ingredients)
-        additionAdapter = DetailsAdditionsLVAdapter(this,
-            lst_additions, orderItem.getOrderItemSize(), tv_finalPrice)
-        lv_ingredients.adapter = ingredientsAdapter
-        lv_additions.adapter = additionAdapter
+        ingredientsAdapter = DetailsIngredientsRVAdapter(lst_ingredients)
+        additionAdapter = DetailsAdditionsRVAdapter(lst_additions,
+            orderItem.getOrderItemSize(), tv_finalPrice)
+        rv_ingredients.layoutManager = LinearLayoutManager(applicationContext)
+        rv_additions.layoutManager = LinearLayoutManager(applicationContext)
+        rv_ingredients.adapter = ingredientsAdapter
+        rv_additions.adapter = additionAdapter
+
         ib_addAddition.setOnClickListener{ onClick(ib_addAddition) }
     }
 
@@ -102,8 +104,8 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         tv_Price = findViewById(R.id.tb_food_price)
         tv_Family = findViewById(R.id.tv_food_family)
         tv_finalPrice = findViewById(R.id.tv_finalPrice)
-        lv_ingredients = findViewById(R.id.lv_ingredients)
-        lv_additions = findViewById(R.id.lv_additions)
+        rv_ingredients = findViewById(R.id.lv_ingredients)
+        rv_additions = findViewById(R.id.lv_additions)
         ib_addAddition = findViewById(R.id.ib_add_addition)
         tv_Ingredients.text = "Ingredienti"
         tv_Aggiunte.text = "Aggiunte"
