@@ -15,6 +15,7 @@
         android:textColor="?android:textColorPrimary"
         android:textSize="30sp"/>
     <Button
+        android:id="@+id/bt_AddToOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -33,6 +34,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingTop="5dp"
+            android:background="@drawable/rounded_edges_recyclerview_order"
+            tools:listitem="@layout/recyclerview_item_order"
             android:layout_weight="1">
         </androidx.recyclerview.widget.RecyclerView>
         <LinearLayout
@@ -42,6 +46,7 @@
             android:weightSum="2"
             android:layout_weight="1">
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_SaveOrder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="15dp"

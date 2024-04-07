@@ -34,6 +34,14 @@ class SpianataMI(name: String,
     }
     //endregion
     //region Methods and functions
+    override fun getSizesPrices(): Array<Float> {
+        return _prices
+    }
+
+    override fun getSizesValues(): ArrayList<PizzaSizes> {
+        return _sizes
+    }
+
     override fun getCurrentSize(): PizzaSizes? {
         return _curSize
     }

@@ -28,6 +28,7 @@
     android:fontFamily="cursive"
     android:textSize="30sp"
     android:gravity="top|left"
+    android:textColor="@color/black"
     android:paddingTop="15dp"
     android:paddingStart="15dp"
     android:paddingBottom="10dp"

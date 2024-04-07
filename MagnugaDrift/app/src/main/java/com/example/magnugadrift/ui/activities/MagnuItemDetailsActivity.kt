@@ -127,7 +127,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
                 bt_Size.visibility = GONE
             }
             et_Notes.setText(orderItem.getOrderItemNote())
-            tv_Price.text = orderItem.getOrderItemPrice().toString()
+            tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
             currentPrice += orderItem.getOrderItemPrice()
             tv_Family.text = orderItem.getOrderItemFamily().toString()
             for(food in orderItem.getOrderItemIngredients()!!) {
@@ -182,7 +182,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun refreshOrderValues() {
         bt_Size.text = orderItem.getOrderItemSize().toString()
-        tv_Price.text = orderItem.getOrderItemPrice().toString()
+        tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
         currentPrice = orderItem.getOrderItemPrice()
         additionAdapter = DetailsAdditionsRVAdapter(lst_additions,
             orderItem.getOrderItemSize(), tv_finalPrice)
