@@ -24,5 +24,7 @@
     <color name="lst_item_background">#FFFFFFFF</color>
     <color name="nav_bar_color">#FAFAFA</color>
     <color name="add_addition">#3DE144</color>
-    <color name="save_order">#128117</color>
+    <color name="save">#128117</color>
+    <color name="save_pressed">#064D06</color>
+    <color name="notes_background">#FFEF9F</color>
 </resources>

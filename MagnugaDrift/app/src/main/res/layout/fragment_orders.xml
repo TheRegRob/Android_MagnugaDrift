@@ -33,7 +33,7 @@
                 android:id="@+id/btNewOrder"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:background="@drawable/roundedbg"
+                android:background="@drawable/ripple_effect_generalbutton"
                 android:text="Nuovo Ordine"
                 android:textStyle="bold"
                 android:textSize="20sp"

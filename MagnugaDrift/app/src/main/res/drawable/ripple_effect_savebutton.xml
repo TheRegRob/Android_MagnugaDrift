@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/save_pressed">
+    <item android:id="@+id/save_button_ripple_mask">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/save" />
+            <corners android:radius="80dp" />
+        </shape>
+    </item>
+
+    <item android:id="@+id/save_button_ripple_background">
+        <shape android:shape="rectangle">
+            <corners android:radius="80dp" />
+        </shape>
+    </item>
+</ripple>

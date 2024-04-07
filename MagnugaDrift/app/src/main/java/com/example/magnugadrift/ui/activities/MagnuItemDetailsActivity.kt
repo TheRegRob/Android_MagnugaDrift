@@ -4,8 +4,11 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.view.View.GONE
+import android.view.ViewTreeObserver
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -38,11 +41,11 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var tv_Size: TextView
     private lateinit var tv_Family: TextView
     private lateinit var tv_Price: TextView
-    private lateinit var tv_Note: TextView
     private lateinit var tv_finalPrice: TextView
     private lateinit var rv_ingredients: RecyclerView
     private lateinit var rv_additions: RecyclerView
     private lateinit var ib_addAddition: ImageButton
+    private lateinit var et_Notes: EditText
     private lateinit var ingredientsAdapter: DetailsIngredientsRVAdapter
     private lateinit var additionAdapter: DetailsAdditionsRVAdapter
     private lateinit var orderItem: MagnugaOrderItem
@@ -91,7 +94,6 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
                 return true
             }
         }
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -107,6 +109,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         rv_ingredients = findViewById(R.id.lv_ingredients)
         rv_additions = findViewById(R.id.lv_additions)
         ib_addAddition = findViewById(R.id.ib_add_addition)
+        et_Notes = findViewById(R.id.et_Notes)
         tv_Ingredients.text = "Ingredienti"
         tv_Aggiunte.text = "Aggiunte"
     }

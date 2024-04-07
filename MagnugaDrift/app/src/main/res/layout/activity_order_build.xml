@@ -22,7 +22,7 @@
         android:paddingRight="50dp"
         android:textSize="18sp"
         android:text="Aggiungi piatto"
-        android:background="@drawable/roundedbg"
+        android:background="@drawable/ripple_effect_generalbutton"
         android:drawableLeft="@drawable/ic_add_food">
     </Button>
         <LinearLayout
@@ -46,7 +46,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="15dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_button_save"
+                android:background="@drawable/ripple_effect_savebutton"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:paddingLeft="50dp"
