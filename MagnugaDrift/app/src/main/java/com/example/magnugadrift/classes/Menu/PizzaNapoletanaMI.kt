@@ -4,6 +4,7 @@ import com.example.magnugadrift.classes.Enrich.isEnrichable
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
+import java.io.Serializable
 
 class PizzaNapoletanaMI(name: String,
                         price: Array<Float>,
@@ -23,11 +24,14 @@ class PizzaNapoletanaMI(name: String,
     //endregion
 
     //region Getters and Setters
-    fun pizzaNapoletanaIngredients(): ArrayList<String> {
+    fun getIngredients(): ArrayList<String> {
         return _ingredients
     }
-    fun pizzaNapoletanaSizes(): ArrayList<PizzaSizes> {
+    override fun getSizesValues(): ArrayList<PizzaSizes> {
         return _sizes
+    }
+    override fun getSizesPrices(): Array<Float> {
+        return _prices
     }
     //endregion
 

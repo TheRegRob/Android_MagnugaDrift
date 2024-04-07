@@ -4,6 +4,7 @@ import com.example.magnugadrift.R
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
+import java.io.Serializable
 
 open class MagnugaMenuItem(foodFamily: FoodFamilies,
                            name: String,
@@ -12,7 +13,7 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
                            type: FoodType,
                            enrichable: Boolean,
                            aggiunte: ArrayList<AggiunteEntry>
-) {
+) : Serializable {
     //region Properties
     val _menuItemImageIdx: FoodFamilies
     val _menuItemName: String
@@ -60,6 +61,14 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
              FoodFamilies.SPIANATE_RIPIENE -> return R.drawable.spianateripiene_img
          }
      }
+
+    open fun getSizesPrices(): Array<Float> {
+        return emptyArray()
+    }
+
+    open fun getSizesValues(): ArrayList<PizzaSizes> {
+        return arrayListOf()
+    }
 
     open fun getCurrentSize(): PizzaSizes? {
         return null

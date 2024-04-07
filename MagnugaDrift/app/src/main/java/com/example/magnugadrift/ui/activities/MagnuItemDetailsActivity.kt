@@ -4,10 +4,9 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.MotionEvent
 import android.view.View
 import android.view.View.GONE
-import android.view.ViewTreeObserver
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -38,7 +37,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var tv_Name: TextView
     private lateinit var tv_Ingredients: TextView
     private lateinit var tv_Aggiunte: TextView
-    private lateinit var tv_Size: TextView
+    private lateinit var bt_Size: Button
     private lateinit var tv_Family: TextView
     private lateinit var tv_Price: TextView
     private lateinit var tv_finalPrice: TextView
@@ -71,6 +70,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         rv_additions.adapter = additionAdapter
 
         ib_addAddition.setOnClickListener{ onClick(ib_addAddition) }
+        bt_Size.setOnClickListener{ onClick(bt_Size) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -102,7 +102,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         tv_Name = findViewById(R.id.tv_food_name)
         tv_Ingredients = findViewById(R.id.tv_ingredients_header)
         tv_Aggiunte = findViewById(R.id.tv_additions_header)
-        tv_Size = findViewById(R.id.tv_food_size)
+        bt_Size = findViewById(R.id.bt_food_size)
         tv_Price = findViewById(R.id.tb_food_price)
         tv_Family = findViewById(R.id.tv_food_family)
         tv_finalPrice = findViewById(R.id.tv_finalPrice)
@@ -122,10 +122,11 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
             tv_Name.text = orderItem.getOrderItemName()
             val sizeVal = orderItem.getOrderItemSize()
             if (sizeVal != null) {
-                tv_Size.text = sizeVal.toString()
+                bt_Size.text = sizeVal.toString()
             } else {
-                tv_Size.visibility = GONE
+                bt_Size.visibility = GONE
             }
+            et_Notes.setText(orderItem.getOrderItemNote())
             tv_Price.text = orderItem.getOrderItemPrice().toString()
             currentPrice += orderItem.getOrderItemPrice()
             tv_Family.text = orderItem.getOrderItemFamily().toString()
@@ -151,6 +152,10 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
             R.id.ib_add_addition -> {
                 setupAdditionDialog()
             }
+            R.id.bt_food_size -> {
+                orderItem.increaseSize()
+                refreshOrderValues()
+            }
         }
     }
 
@@ -173,6 +178,20 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
             }
         val dialog = builder.create()
         dialog.show()
+    }
+
+    private fun refreshOrderValues() {
+        bt_Size.text = orderItem.getOrderItemSize().toString()
+        tv_Price.text = orderItem.getOrderItemPrice().toString()
+        currentPrice = orderItem.getOrderItemPrice()
+        additionAdapter = DetailsAdditionsRVAdapter(lst_additions,
+            orderItem.getOrderItemSize(), tv_finalPrice)
+        rv_additions.adapter = additionAdapter
+        additionAdapter.notifyDataSetChanged()
+        for (addition in lst_additions) {
+            currentPrice += getMainPrice(addition)
+        }
+        tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
     }
 
     private fun getMainPrice(addition: AggiuntaType): Float {

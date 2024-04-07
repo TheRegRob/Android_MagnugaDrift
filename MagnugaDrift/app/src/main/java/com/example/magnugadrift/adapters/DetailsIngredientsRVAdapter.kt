@@ -44,7 +44,7 @@ class DetailsIngredientsRVAdapter(private val ingredientsList: ArrayList<String>
         viewType: Int
     ): DetailsIngredientsRVAdapter.MenuViewHolder {
         val viewLayout = LayoutInflater.from(parent.context).inflate(
-            R.layout.lstview_item_ingredients,
+            R.layout.recyclerview_item_ingredients,
             parent,
             false
         )

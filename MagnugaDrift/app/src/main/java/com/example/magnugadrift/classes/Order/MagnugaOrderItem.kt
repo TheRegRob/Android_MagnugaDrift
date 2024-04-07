@@ -14,6 +14,7 @@ class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
     private val _rating: Int
     private val _price: Float
     private val _type: FoodType
+    private val _magnugaItem: MagnugaMenuItem
     private var _family: FoodFamilies
     private var _name: String
     private var _size: PizzaSizes?
@@ -32,7 +33,14 @@ class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
         return _rating
     }
     fun getOrderItemPrice(): Float {
-        return _price
+        when (_size) {
+            PizzaSizes.PICCOLA -> return _magnugaItem.getSizesPrices()[0]
+            PizzaSizes.MEDIA -> return _magnugaItem.getSizesPrices()[1]
+            PizzaSizes.MAXI -> return _magnugaItem.getSizesPrices()[2]
+            else -> {
+                return 0.0f
+            }
+        }
     }
     fun getOrderItemType(): FoodType {
         return _type
@@ -65,6 +73,7 @@ class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
 
     //region Constructors
     init {
+        _magnugaItem = magnugaMenuItem
         _foodImage = magnugaMenuItem.getResourceImage()
         _rating = 0 // Dovrà essere recuperato dalla memoria
         _price = magnugaMenuItem.getCurrentPrice()
@@ -83,6 +92,16 @@ class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
         _enricheables = lst_enricheables
         _aggiunte = magnugaMenuItem.getAggiunte()
         _note = "" // Dovrà essere recuperato dalla memoria
+    }
+    //endregion
+
+    //region Methods and Functions
+    fun increaseSize() {
+        _size = if (_size == _magnugaItem.getSizesValues().last()) {
+            _magnugaItem.getSizesValues()[0]
+        } else {
+            _magnugaItem.getSizesValues()[_magnugaItem.getSizesValues().indexOf(_size) + 1]
+        }
     }
     //endregion
 }

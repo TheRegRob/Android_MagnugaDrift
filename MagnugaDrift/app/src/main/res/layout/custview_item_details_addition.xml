@@ -51,6 +51,6 @@
         android:divider="@android:color/transparent"
         android:clipToOutline="true"
         android:background="@drawable/rounded_edges_listview"
-        tools:listitem="@layout/lstview_item_additions">
+        tools:listitem="@layout/recyclerview_item_additions">
     </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

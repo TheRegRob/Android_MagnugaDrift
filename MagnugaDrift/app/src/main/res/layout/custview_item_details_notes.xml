@@ -29,7 +29,8 @@
     android:textSize="30sp"
     android:gravity="top|left"
     android:paddingTop="15dp"
-    android:paddingLeft="15dp"
+    android:paddingStart="15dp"
+    android:paddingBottom="10dp"
     android:text="_NOTE_CONTENT_"
     android:background="@drawable/rounded_edges_item_notes_body">
 </EditText>
