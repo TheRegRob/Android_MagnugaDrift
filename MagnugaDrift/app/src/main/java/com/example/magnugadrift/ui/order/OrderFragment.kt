@@ -72,7 +72,6 @@ class OrderFragment : Fragment(), View.OnClickListener {
                 startActivity(intent)
             }
         }
-
     }
 
     private var runnable = object : Runnable{

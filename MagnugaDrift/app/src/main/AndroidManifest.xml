@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".ui.activities.MagnuItemDetailsActivity"/>
         <activity android:name=".ui.activities.NewOrderActivity"/>
+        <activity android:name=".ui.activities.MenuOrderActivity"/>
+        <activity android:name=".ui.activities.MenuItemOrderDetailsActivity"/>
 
     </application>
 

@@ -46,7 +46,7 @@ class MenuFragment : Fragment() {
 
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
         //var view: View = inflater.inflate(R.layout.activity_magnu_item_details, container, false)
-        var menuList = (activity as MainActivity).getMenuList().getAllMenu()
+        var menuList = MainActivity.magnuMenu.getAllMenu()
         val rvAdapter = MenuRVAdapter(menuList)
         val recyclerView = binding.rvMenuList
         val dd = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
@@ -55,7 +55,6 @@ class MenuFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = rvAdapter
-        //recyclerView.addItemDecoration(dd)
         val data = ArrayList<MenuRVAdapter>()
         rvAdapter.setRecyclerViewEvent(object : MenuRVAdapter.RecyclerViewEvent {
             override fun onItemClick(position: Int) {

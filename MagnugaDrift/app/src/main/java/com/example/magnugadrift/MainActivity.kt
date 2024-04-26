@@ -21,7 +21,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
-    lateinit var magnuMenu: MagnugaMenu
+    companion object {
+        lateinit var magnuMenu: MagnugaMenu
+    }
+
 
     private lateinit var binding: ActivityMainBinding
     lateinit var data: UIContent
@@ -55,9 +58,6 @@ class MainActivity : AppCompatActivity() {
 
     fun getJsonData(): UIContent {
         return data
-    }
-    fun getMenuList(): MagnugaMenu {
-        return magnuMenu
     }
 
     fun createMenu(jsonFile: UIContent) {
