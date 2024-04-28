@@ -15,6 +15,7 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import com.example.magnugadrift.MainActivity
 import com.example.magnugadrift.R
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 import com.example.magnugadrift.databinding.FragmentOrdersBinding

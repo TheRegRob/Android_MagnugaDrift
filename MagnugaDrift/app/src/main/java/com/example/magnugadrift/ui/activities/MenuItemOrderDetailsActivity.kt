@@ -1,5 +1,6 @@
 package com.example.magnugadrift.ui.activities
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.magnugadrift.MainActivity
 import com.example.magnugadrift.R
 import com.example.magnugadrift.adapters.DetailsAdditionsRVAdapter
 import com.example.magnugadrift.adapters.DetailsIngredientsRVAdapter
@@ -89,9 +91,10 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
     }
 
     private fun initView() {
-        bt_AddToOrder = findViewById(R.id.btSaveDetails)
+        bt_AddToOrder = findViewById(R.id.btSaveAddDetails)
         bt_AddToOrder.text = "AGGIUNGI"
         bt_AddToOrder.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_to_order, 0, 0, 0)
+        bt_AddToOrder.setOnClickListener{ onClick(bt_AddToOrder) }
         rb_StarsReview = findViewById(R.id.ratingBar)
         rb_StarsReview.isEnabled = false
         iv_Image = findViewById(R.id.iv_menu_food_icon)
@@ -153,9 +156,14 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
                 orderItem.increaseSize()
                 refreshOrderValues()
             }
-            R.id.btSaveDetails -> {
+            R.id.btSaveAddDetails -> {
                 /* Aggiungere alla lista il piatto selezionato e tornare alla schermata dell'ordine*/
-                NewOrderActivity.lstOrder.add()
+                var nOrder = orderItem.copy()
+                nOrder.setFinalPrice(MagnuItemDetailsActivity.currentPrice)
+                MainActivity.lstOrder.add(nOrder)
+                val intent = Intent(this, NewOrderActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
             }
         }
     }

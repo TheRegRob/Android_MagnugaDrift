@@ -8,7 +8,7 @@ import com.example.magnugadrift.classes.Menu.FoodFamilies
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import java.io.Serializable
 
-class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
+data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable {
     //region Properties
     private val _foodImage: Int
     private val _rating: Int
@@ -23,6 +23,7 @@ class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
     private var _aggiunte: ArrayList<AggiunteEntry>?
     private var _enricheables: ArrayList<AggiuntaType>?
     private var _note: String
+    private var _finalPrice: Float
     //endregion
 
     //region Getters and Setters
@@ -69,6 +70,12 @@ class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
     fun getOrderItemNote(): String {
         return _note
     }
+    fun getFinalPrice(): Float {
+        return _finalPrice
+    }
+    fun setFinalPrice(v: Float) {
+        _finalPrice = v
+    }
     //endregion
 
     //region Constructors
@@ -83,6 +90,7 @@ class MagnugaOrderItem(magnugaMenuItem: MagnugaMenuItem) : Serializable {
         _size = magnugaMenuItem.getCurrentSize()
         _pieces = magnugaMenuItem.getCurrentPieces()
         _ingredients = magnugaMenuItem.menuItemIngredients()
+        _finalPrice = 0f
         var lst_enricheables = arrayListOf<AggiuntaType>()
         if (magnugaMenuItem.getEnricheables() != null) {
             for (enrich in magnugaMenuItem.getEnricheables()!!) {

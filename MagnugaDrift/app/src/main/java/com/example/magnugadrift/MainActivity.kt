@@ -14,6 +14,7 @@ import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 import com.example.magnugadrift.classes.Menu.SpianataMI
 import com.example.magnugadrift.classes.Menu.SpianataRipienaMI
+import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 import com.example.magnugadrift.classes.UIContent
 import com.example.magnugadrift.databinding.ActivityMainBinding
 import com.example.magnugadrift.utils.ReadJSONFromAssets
@@ -23,6 +24,8 @@ import com.google.gson.Gson
 class MainActivity : AppCompatActivity() {
     companion object {
         lateinit var magnuMenu: MagnugaMenu
+        /* Gestire pulizia lista se esco dall'ordine */
+        lateinit var lstOrder: ArrayList<MagnugaOrderItem>
     }
 
 
@@ -37,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        lstOrder = ArrayList()
 
         val navView: BottomNavigationView = binding.navView
 

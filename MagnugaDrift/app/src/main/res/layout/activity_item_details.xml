@@ -143,7 +143,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvcustomNotes"
-            app:layout_constraintBottom_toBottomOf="@+id/btSaveDetails">
+            app:layout_constraintBottom_toBottomOf="@+id/btSaveAddDetails">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_finalPrice"
@@ -187,7 +187,7 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btSaveDetails"
+            android:id="@+id/btSaveAddDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ripple_effect_savebutton"

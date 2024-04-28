@@ -15,7 +15,7 @@ import com.example.magnugadrift.R
 import com.example.magnugadrift.adapters.MenuRVAdapter
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
-class MenuOrderActivity: AppCompatActivity(), View.OnClickListener {
+class MenuOrderActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
@@ -37,11 +37,6 @@ class MenuOrderActivity: AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
         })
-
-        /*val bt_AddToOrder = findViewById<Button>(R.id.bt_AddToOrder)
-        val bt_SaveOrder = findViewById<Button>(R.id.bt_SaveOrder)
-        bt_AddToOrder.setOnClickListener{ onClick(bt_AddToOrder) }
-        bt_SaveOrder.setOnClickListener{ onClick(bt_SaveOrder) }*/
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -52,9 +47,5 @@ class MenuOrderActivity: AppCompatActivity(), View.OnClickListener {
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onClick(v: View) {
-        TODO("Not yet implemented")
     }
 }

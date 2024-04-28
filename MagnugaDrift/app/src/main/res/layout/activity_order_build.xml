@@ -15,7 +15,7 @@
         android:textColor="?android:textColorPrimary"
         android:textSize="30sp"/>
     <Button
-        android:id="@+id/bt_AddToOrder"
+        android:id="@+id/bt_AddNewToOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -32,6 +32,7 @@
             android:weightSum="1"
             android:orientation="vertical">
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_OrderList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="5dp"
