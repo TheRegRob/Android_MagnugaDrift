@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
+import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
@@ -54,6 +55,7 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
         holder.orderItemName.text = currentOrderItem.magnugaMenuItem.menuItemName()
         holder.orderItemIngredienti.text = getIngredientsString(currentOrderItem.magnugaMenuItem)
         holder.orderItemPrice.text = currentOrderItem.magnugaMenuItem.getCurrentPrice().toString() + "€"
+        holder.orderItemAggiunte.text = getAdditionsString(currentOrderItem)
         if (currentOrderItem.magnugaMenuItem.getTaglie() != null) {
             holder.orderItemSize.visibility = View.VISIBLE
             setLabelTxt(holder, currentOrderItem.magnugaMenuItem)
@@ -66,12 +68,22 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
     fun getIngredientsString(item: MagnugaMenuItem): String {
         val ingredientsLst = StringBuilder()
         for (i in item.menuItemIngredients())
-            ingredientsLst.append(i + ", ")
-        var ingredients = ingredientsLst.toString()
-        if (ingredients != "") {
-            ingredients = ingredients.substring(0, ingredients.length - 2)
+            ingredientsLst.append(i + "\n")
+        return ingredientsLst.toString()
+
+    }
+
+    fun getAdditionsString(item: MagnugaOrderItem): String {
+        val additionsLst = StringBuilder()
+        if (item.getOrderItemAggiunte() != null) {
+            for (i in item.getOrderItemAggiunte()!!) {
+                additionsLst.append(i.toString() + "\n")
+            }
+            return additionsLst.toString()
         }
-        return ingredients
+        else {
+           return ""
+        }
     }
     fun setLabelTxt(holder: NewOrderRVAdapter.NewOrderViewHolder, currentMenuItem: MagnugaMenuItem) {
         when (currentMenuItem.getCurrentSize()) {

@@ -160,6 +160,7 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
                 /* Aggiungere alla lista il piatto selezionato e tornare alla schermata dell'ordine*/
                 var nOrder = orderItem.copy()
                 nOrder.setFinalPrice(MagnuItemDetailsActivity.currentPrice)
+                nOrder.getOrderItemAggiunte()
                 MainActivity.lstOrder.add(nOrder)
                 val intent = Intent(this, NewOrderActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

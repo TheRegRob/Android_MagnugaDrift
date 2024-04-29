@@ -60,6 +60,11 @@ class OrderFragment : Fragment(), View.OnClickListener {
         return root
     }
 
+    override fun onResume() {
+        super.onResume()
+        MainActivity.lstOrder = ArrayList()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         handler.removeCallbacks(runnable)
