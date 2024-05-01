@@ -33,6 +33,35 @@ class SpianataRipienaMI (name: String,
         _curSize = sizes[0]
     }
     //endregion
+    //region Methods and functions
+    override fun getSizesPrices(): Array<Float> {
+        return _prices
+    }
+
+    override fun getSizesValues(): ArrayList<PizzaSizes> {
+        return _sizes
+    }
+
+    override fun getCurrentSize(): PizzaSizes? {
+        return _curSize
+    }
+
+    override fun increaseCurrSize() {
+        _curSize = if (_curSize == _sizes.last()) {
+            _sizes[0]
+        } else {
+            _sizes[_sizes.indexOf(_curSize) + 1]
+        }
+    }
+
+    override fun getFoodType(): FoodType {
+        return _foodType
+    }
+
+    override fun getTaglie(): ArrayList<PizzaSizes> {
+        return _sizes
+    }
+
     override fun getCurrentPrice(): Float {
         when (_curSize) {
             PizzaSizes.PICCOLA -> return _prices[0]
@@ -43,5 +72,5 @@ class SpianataRipienaMI (name: String,
             }
         }
     }
-
+    //endregion
 }

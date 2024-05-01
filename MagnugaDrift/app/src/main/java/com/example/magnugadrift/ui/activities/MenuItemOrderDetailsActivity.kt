@@ -67,11 +67,11 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
             additionAdapter = DetailsAdditionsRVAdapter(
                 orderItem.getOrderItemAggiunte()!!,
                 orderItem.getOrderItemSize(), tv_finalPrice)
+            rv_additions.adapter = additionAdapter
         }
         rv_ingredients.layoutManager = LinearLayoutManager(applicationContext)
         rv_additions.layoutManager = LinearLayoutManager(applicationContext)
         rv_ingredients.adapter = ingredientsAdapter
-        rv_additions.adapter = additionAdapter
 
         ib_addAddition.setOnClickListener{ onClick(ib_addAddition) }
         bt_Size.setOnClickListener{ onClick(bt_Size) }
@@ -199,8 +199,10 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
             additionAdapter = DetailsAdditionsRVAdapter(orderItem.getOrderItemAggiunte()!!,
                 orderItem.getOrderItemSize(), tv_finalPrice)
         }
-        rv_additions.adapter = additionAdapter
-        additionAdapter.notifyDataSetChanged()
+        if (orderItem.getOrderItemAggiunte() != null) {
+            rv_additions.adapter = additionAdapter
+            additionAdapter.notifyDataSetChanged()
+        }
         if (orderItem.getOrderItemAggiunte() != null){
             for (addition in orderItem.getOrderItemAggiunte()!!) {
                 MagnuItemDetailsActivity.currentPrice += getMainPrice(addition)

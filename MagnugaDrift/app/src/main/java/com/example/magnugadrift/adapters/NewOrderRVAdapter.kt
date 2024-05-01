@@ -3,14 +3,12 @@ package com.example.magnugadrift.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
-import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
-import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
 class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
@@ -52,10 +50,10 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
         val currentOrderItem = orderList[position]
         holder.curOrderItem = currentOrderItem
         holder.orderItemImage.setImageResource(currentOrderItem.magnugaMenuItem.getResourceImage())
-        holder.orderItemName.text = currentOrderItem.magnugaMenuItem.menuItemName()
-        holder.orderItemIngredienti.text = getIngredientsString(currentOrderItem)
-        holder.orderItemPrice.text = currentOrderItem.getFinalPrice().toString() + "€"
-        holder.orderItemAggiunte.text = getAdditionsString(currentOrderItem)
+        holder.orderItemName.text = HtmlCompat.fromHtml(generateFoodNameString(currentOrderItem), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        holder.orderItemIngredienti.text = HtmlCompat.fromHtml(generateIngredientsString(currentOrderItem), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        holder.orderItemPrice.text = String.format("%.2f", currentOrderItem.getFinalPrice()) + "€"
+        holder.orderItemAggiunte.text = HtmlCompat.fromHtml(generateAdditionsString(currentOrderItem), HtmlCompat.FROM_HTML_MODE_LEGACY)
         if (currentOrderItem.magnugaMenuItem.getTaglie() != null) {
             holder.orderItemSize.visibility = View.VISIBLE
             setLabelTxt(holder, currentOrderItem)
@@ -65,25 +63,40 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
             holder.orderItemSize.visibility = View.GONE
         }
     }
-    fun getIngredientsString(item: MagnugaOrderItem): String {
-        val ingredientsLst = StringBuilder()
-        ingredientsLst.append("Ingredienti:" + "\n")
-        for (i in item.getOrderItemIngredients()!!)
-            ingredientsLst.append(i + "\n")
-        return ingredientsLst.toString()
 
+    fun generateFoodNameString(item: MagnugaOrderItem): String {
+        val foodName = StringBuilder()
+        foodName.append("<b>Piatto:</b><br>")
+        foodName.append(item.magnugaMenuItem.menuItemName())
+        return foodName.toString()
     }
 
-    fun getAdditionsString(item: MagnugaOrderItem): String {
+    fun generateIngredientsString(item: MagnugaOrderItem): String {
+        val ingredientsLst = StringBuilder()
+        if (item.getOrderItemIngredients() != null) {
+            if (item.getOrderItemIngredients()!!.count() > 0) {
+                ingredientsLst.append("<b>Ingredienti:</b><br>")
+                for (i in item.getOrderItemIngredients()!!)
+                    ingredientsLst.append(i + "<br>")
+            } else {
+                ingredientsLst.append("<b><i>Nessun ingrediente</i></b>")
+            }
+            return ingredientsLst.toString()
+        } else {
+            return ""
+        }
+    }
+
+    fun generateAdditionsString(item: MagnugaOrderItem): String {
         val additionsLst = StringBuilder()
         if (item.getOrderItemAggiunte() != null) {
             if (item.getOrderItemAggiunte()!!.count() > 0) {
-                additionsLst.append("Aggiunte:" + "\n")
+                additionsLst.append("<b>Aggiunte:</b><br>")
                 for (i in item.getOrderItemAggiunte()!!) {
-                    additionsLst.append(i.getName() + "\n")
+                    additionsLst.append(i.getName() + "<br>")
                 }
             } else {
-                additionsLst.append("Nessuna aggiunta" + "\n")
+                additionsLst.append("<b><i>Nessuna aggiunta</i></b>")
             }
             return additionsLst.toString()
         }

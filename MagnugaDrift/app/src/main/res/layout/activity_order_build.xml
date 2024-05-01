@@ -38,8 +38,40 @@
             android:paddingTop="5dp"
             android:background="@drawable/rounded_edges_recyclerview_order"
             tools:listitem="@layout/recyclerview_item_order"
+            android:visibility="invisible"
             android:layout_weight="1">
         </androidx.recyclerview.widget.RecyclerView>
+        <LinearLayout
+            android:id="@+id/ly_priceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:text="Totale">
+            </TextView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_height="1dp"
+                android:background="@color/dull_gray"/>
+            <TextView
+                android:id="@+id/tv_finalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:text="_PRICE_">
+            </TextView>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,6 +89,7 @@
                 android:textSize="18sp"
                 android:paddingLeft="50dp"
                 android:paddingRight="50dp"
+                android:visibility="invisible"
                 android:drawableLeft="@drawable/ic_save"
                 android:text="Salva">
             </androidx.appcompat.widget.AppCompatButton>
