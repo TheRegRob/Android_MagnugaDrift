@@ -135,9 +135,8 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
             }
             if (orderItem.getOrderItemAggiunte() != null) {
                 for (addition in orderItem.getOrderItemAggiunte()!!) {
-                    var _addition = AggiuntaType(addition)
-                    currentPrice += getMainPrice(_addition)
-                    lst_additions.add(_addition)
+                    currentPrice += getMainPrice(addition)
+                    lst_additions.add(addition)
                 }
             } else {
                 val lv: LinearLayout = findViewById(R.id.lvcustom_additions)

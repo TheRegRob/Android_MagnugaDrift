@@ -30,7 +30,6 @@ import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener {
     private var favourite: Boolean = true
     private var lst_ingredients: ArrayList<String> = ArrayList<String>()
-    private var lst_additions: ArrayList<AggiuntaType> = ArrayList<AggiuntaType>()
     companion object  {
         var currentPrice: Float = 0.0f
     }
@@ -64,8 +63,11 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         initView()
         setValuesToViews()
         ingredientsAdapter = DetailsIngredientsRVAdapter(lst_ingredients)
-        additionAdapter = DetailsAdditionsRVAdapter(lst_additions,
-            orderItem.getOrderItemSize(), tv_finalPrice)
+        if (orderItem.getOrderItemAggiunte() != null) {
+            additionAdapter = DetailsAdditionsRVAdapter(
+                orderItem.getOrderItemAggiunte()!!,
+                orderItem.getOrderItemSize(), tv_finalPrice)
+        }
         rv_ingredients.layoutManager = LinearLayoutManager(applicationContext)
         rv_additions.layoutManager = LinearLayoutManager(applicationContext)
         rv_ingredients.adapter = ingredientsAdapter
@@ -135,9 +137,8 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
             }
             if (orderItem.getOrderItemAggiunte() != null) {
                 for (addition in orderItem.getOrderItemAggiunte()!!) {
-                    var _addition = AggiuntaType(addition)
-                    MagnuItemDetailsActivity.currentPrice += getMainPrice(_addition)
-                    lst_additions.add(_addition)
+                    MagnuItemDetailsActivity.currentPrice += getMainPrice(addition)
+                    orderItem.addToOrderItemAggiunte(addition)
                 }
             } else {
                 val lv: LinearLayout = findViewById(R.id.lvcustom_additions)
@@ -158,7 +159,7 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
             }
             R.id.btSaveAddDetails -> {
                 /* Aggiungere alla lista il piatto selezionato e tornare alla schermata dell'ordine*/
-                var nOrder = orderItem.copy()
+                var nOrder = orderItem
                 nOrder.setFinalPrice(MagnuItemDetailsActivity.currentPrice)
                 nOrder.getOrderItemAggiunte()
                 MainActivity.lstOrder.add(nOrder)
@@ -181,7 +182,7 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         val listItems = lst_enrichNames.toTypedArray<CharSequence>()
         builder.setItems(listItems) {
                 dialog, position ->
-            lst_additions.add(orderItem.getOrderItemEnricheables()!![position])
+            orderItem.addToOrderItemAggiunte(orderItem.getOrderItemEnricheables()!![position])
             MagnuItemDetailsActivity.currentPrice += getMainPrice(orderItem.getOrderItemEnricheables()!![position])
             tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
             additionAdapter.notifyDataSetChanged()
@@ -194,12 +195,16 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         bt_Size.text = orderItem.getOrderItemSize().toString()
         tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
         MagnuItemDetailsActivity.currentPrice = orderItem.getOrderItemPrice()
-        additionAdapter = DetailsAdditionsRVAdapter(lst_additions,
-            orderItem.getOrderItemSize(), tv_finalPrice)
+        if (orderItem.getOrderItemAggiunte() != null) {
+            additionAdapter = DetailsAdditionsRVAdapter(orderItem.getOrderItemAggiunte()!!,
+                orderItem.getOrderItemSize(), tv_finalPrice)
+        }
         rv_additions.adapter = additionAdapter
         additionAdapter.notifyDataSetChanged()
-        for (addition in lst_additions) {
-            MagnuItemDetailsActivity.currentPrice += getMainPrice(addition)
+        if (orderItem.getOrderItemAggiunte() != null){
+            for (addition in orderItem.getOrderItemAggiunte()!!) {
+                MagnuItemDetailsActivity.currentPrice += getMainPrice(addition)
+            }
         }
         tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
     }

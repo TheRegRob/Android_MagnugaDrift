@@ -1,5 +1,6 @@
 package com.example.magnugadrift.classes.Menu
 
+import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Enrich.isEnrichable
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
@@ -19,7 +20,7 @@ class PizzaNapoletanaMI(name: String,
     private val _sizes: ArrayList<PizzaSizes>
     private val _prices: Array<Float>
     private val _enricheables: ArrayList<AggiunteEntry>
-    private val _aggiunte: ArrayList<AggiunteEntry>
+    private val _aggiunte: ArrayList<AggiuntaType>
     private var _curSize: PizzaSizes
     //endregion
 
@@ -40,7 +41,7 @@ class PizzaNapoletanaMI(name: String,
         _ingredients = ingredients
         _sizes = sizes
         _prices = price
-        _aggiunte = ArrayList<AggiunteEntry>()
+        _aggiunte = ArrayList<AggiuntaType>()
         _curSize = sizes[0]
         _enricheables = arrayListOf(
             AggiunteEntry.PZ_AGGIUNTA_DI_PROSCIUTTO,
@@ -77,7 +78,7 @@ class PizzaNapoletanaMI(name: String,
         return _enricheables
     }
 
-    override fun getAggiunte(): ArrayList<AggiunteEntry> {
+    override fun getAggiunte(): ArrayList<AggiuntaType> {
         return _aggiunte
     }
 

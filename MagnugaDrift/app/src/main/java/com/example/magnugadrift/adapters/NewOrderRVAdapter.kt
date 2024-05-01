@@ -53,21 +53,22 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
         holder.curOrderItem = currentOrderItem
         holder.orderItemImage.setImageResource(currentOrderItem.magnugaMenuItem.getResourceImage())
         holder.orderItemName.text = currentOrderItem.magnugaMenuItem.menuItemName()
-        holder.orderItemIngredienti.text = getIngredientsString(currentOrderItem.magnugaMenuItem)
-        holder.orderItemPrice.text = currentOrderItem.magnugaMenuItem.getCurrentPrice().toString() + "€"
+        holder.orderItemIngredienti.text = getIngredientsString(currentOrderItem)
+        holder.orderItemPrice.text = currentOrderItem.getFinalPrice().toString() + "€"
         holder.orderItemAggiunte.text = getAdditionsString(currentOrderItem)
         if (currentOrderItem.magnugaMenuItem.getTaglie() != null) {
             holder.orderItemSize.visibility = View.VISIBLE
-            setLabelTxt(holder, currentOrderItem.magnugaMenuItem)
+            setLabelTxt(holder, currentOrderItem)
         } else if (currentOrderItem.magnugaMenuItem.getPieces() != null) {
             holder.orderItemSize.visibility = View.VISIBLE
         } else {
             holder.orderItemSize.visibility = View.GONE
         }
     }
-    fun getIngredientsString(item: MagnugaMenuItem): String {
+    fun getIngredientsString(item: MagnugaOrderItem): String {
         val ingredientsLst = StringBuilder()
-        for (i in item.menuItemIngredients())
+        ingredientsLst.append("Ingredienti:" + "\n")
+        for (i in item.getOrderItemIngredients()!!)
             ingredientsLst.append(i + "\n")
         return ingredientsLst.toString()
 
@@ -76,8 +77,13 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
     fun getAdditionsString(item: MagnugaOrderItem): String {
         val additionsLst = StringBuilder()
         if (item.getOrderItemAggiunte() != null) {
-            for (i in item.getOrderItemAggiunte()!!) {
-                additionsLst.append(i.toString() + "\n")
+            if (item.getOrderItemAggiunte()!!.count() > 0) {
+                additionsLst.append("Aggiunte:" + "\n")
+                for (i in item.getOrderItemAggiunte()!!) {
+                    additionsLst.append(i.getName() + "\n")
+                }
+            } else {
+                additionsLst.append("Nessuna aggiunta" + "\n")
             }
             return additionsLst.toString()
         }
@@ -85,8 +91,8 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
            return ""
         }
     }
-    fun setLabelTxt(holder: NewOrderRVAdapter.NewOrderViewHolder, currentMenuItem: MagnugaMenuItem) {
-        when (currentMenuItem.getCurrentSize()) {
+    fun setLabelTxt(holder: NewOrderRVAdapter.NewOrderViewHolder, currentOrderItem: MagnugaOrderItem) {
+        when (currentOrderItem.getOrderItemSize()) {
             PizzaSizes.PICCOLA -> holder.orderItemSize.text = "Piccola"
             PizzaSizes.MEDIA -> holder.orderItemSize.text = "Media"
             PizzaSizes.MAXI -> holder.orderItemSize.text = "Maxi"

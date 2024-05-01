@@ -1,6 +1,7 @@
 package com.example.magnugadrift.classes.Menu
 
 import com.example.magnugadrift.R
+import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
@@ -117,7 +118,7 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
     /** Return the number of addable foods to enrich the order.
      *  If it's null, then no items have been added to the food
      */
-    open fun getAggiunte(): ArrayList<AggiunteEntry>? {
+    open fun getAggiunte(): ArrayList<AggiuntaType>? {
         return null
     }
     //endregion

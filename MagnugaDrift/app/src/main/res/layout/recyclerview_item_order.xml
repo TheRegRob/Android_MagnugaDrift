@@ -56,7 +56,7 @@
                     android:textSize="12sp"
                     android:textColor="@color/lst_item_text"
                     android:layout_margin="5dp"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:text="_INGREDIENTS_">
                 </TextView>
                 <View
@@ -72,38 +72,39 @@
                     android:textSize="12sp"
                     android:textColor="@color/lst_item_text"
                     android:layout_margin="5dp"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:text="_ADDITIONS_">
                 </TextView>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:gravity="bottom"
                 android:background="@color/light_brown"
-                android:layout_weight="0"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_OrderItemSize"
-                    android:textSize="15sp"
-                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="top|center"
                     android:textColor="@color/lst_item_text"
                     android:layout_margin="5dp"
-                    android:paddingEnd="10dp"
                     android:text="_SIZE_">
                 </TextView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:id="@+id/tv_OrderItemPrice"
-                    android:textSize="12sp"
-                    android:layout_gravity="bottom"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="bottom|center"
                     android:textColor="@color/lst_item_text"
                     android:layout_margin="5dp"
                     android:paddingEnd="10dp"
-                    android:gravity="bottom|end"
+                    android:paddingBottom="10dp"
+                    android:gravity="center"
                     android:text="_FINAL_PRICE_">
                 </TextView>
             </LinearLayout>

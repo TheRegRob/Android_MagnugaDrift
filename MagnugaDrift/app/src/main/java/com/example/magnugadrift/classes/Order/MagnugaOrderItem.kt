@@ -20,7 +20,7 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     private var _size: PizzaSizes?
     private var _pieces: Int?
     private var _ingredients: ArrayList<String>?
-    private var _aggiunte: ArrayList<AggiunteEntry>?
+    private var _aggiunte: ArrayList<AggiuntaType>?
     private var _enricheables: ArrayList<AggiuntaType>?
     private var _note: String
     private var _finalPrice: Float
@@ -61,8 +61,11 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     fun getOrderItemIngredients(): ArrayList<String>? {
         return _ingredients
     }
-    fun getOrderItemAggiunte(): ArrayList<AggiunteEntry>? {
+    fun getOrderItemAggiunte(): ArrayList<AggiuntaType>? {
         return _aggiunte
+    }
+    fun addToOrderItemAggiunte(aggiunta: AggiuntaType) {
+        _aggiunte?.add(aggiunta)
     }
     fun getOrderItemEnricheables(): ArrayList<AggiuntaType>? {
         return _enricheables
