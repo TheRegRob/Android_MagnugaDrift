@@ -172,26 +172,31 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
 
     fun setupAdditionDialog() {
         val builder = AlertDialog.Builder(this)
+        val tmpEnrichLst: ArrayList<AggiuntaType> = ArrayList()
         builder.setTitle("Seleziona l'aggiunta")
         var lst_enrichNames = arrayListOf<String>()
         if (orderItem.getOrderItemEnricheables() != null) {
             for (enrich in orderItem.getOrderItemEnricheables()!!) {
-                lst_enrichNames.add(enrich.getName())
+                if (!orderItem.getOrderItemAggiunte()!!.contains(enrich)) {
+                    lst_enrichNames.add(enrich.getName())
+                    tmpEnrichLst.add(enrich)
+                }
             }
         }
         val listItems = lst_enrichNames.toTypedArray<CharSequence>()
         builder.setItems(listItems) {
                 dialog, position ->
-            orderItem.addToOrderItemAggiunte(orderItem.getOrderItemEnricheables()!![position])
-            MagnuItemDetailsActivity.currentPrice += getMainPrice(orderItem.getOrderItemEnricheables()!![position])
+            orderItem.addToOrderItemAggiunte(tmpEnrichLst[position])
+            MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
             tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
-            additionAdapter.notifyDataSetChanged()
+            additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
+            refreshOrderValues()
         }
         val dialog = builder.create()
         dialog.show()
     }
-
-    private fun refreshOrderValues() {
+    
+    fun refreshOrderValues() {
         bt_Size.text = orderItem.getOrderItemSize().toString()
         tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
         MagnuItemDetailsActivity.currentPrice = orderItem.getOrderItemPrice()
@@ -201,7 +206,7 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         }
         if (orderItem.getOrderItemAggiunte() != null) {
             rv_additions.adapter = additionAdapter
-            additionAdapter.notifyDataSetChanged()
+            additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
         }
         if (orderItem.getOrderItemAggiunte() != null){
             for (addition in orderItem.getOrderItemAggiunte()!!) {

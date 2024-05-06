@@ -160,21 +160,26 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
 
     fun setupAdditionDialog() {
         val builder = AlertDialog.Builder(this)
+        val tmpEnrichLst: ArrayList<AggiuntaType> = ArrayList()
         builder.setTitle("Seleziona l'aggiunta")
         var lst_enrichNames = arrayListOf<String>()
         if (orderItem.getOrderItemEnricheables() != null) {
             for (enrich in orderItem.getOrderItemEnricheables()!!) {
-                lst_enrichNames.add(enrich.getName())
+                if (!orderItem.getOrderItemAggiunte()!!.contains(enrich)) {
+                    lst_enrichNames.add(enrich.getName())
+                    tmpEnrichLst.add(enrich)
+                }
             }
         }
         val listItems = lst_enrichNames.toTypedArray<CharSequence>()
         builder.setItems(listItems) {
-            dialog, position ->
-                lst_additions.add(orderItem.getOrderItemEnricheables()!![position])
-                currentPrice += getMainPrice(orderItem.getOrderItemEnricheables()!![position])
-                tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
-                additionAdapter.notifyDataSetChanged()
-            }
+                dialog, position ->
+            orderItem.addToOrderItemAggiunte(tmpEnrichLst[position])
+            MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
+            tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
+            additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
+            refreshOrderValues()
+        }
         val dialog = builder.create()
         dialog.show()
     }
@@ -182,15 +187,21 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private fun refreshOrderValues() {
         bt_Size.text = orderItem.getOrderItemSize().toString()
         tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
-        currentPrice = orderItem.getOrderItemPrice()
-        additionAdapter = DetailsAdditionsRVAdapter(lst_additions,
-            orderItem.getOrderItemSize(), tv_finalPrice)
-        rv_additions.adapter = additionAdapter
-        additionAdapter.notifyDataSetChanged()
-        for (addition in lst_additions) {
-            currentPrice += getMainPrice(addition)
+        MagnuItemDetailsActivity.currentPrice = orderItem.getOrderItemPrice()
+        if (orderItem.getOrderItemAggiunte() != null) {
+            additionAdapter = DetailsAdditionsRVAdapter(orderItem.getOrderItemAggiunte()!!,
+                orderItem.getOrderItemSize(), tv_finalPrice)
         }
-        tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
+        if (orderItem.getOrderItemAggiunte() != null) {
+            rv_additions.adapter = additionAdapter
+            additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
+        }
+        if (orderItem.getOrderItemAggiunte() != null){
+            for (addition in orderItem.getOrderItemAggiunte()!!) {
+                MagnuItemDetailsActivity.currentPrice += getMainPrice(addition)
+            }
+        }
+        tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
     }
 
     private fun getMainPrice(addition: AggiuntaType): Float {

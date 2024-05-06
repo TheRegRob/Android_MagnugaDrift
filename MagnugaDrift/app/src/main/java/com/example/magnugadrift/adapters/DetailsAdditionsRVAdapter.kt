@@ -5,13 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
 import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 import com.example.magnugadrift.ui.activities.MagnuItemDetailsActivity
+import com.example.magnugadrift.ui.activities.MenuItemOrderDetailsActivity
 
-class DetailsAdditionsRVAdapter(private val additionsList: ArrayList<AggiuntaType>,
+class DetailsAdditionsRVAdapter(private var additionsList: ArrayList<AggiuntaType>,
                                 private val size: PizzaSizes? = null,
                                 private val tv_fPrice: TextView) :
     RecyclerView.Adapter<DetailsAdditionsRVAdapter.MenuViewHolder>() {
@@ -52,11 +54,11 @@ class DetailsAdditionsRVAdapter(private val additionsList: ArrayList<AggiuntaTyp
         additionName.text = addition.getName()
         additionPrice.text = getMainPrice(addition).toString() + "€"
         bt_delete.setOnClickListener(View.OnClickListener {
-            var newPrice: Float = MagnuItemDetailsActivity.currentPrice - getMainPrice(additionsList[position])
+            var newPrice: Float = MagnuItemDetailsActivity.currentPrice - getMainPrice(additionsList[holder.adapterPosition])
+            additionsList.removeAt(holder.adapterPosition)
+            notifyItemRemoved(holder.adapterPosition)
             MagnuItemDetailsActivity.currentPrice = newPrice
-            additionsList.remove(additionsList[position])
             tv_fPrice.text = String.format("%.2f", newPrice) + "€"
-            notifyItemRemoved(position)
         })
     }
 

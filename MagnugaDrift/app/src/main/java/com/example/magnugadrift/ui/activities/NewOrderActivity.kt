@@ -102,7 +102,7 @@ class NewOrderActivity: AppCompatActivity(), View.OnClickListener {
                 rvAdapter.notifyItemRemoved(viewHolder.adapterPosition)
                 Snackbar.make(rv_OrderList, order.getOrderItemName(), Snackbar.LENGTH_LONG)
                     .setAction(
-                        "Undo"
+                        "Annulla"
                     ) {
                         MainActivity.lstOrder.add(position, order)
                         rvAdapter.notifyItemInserted(position)
