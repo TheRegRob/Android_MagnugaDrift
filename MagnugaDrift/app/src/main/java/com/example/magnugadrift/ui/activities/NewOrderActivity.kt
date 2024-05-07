@@ -6,6 +6,7 @@ import android.text.Layout
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
@@ -25,6 +26,8 @@ import com.google.android.material.snackbar.Snackbar
 class NewOrderActivity: AppCompatActivity(), View.OnClickListener {
     lateinit var rvAdapter: NewOrderRVAdapter
     lateinit var rv_OrderList: RecyclerView
+    lateinit var lvcustom_order: LinearLayout
+    lateinit var tv_FinalPrice: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
@@ -32,7 +35,9 @@ class NewOrderActivity: AppCompatActivity(), View.OnClickListener {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_back_arrow)
         setContentView(R.layout.activity_order_build)
-        rv_OrderList = findViewById<RecyclerView>(R.id.rv_OrderList)
+        lvcustom_order = findViewById(R.id.lvcustom_order)
+        tv_FinalPrice = findViewById(R.id.tv_finalPrice)
+        rv_OrderList = findViewById(R.id.rv_OrderList)
         rv_OrderList.layoutManager = LinearLayoutManager(this)
         rv_OrderList.setHasFixedSize(true)
         rvAdapter = NewOrderRVAdapter(MainActivity.lstOrder)
@@ -55,11 +60,9 @@ class NewOrderActivity: AppCompatActivity(), View.OnClickListener {
     override fun onResume() {
         super.onResume()
         if (MainActivity.lstOrder.isNotEmpty()) {
-
             val ly_Price = findViewById<LinearLayout>(R.id.ly_priceLayout)
             val bt_Save = findViewById<AppCompatButton>(R.id.bt_SaveOrder)
-            val tv_FinalPrice = findViewById<TextView>(R.id.tv_finalPrice)
-            rv_OrderList.visibility = View.VISIBLE
+            lvcustom_order.visibility = View.VISIBLE
             ly_Price.visibility = View.VISIBLE
             bt_Save.visibility = View.VISIBLE
             tv_FinalPrice.text = String.format("%.2f", calculateOrderPrice()) + "€"
@@ -100,12 +103,14 @@ class NewOrderActivity: AppCompatActivity(), View.OnClickListener {
                 val position = viewHolder.adapterPosition
                 MainActivity.lstOrder.removeAt((viewHolder.adapterPosition))
                 rvAdapter.notifyItemRemoved(viewHolder.adapterPosition)
+                tv_FinalPrice.text = String.format("%.2f", calculateOrderPrice()) + "€"
                 Snackbar.make(rv_OrderList, order.getOrderItemName(), Snackbar.LENGTH_LONG)
                     .setAction(
                         "Annulla"
                     ) {
                         MainActivity.lstOrder.add(position, order)
                         rvAdapter.notifyItemInserted(position)
+                        tv_FinalPrice.text = String.format("%.2f", calculateOrderPrice()) + "€"
                     }.show()
             }
         }).attachToRecyclerView(rv_OrderList)

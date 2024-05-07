@@ -91,18 +91,4 @@ class OrderFragment : Fragment(), View.OnClickListener {
             handler.postDelayed(this, 1500)
         }
     }
-
-    private fun fillOrders() {
-        for (cv: String in viewModel.getOrders()) {
-            val newCard = activity?.let { CardView(it) }
-            if (newCard != null) {
-                layoutInflater.inflate(R.layout.orders_cardview, newCard)
-                val cv_name = newCard.findViewById<TextView>(R.id.menu_item_name)
-                cv_name.setText(cv)
-                sv?.addView(newCard)
-            }
-
-
-        }
-    }
 }
