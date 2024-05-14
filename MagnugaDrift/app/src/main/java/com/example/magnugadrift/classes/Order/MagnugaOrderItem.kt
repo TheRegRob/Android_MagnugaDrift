@@ -19,7 +19,7 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     private var _name: String
     private var _size: PizzaSizes?
     private var _pieces: Int?
-    private var _ingredients: ArrayList<String>?
+    private var _ingredients: ArrayList<Pair<String, Boolean>>?
     private var _aggiunte: ArrayList<AggiuntaType>?
     private var _enricheables: ArrayList<AggiuntaType>?
     private var _note: String
@@ -58,8 +58,11 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     fun getOrderItemPieces(): Int? {
         return _pieces
     }
-    fun getOrderItemIngredients(): ArrayList<String>? {
+    fun getOrderItemIngredients(): ArrayList<Pair<String, Boolean>>? {
         return _ingredients
+    }
+    fun setOrderItemIngredients(nList: ArrayList<Pair<String, Boolean>>?) {
+        _ingredients = nList
     }
     fun getOrderItemAggiunte(): ArrayList<AggiuntaType>? {
         return _aggiunte
@@ -92,7 +95,11 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
         _name = magnugaMenuItem.menuItemName()
         _size = magnugaMenuItem.getCurrentSize()
         _pieces = magnugaMenuItem.getCurrentPieces()
-        _ingredients = magnugaMenuItem.menuItemIngredients()
+        _ingredients = ArrayList()
+        if (magnugaMenuItem.menuItemIngredients().isNotEmpty()) {
+            for (ingredient in magnugaMenuItem.menuItemIngredients())
+                _ingredients!!.add(Pair(ingredient, true))
+        }
         _finalPrice = 0f
         var lst_enricheables = arrayListOf<AggiuntaType>()
         if (magnugaMenuItem.getEnricheables() != null) {

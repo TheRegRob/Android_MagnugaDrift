@@ -9,32 +9,27 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
 
-class DetailsIngredientsRVAdapter(private val ingredientsList: ArrayList<String>) :
+class DetailsIngredientsRVAdapter(private val ingredientsList: ArrayList<Pair<String, Boolean>>) :
     RecyclerView.Adapter<DetailsIngredientsRVAdapter.MenuViewHolder>() {
 
-    /*override fun getCount(): Int {
-        return ingredientsList.size
-    }*/
-
-    /*override fun getItem(p0: Int): Any {
-        return ingredientsList[p0]
-    }*/
-
     inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-      val ingredientName: TextView  = itemView.findViewById(R.id.tv_ingredientName)
-      val bt_exclude: ImageButton = itemView.findViewById(R.id.bt_exclude_ingredient)
-        private var ingredientStat: Boolean = true
+        val ingredientName: TextView  = itemView.findViewById(R.id.tv_ingredientName)
+        val bt_exclude: ImageButton = itemView.findViewById(R.id.bt_exclude_ingredient)
         init {
-                bt_exclude.setOnClickListener {
-                if (ingredientName.paintFlags == ingredientName.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()) {
+            for(i in 0 ..< ingredientsList.count()) {
+                SetupLstValues(this, ingredientsList[i].second)
+            }
+            bt_exclude.setOnClickListener {
+                if (ingredientsList[adapterPosition].second) {
                     bt_exclude.setImageResource(R.drawable.ic_add)
-                    ingredientStat = false
+                    ingredientsList[adapterPosition] = ingredientsList[adapterPosition].copy(second = false)
                     ingredientName.paintFlags = ingredientName.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 } else {
                     bt_exclude.setImageResource(R.drawable.ic_remove)
-                    ingredientStat = true
+                    ingredientsList[adapterPosition] = ingredientsList[adapterPosition].copy(second = true)
                     ingredientName.paintFlags = ingredientName.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
                 }
+
             }
         }
     }
@@ -56,30 +51,20 @@ class DetailsIngredientsRVAdapter(private val ingredientsList: ArrayList<String>
         position: Int
     ) {
         val ingredient = ingredientsList[position]
-        holder.ingredientName.text = ingredient
+        holder.ingredientName.text = ingredient.first
     }
 
     override fun getItemCount(): Int {
         return ingredientsList.size
     }
 
-    /*override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-        val view = p1 ?: LayoutInflater.from(ctx).inflate(R.layout.lstview_item_ingredients, p2, false)
-        val ingredientName = view.findViewById<TextView>(R.id.tv_ingredientName)
-        val ingredient = ingredientsList[p0]
-        ingredientName.text = ingredient
-        val bt_exclude = view.findViewById<ImageButton>(R.id.bt_exclude_ingredient)
-        bt_exclude.setOnClickListener {
-            if (ingredientName.paintFlags == ingredientName.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()) {
-                bt_exclude.setImageResource(R.drawable.ic_add)
-                ingredientStat = false
-                ingredientName.paintFlags = ingredientName.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-            } else {
-                bt_exclude.setImageResource(R.drawable.ic_remove)
-                ingredientStat = true
-                ingredientName.paintFlags = ingredientName.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
-            }
+    private fun SetupLstValues(holder: MenuViewHolder, status: Boolean) {
+        if (!status) {
+            holder.bt_exclude.setImageResource(R.drawable.ic_add)
+            holder.ingredientName.paintFlags = holder.ingredientName.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+        } else {
+            holder.bt_exclude.setImageResource(R.drawable.ic_remove)
+            holder.ingredientName.paintFlags = holder.ingredientName.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
-        return view
-    }*/
+    }
 }

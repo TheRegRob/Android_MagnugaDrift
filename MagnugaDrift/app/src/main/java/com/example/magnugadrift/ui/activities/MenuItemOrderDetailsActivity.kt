@@ -29,7 +29,7 @@ import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
 class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener {
     private var favourite: Boolean = true
-    private var lst_ingredients: ArrayList<String> = ArrayList<String>()
+    private var lst_ingredients: ArrayList<Pair<String, Boolean>> = ArrayList()
     companion object  {
         var currentPrice: Float = 0.0f
     }
@@ -162,6 +162,7 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
                 var nOrder = orderItem
                 nOrder.setFinalPrice(MagnuItemDetailsActivity.currentPrice)
                 nOrder.getOrderItemAggiunte()
+                nOrder.setOrderItemIngredients(lst_ingredients)
                 MainActivity.lstOrder.add(nOrder)
                 val intent = Intent(this, NewOrderActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

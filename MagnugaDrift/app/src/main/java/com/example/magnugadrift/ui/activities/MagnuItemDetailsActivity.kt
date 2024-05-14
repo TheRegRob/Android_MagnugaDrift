@@ -28,7 +28,7 @@ import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
 class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private var favourite: Boolean = true
-    private var lst_ingredients: ArrayList<String> = ArrayList<String>()
+    private var lst_ingredients: ArrayList<Pair<String, Boolean>> = ArrayList()
     private var lst_additions: ArrayList<AggiuntaType> = ArrayList<AggiuntaType>()
     companion object  {
         var currentPrice: Float = 0.0f
@@ -209,18 +209,21 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         if (orderItem.getOrderItemSize() == null) {
             return _prices[0]
         } else {
-            when (orderItem.getOrderItemSize()) {
+            return when (orderItem.getOrderItemSize()) {
                 PizzaSizes.PICCOLA -> {
-                    return _prices[0]
+                    _prices[0]
                 }
+
                 PizzaSizes.MEDIA -> {
-                    return _prices[1]
+                    _prices[1]
                 }
+
                 PizzaSizes.MAXI -> {
-                    return _prices[2]
+                    _prices[2]
                 }
+
                 else -> {
-                    return 0.0f
+                    0.0f
                 }
             }
         }

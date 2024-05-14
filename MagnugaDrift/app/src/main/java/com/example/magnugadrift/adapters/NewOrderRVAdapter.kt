@@ -75,9 +75,14 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
         val ingredientsLst = StringBuilder()
         if (item.getOrderItemIngredients() != null) {
             if (item.getOrderItemIngredients()!!.count() > 0) {
-                ingredientsLst.append("<b>Ingredienti:</b><br>")
-                for (i in item.getOrderItemIngredients()!!)
-                    ingredientsLst.append(i + "<br>")
+                if (checkNoIngredients(item)) {
+                    ingredientsLst.append("<b><i>Nessun ingrediente</i></b>")
+                } else {
+                    ingredientsLst.append("<b>Ingredienti:</b><br>")
+                    for (i in item.getOrderItemIngredients()!!)
+                        if (i.second)
+                            ingredientsLst.append(i.first + "<br>")
+                }
             } else {
                 ingredientsLst.append("<b><i>Nessun ingrediente</i></b>")
             }
@@ -111,5 +116,14 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
             PizzaSizes.MAXI -> holder.orderItemSize.text = "Maxi"
             else -> { holder.orderItemSize.text = "Unexp Err" }
         }
+    }
+    fun checkNoIngredients(item: MagnugaOrderItem): Boolean {
+        var ret = true
+        for (i in item.getOrderItemIngredients()!!)
+            if (i.second) {
+                ret = false
+                break
+            }
+        return ret
     }
 }
