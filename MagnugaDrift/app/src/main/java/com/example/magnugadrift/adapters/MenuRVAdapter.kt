@@ -71,7 +71,7 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
         })
         if (currentMenuItem.getTaglie() != null) {
             holder.menuItemSwitch.visibility = View.VISIBLE
-        } else if (currentMenuItem.getPieces() != null) {
+        } else if (currentMenuItem.getPieces().isNotEmpty()) {
             holder.menuItemSwitch.visibility = View.VISIBLE
         } else {
             holder.menuItemSwitch.visibility = View.GONE

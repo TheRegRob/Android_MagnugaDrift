@@ -121,17 +121,25 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
             iv_Image.setImageResource(orderItem.getOrderItemFoodImage())
             tv_Name.text = orderItem.getOrderItemName()
             val sizeVal = orderItem.getOrderItemSize()
+            val piecesVal = orderItem.getOrderItemPieces()
             if (sizeVal != null) {
-                bt_Size.text = orderItem.magnugaMenuItem.getSizesString(sizeVal)
+                bt_Size.text = orderItem.magnugaMenuItem.getCurrentSize()!!.getString(orderItem.getOrderItemFamily())
+            } else if (piecesVal != null) {
+                bt_Size.text = orderItem.magnugaMenuItem.getCurrentPieces()!!.second.toString() + "pezzi"
             } else {
-                bt_Size.visibility = GONE
+                bt_Size.visibility = View.GONE
             }
             et_Notes.setText(orderItem.getOrderItemNote())
             tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
             currentPrice += orderItem.getOrderItemPrice()
             tv_Family.text = orderItem.getOrderItemFamily().toString()
-            for(food in orderItem.getOrderItemIngredients()!!) {
-                lst_ingredients.add(food)
+            if (orderItem.getOrderItemIngredients().isNotEmpty()) {
+                for (food in orderItem.getOrderItemIngredients()) {
+                    lst_ingredients.add(food)
+                }
+            } else {
+                val lv: LinearLayout = findViewById(R.id.lvcustom_ingredients)
+                lv.visibility = View.GONE
             }
             if (orderItem.getOrderItemAggiunte() != null) {
                 for (addition in orderItem.getOrderItemAggiunte()!!) {
@@ -152,7 +160,10 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
                 setupAdditionDialog()
             }
             R.id.bt_food_size -> {
-                orderItem.increaseSize()
+                if (orderItem.magnugaMenuItem.getSizesValues().isNotEmpty())
+                    orderItem.increaseSize()
+                else
+                    orderItem.increasePieces()
                 refreshOrderValues()
             }
         }
