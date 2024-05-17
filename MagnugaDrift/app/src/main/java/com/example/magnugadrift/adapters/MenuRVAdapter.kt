@@ -71,12 +71,12 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
         })
         if (currentMenuItem.getTaglie() != null) {
             holder.menuItemSwitch.visibility = View.VISIBLE
-            setSwitchButtonTxt(holder, currentMenuItem)
         } else if (currentMenuItem.getPieces() != null) {
             holder.menuItemSwitch.visibility = View.VISIBLE
         } else {
             holder.menuItemSwitch.visibility = View.GONE
         }
+        setSwitchButtonTxt(holder, currentMenuItem)
     }
 
     fun getIngredientsString(item: MagnugaMenuItem): String {
@@ -97,22 +97,9 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
 
     fun setSwitchButtonTxt(holder: MenuViewHolder, currentMenuItem: MagnugaMenuItem) {
         if (currentMenuItem.getSizesValues().isNotEmpty()) {
-            holder.menuItemSwitch.text = currentMenuItem.getSizesString(currentMenuItem.getCurrentSize()!!)
+            holder.menuItemSwitch.text = currentMenuItem.getCurrentSize()!!.getString(currentMenuItem.menuItemFamily())
         } else if (currentMenuItem.getPieces().isNotEmpty()) {
-                when (currentMenuItem.getCurrentPieces()?.first) {
-                    PiecesSizes.MIN_CUT -> holder.menuItemSwitch.text =
-                        currentMenuItem.getCurrentPieces()?.second.toString() + " pezzi"
-
-                    PiecesSizes.MIDDLE_CUT -> holder.menuItemSwitch.text =
-                        currentMenuItem.getCurrentPieces()?.second.toString() + " pezzi"
-
-                    PiecesSizes.MAXIMUM_CUT -> holder.menuItemSwitch.text =
-                        currentMenuItem.getCurrentPieces()?.second.toString() + " pezzi"
-
-                    else -> {
-                        holder.menuItemSwitch.visibility = View.GONE
-                    }
-                }
+            holder.menuItemSwitch.text = currentMenuItem.getCurrentPieces()!!.second.toString() + " pezzi"
         } else {
             holder.menuItemSwitch.visibility = View.GONE
         }

@@ -103,23 +103,11 @@ class FrittiMI(
 
     override fun getCurrentPrice(): Float {
         return if (_sizes.isNotEmpty()) {
-            when (_curSize) {
-                FoodSizes.S -> _prices[0]
-                FoodSizes.M -> _prices[1]
-                FoodSizes.L -> _prices[2]
-                else -> {
-                    _prices[0]
-                }
-            }
+            _prices[getCurrentSize()!!.getValue()]
+        } else if (_pieces.isNotEmpty()) {
+            _prices[getCurrentPieces()!!.first.getValue()]
         } else {
-            when (_curPieces?.first) {
-                PiecesSizes.MIN_CUT -> _prices[0]
-                PiecesSizes.MIDDLE_CUT -> _prices[1]
-                PiecesSizes.MAXIMUM_CUT -> _prices[2]
-                else -> {
-                    _prices[0]
-                }
-            }
+            _prices[0]
         }
     }
     //endregion
