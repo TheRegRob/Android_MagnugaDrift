@@ -22,7 +22,7 @@ import com.example.magnugadrift.R
 import com.example.magnugadrift.adapters.DetailsAdditionsRVAdapter
 import com.example.magnugadrift.adapters.DetailsIngredientsRVAdapter
 import com.example.magnugadrift.classes.AggiuntaType
-import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
+import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
 
@@ -122,7 +122,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
             tv_Name.text = orderItem.getOrderItemName()
             val sizeVal = orderItem.getOrderItemSize()
             if (sizeVal != null) {
-                bt_Size.text = sizeVal.toString()
+                bt_Size.text = orderItem.magnugaMenuItem.getSizesString(sizeVal)
             } else {
                 bt_Size.visibility = GONE
             }
@@ -210,15 +210,15 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
             return _prices[0]
         } else {
             return when (orderItem.getOrderItemSize()) {
-                PizzaSizes.PICCOLA -> {
+                FoodSizes.S -> {
                     _prices[0]
                 }
 
-                PizzaSizes.MEDIA -> {
+                FoodSizes.M -> {
                     _prices[1]
                 }
 
-                PizzaSizes.MAXI -> {
+                FoodSizes.L -> {
                     _prices[2]
                 }
 

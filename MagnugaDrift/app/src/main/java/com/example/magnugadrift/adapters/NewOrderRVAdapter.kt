@@ -8,7 +8,8 @@ import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
-import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
+import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
+import com.example.magnugadrift.classes.Menu.FoodFamilies
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
 class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
@@ -111,9 +112,9 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
     }
     fun setLabelTxt(holder: NewOrderRVAdapter.NewOrderViewHolder, currentOrderItem: MagnugaOrderItem) {
         when (currentOrderItem.getOrderItemSize()) {
-            PizzaSizes.PICCOLA -> holder.orderItemSize.text = "Piccola"
-            PizzaSizes.MEDIA -> holder.orderItemSize.text = "Media"
-            PizzaSizes.MAXI -> holder.orderItemSize.text = "Maxi"
+            FoodSizes.S -> holder.orderItemSize.text = "Piccola"
+            FoodSizes.M -> holder.orderItemSize.text = "Media"
+            FoodSizes.L -> holder.orderItemSize.text = "Maxi"
             else -> { holder.orderItemSize.text = "Unexp Err" }
         }
     }

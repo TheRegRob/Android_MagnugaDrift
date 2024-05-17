@@ -4,7 +4,8 @@ import com.example.magnugadrift.R
 import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
-import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
+import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
+import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
 import java.io.Serializable
 
 open class MagnugaMenuItem(foodFamily: FoodFamilies,
@@ -56,10 +57,11 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
       *@return      the index image _menuItemImageIdx
       */
      fun getResourceImage(): Int {
-         when (_menuItemImageIdx) {
-             FoodFamilies.PIZZA_NAPOLETANA -> return R.drawable.pizzenapoletane_img
-             FoodFamilies.SPIANATE -> return R.drawable.spianate_img
-             FoodFamilies.SPIANATE_RIPIENE -> return R.drawable.spianateripiene_img
+         return when (_menuItemImageIdx) {
+             FoodFamilies.PIZZA_NAPOLETANA -> R.drawable.pizzenapoletane_img
+             FoodFamilies.SPIANATE -> R.drawable.spianate_img
+             FoodFamilies.SPIANATE_RIPIENE -> R.drawable.spianateripiene_img
+             FoodFamilies.FRITTI -> R.drawable.fritti_img
          }
      }
 
@@ -67,11 +69,15 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
         return emptyArray()
     }
 
-    open fun getSizesValues(): ArrayList<PizzaSizes> {
+    open fun getSizesString(sizes: FoodSizes): String {
+        return ""
+    }
+
+    open fun getSizesValues(): ArrayList<FoodSizes> {
         return arrayListOf()
     }
 
-    open fun getCurrentSize(): PizzaSizes? {
+    open fun getCurrentSize(): FoodSizes? {
         return null
     }
 
@@ -81,9 +87,11 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
 
     open fun increaseCurrSize() {}
 
-    open fun getCurrentPieces(): Int? {
+    open fun getCurrentPieces(): Pair<PiecesSizes, Int>? {
         return null
     }
+
+    open fun increaseCurrPieces() {}
 
     /**
      *
@@ -96,7 +104,7 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
       * If it's null, then no sizes are available
       * @return     the value of the available sizes
       */
-    open fun getTaglie(): ArrayList<PizzaSizes>? {
+    open fun getTaglie(): ArrayList<FoodSizes>? {
          return null
      }
 
@@ -104,8 +112,8 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
      * If it's null, then no sizes are available
      * @return     the value of the available sizes
      */
-    open fun getPieces(): ArrayList<Int>? {
-        return null
+    open fun getPieces(): ArrayList<Pair<PiecesSizes, Int>> {
+        return arrayListOf()
     }
 
     /** Return the available addable foods to enrich the order.

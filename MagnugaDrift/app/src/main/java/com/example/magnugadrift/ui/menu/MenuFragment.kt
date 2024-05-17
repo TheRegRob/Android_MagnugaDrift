@@ -5,27 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.MainActivity
 import com.example.magnugadrift.R
 import com.example.magnugadrift.adapters.MenuRVAdapter
-import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
-import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
-import com.example.magnugadrift.classes.UIContent
 import com.example.magnugadrift.databinding.FragmentMenuBinding
 import com.example.magnugadrift.ui.activities.MagnuItemDetailsActivity
-import java.io.Serializable
 
 class MenuFragment : Fragment() {
 

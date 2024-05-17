@@ -13,6 +13,8 @@
             1,
             2
           ],
+          "pezzi": [
+          ],
           "prezzo": [
             2.7,
             3.8,
@@ -30,6 +32,8 @@
             1,
             2
           ],
+          "pezzi": [
+          ],
           "prezzo": [
             2.7,
             3.8,
@@ -45,6 +49,8 @@
             0,
             1,
             2
+          ],
+          "pezzi": [
           ],
           "prezzo": [
             2.4,
@@ -63,6 +69,8 @@
             0,
             1,
             2
+          ],
+          "pezzi": [
           ],
           "prezzo": [
             2.7,
@@ -83,6 +91,8 @@
             1,
             2
           ],
+          "pezzi": [
+          ],
           "prezzo": [
             3.7,
             4.8,
@@ -102,6 +112,8 @@
             1,
             2
           ],
+          "pezzi": [
+          ],
           "prezzo": [
             3.7,
             4.8,
@@ -120,6 +132,8 @@
             1,
             2
           ],
+          "pezzi": [
+          ],
           "prezzo": [
             1.2,
             1.9,
@@ -135,6 +149,8 @@
             0,
             1
           ],
+          "pezzi": [
+          ],
           "prezzo": [
             4.0,
             5
@@ -148,6 +164,8 @@
           "taglie": [
             0,
             1
+          ],
+          "pezzi": [
           ],
           "prezzo": [
             4.2,
@@ -163,6 +181,8 @@
             0,
             1
           ],
+          "pezzi": [
+          ],
           "prezzo": [
             4.5,
             5.6
@@ -177,6 +197,8 @@
             0,
             1
           ],
+          "pezzi": [
+          ],
           "prezzo": [
             4.2,
             5.2
@@ -190,6 +212,8 @@
           "taglie": [
             0,
             1
+          ],
+          "pezzi": [
           ],
           "prezzo": [
             4.0,
@@ -211,6 +235,8 @@
             0,
             1
           ],
+          "pezzi": [
+          ],
           "prezzo": [
             4.3,
             5.5
@@ -230,6 +256,8 @@
             0,
             1
           ],
+          "pezzi": [
+          ],
           "prezzo": [
             4.5,
             5.8
@@ -247,6 +275,8 @@
           "taglie": [
             0,
             1
+          ],
+          "pezzi": [
           ],
           "prezzo": [
             4.3,
@@ -266,11 +296,221 @@
             0,
             1
           ],
+          "pezzi": [
+          ],
           "prezzo": [
             4.3,
             5.5
           ],
           "tipo": 0
+        }
+      ],
+      "fritti": [
+        {
+          "nome": "Patate fritte",
+          "ingredienti": [
+          ],
+          "taglie": [
+            0,
+            1,
+            2
+          ],
+          "pezzi": [
+          ],
+          "prezzo": [
+            1.9,
+            3.0,
+            5.5
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Patate fritte al cheddar fuso",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+          ],
+          "prezzo": [
+            4.3
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Patate fritte al cheddar fuso e bacon",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+          ],
+          "prezzo": [
+            4.9
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Patate fritte al cheddar fuso e chili",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+          ],
+          "prezzo": [
+            4.9
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Patate julienne",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+          ],
+          "prezzo": [
+            3.0
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Patate chips",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+          ],
+          "prezzo": [
+            3.0
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Patate strips",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+          ],
+          "prezzo": [
+            3.0
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Patate a griglia speziate",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+          ],
+          "prezzo": [
+            3.5
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Potato pops",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+          ],
+          "prezzo": [
+            3.5
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Crocchette di patate",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+            8
+          ],
+          "prezzo": [
+            3.0
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Crocchette di patate al cheddar",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+            5
+          ],
+          "prezzo": [
+            3.5
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Olive all'ascolana",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+            8
+          ],
+          "prezzo": [
+            3.2
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Crema fritta",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+            8
+          ],
+          "prezzo": [
+            3.2
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Chicken nuggets",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+            4, 6, 8
+          ],
+          "prezzo": [
+            3.3, 4.8, 6.4
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Chicken nuggets",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+            10, 12, 15
+          ],
+          "prezzo": [
+            8, 9.5, 11.5
+          ],
+          "tipo": 3
         }
       ]
     }

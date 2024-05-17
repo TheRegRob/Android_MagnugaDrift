@@ -4,31 +4,30 @@ import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Enrich.isEnrichable
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
-import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
-import java.io.Serializable
+import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 
 class PizzaNapoletanaMI(name: String,
                         price: Array<Float>,
                         type: FoodType,
                         ingredients: ArrayList<String>,
-                        sizes: ArrayList<PizzaSizes>) :
+                        sizes: ArrayList<FoodSizes>) :
                         MagnugaMenuItem(FoodFamilies.PIZZA_NAPOLETANA, name, ingredients, price, type,
                             true, arrayListOf()),
                         isEnrichable {
     //region Properties
     private val _ingredients: ArrayList<String>
-    private val _sizes: ArrayList<PizzaSizes>
+    private val _sizes: ArrayList<FoodSizes>
     private val _prices: Array<Float>
     private val _enricheables: ArrayList<AggiunteEntry>
     private val _aggiunte: ArrayList<AggiuntaType>
-    private var _curSize: PizzaSizes
+    private var _curSize: FoodSizes
     //endregion
 
     //region Getters and Setters
     fun getIngredients(): ArrayList<String> {
         return _ingredients
     }
-    override fun getSizesValues(): ArrayList<PizzaSizes> {
+    override fun getSizesValues(): ArrayList<FoodSizes> {
         return _sizes
     }
     override fun getSizesPrices(): Array<Float> {
@@ -54,7 +53,7 @@ class PizzaNapoletanaMI(name: String,
     //endregion
 
     //region Methods and functions
-    override fun getCurrentSize(): PizzaSizes? {
+    override fun getCurrentSize(): FoodSizes? {
         return _curSize
     }
 
@@ -70,7 +69,7 @@ class PizzaNapoletanaMI(name: String,
         return _foodType
     }
 
-    override fun getTaglie(): ArrayList<PizzaSizes> {
+    override fun getTaglie(): ArrayList<FoodSizes> {
         return _sizes
     }
 
@@ -82,11 +81,19 @@ class PizzaNapoletanaMI(name: String,
         return _aggiunte
     }
 
+    override fun getSizesString(sizes: FoodSizes): String {
+        return when (sizes) {
+            FoodSizes.S -> "Piccola"
+            FoodSizes.M -> "Media"
+            FoodSizes.L -> "Maxi"
+        }
+    }
+
     override fun getCurrentPrice(): Float {
         when (_curSize) {
-            PizzaSizes.PICCOLA -> return _prices[0]
-            PizzaSizes.MEDIA -> return _prices[1]
-            PizzaSizes.MAXI -> return _prices[2]
+            FoodSizes.S -> return _prices[0]
+            FoodSizes.M -> return _prices[1]
+            FoodSizes.L -> return _prices[2]
             else -> {
                 return 0.0f
             }

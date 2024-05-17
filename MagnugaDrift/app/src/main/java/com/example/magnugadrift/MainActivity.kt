@@ -11,7 +11,9 @@ import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.MagnugaMenu
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
-import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
+import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
+import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
+import com.example.magnugadrift.classes.Menu.FrittiMI
 import com.example.magnugadrift.classes.Menu.SpianataMI
 import com.example.magnugadrift.classes.Menu.SpianataRipienaMI
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
@@ -71,12 +73,15 @@ class MainActivity : AppCompatActivity() {
         val spianateJson = jsonFile.food_list.spianate
         val spianateRipiene = ArrayList<MagnugaMenuItem>()
         val spianateRipieneJson = jsonFile.food_list.spianate_ripiene
+        val fritti = ArrayList<MagnugaMenuItem>()
+        val frittiJson = jsonFile.food_list.fritti
 
         getPizzeNapoletane(pizzeNapoletaneJson, pizzeNapoletane)
         getSpianate(spianateJson, spianate)
         getSpianateRipiene(spianateRipieneJson, spianateRipiene)
+        getFritti(frittiJson, fritti)
 
-        magnuMenu = MagnugaMenu(pizzeNapoletane, spianate, spianateRipiene)
+        magnuMenu = MagnugaMenu(pizzeNapoletane, spianate, spianateRipiene, fritti)
     }
 
     fun getPizzeNapoletane(pizzeNapoletane: List<FoodFamilies.FoodEntry>,
@@ -111,10 +116,34 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun sizesToArray(taglie: List<Int>): ArrayList<PizzaSizes> {
-        val lst = mutableListOf<PizzaSizes>()
+    fun getFritti(fritti: List<FoodFamilies.FoodEntry>,
+                           lst: ArrayList<MagnugaMenuItem>) {
+        for (s in fritti) {
+            val nFritto = FrittiMI(
+                s.nome, s.prezzo.toTypedArray(),
+                FoodType.values()[s.tipo], ArrayList(s.ingredienti), sizesToArray(s.taglie),
+                piecesToArray(s.pezzi),
+            )
+            lst.add(nFritto)
+        }
+    }
+
+    fun sizesToArray(taglie: List<Int>): ArrayList<FoodSizes> {
+        val lst = mutableListOf<FoodSizes>()
         for (t in taglie) {
-            lst.add(PizzaSizes.values()[t])
+            lst.add(FoodSizes.values()[t])
+        }
+        return ArrayList(lst)
+    }
+
+    fun piecesToArray(pieces: List<Int>): ArrayList<Pair<PiecesSizes, Int>> {
+        val lst = mutableListOf<Pair<PiecesSizes, Int>>()
+        if (pieces.isNotEmpty()) {
+            for (i in 0 ..< pieces.count()) {
+                val dbg1 = PiecesSizes.values()[i]
+                val dbg2 = pieces[i]
+                lst.add(Pair(PiecesSizes.values()[i], pieces[i]))
+            }
         }
         return ArrayList(lst)
     }

@@ -5,16 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
 import com.example.magnugadrift.classes.AggiuntaType
-import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
+import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.ui.activities.MagnuItemDetailsActivity
-import com.example.magnugadrift.ui.activities.MenuItemOrderDetailsActivity
 
 class DetailsAdditionsRVAdapter(private var additionsList: ArrayList<AggiuntaType>,
-                                private val size: PizzaSizes? = null,
+                                private val size: FoodSizes? = null,
                                 private val tv_fPrice: TextView) :
     RecyclerView.Adapter<DetailsAdditionsRVAdapter.MenuViewHolder>() {
 
@@ -68,13 +66,13 @@ class DetailsAdditionsRVAdapter(private var additionsList: ArrayList<AggiuntaTyp
             return _prices[0]
         } else {
             when (size) {
-                PizzaSizes.PICCOLA -> {
+                FoodSizes.S -> {
                     return _prices[0]
                 }
-                PizzaSizes.MEDIA -> {
+                FoodSizes.M -> {
                     return _prices[1]
                 }
-                PizzaSizes.MAXI -> {
+                FoodSizes.L -> {
                     return _prices[2]
                 }
                 else -> {

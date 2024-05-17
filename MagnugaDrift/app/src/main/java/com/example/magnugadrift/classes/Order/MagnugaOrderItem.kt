@@ -1,9 +1,9 @@
 package com.example.magnugadrift.classes.Order
 
 import com.example.magnugadrift.classes.AggiuntaType
-import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
-import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
+import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
+import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
 import com.example.magnugadrift.classes.Menu.FoodFamilies
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import java.io.Serializable
@@ -17,8 +17,8 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     private val _magnugaItem: MagnugaMenuItem
     private var _family: FoodFamilies
     private var _name: String
-    private var _size: PizzaSizes?
-    private var _pieces: Int?
+    private var _size: FoodSizes?
+    private var _pieces: Pair<PiecesSizes, Int>?
     private var _ingredients: ArrayList<Pair<String, Boolean>>?
     private var _aggiunte: ArrayList<AggiuntaType>?
     private var _enricheables: ArrayList<AggiuntaType>?
@@ -35,9 +35,9 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     }
     fun getOrderItemPrice(): Float {
         when (_size) {
-            PizzaSizes.PICCOLA -> return _magnugaItem.getSizesPrices()[0]
-            PizzaSizes.MEDIA -> return _magnugaItem.getSizesPrices()[1]
-            PizzaSizes.MAXI -> return _magnugaItem.getSizesPrices()[2]
+            FoodSizes.S -> return _magnugaItem.getSizesPrices()[0]
+            FoodSizes.M -> return _magnugaItem.getSizesPrices()[1]
+            FoodSizes.L -> return _magnugaItem.getSizesPrices()[2]
             else -> {
                 return 0.0f
             }
@@ -52,10 +52,10 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     fun getOrderItemName(): String {
         return _name
     }
-    fun getOrderItemSize():PizzaSizes? {
+    fun getOrderItemSize():FoodSizes? {
         return _size
     }
-    fun getOrderItemPieces(): Int? {
+    fun getOrderItemPieces(): Pair<PiecesSizes, Int>? {
         return _pieces
     }
     fun getOrderItemIngredients(): ArrayList<Pair<String, Boolean>>? {

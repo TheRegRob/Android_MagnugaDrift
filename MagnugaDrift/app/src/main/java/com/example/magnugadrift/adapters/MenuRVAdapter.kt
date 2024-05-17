@@ -1,5 +1,6 @@
 package com.example.magnugadrift.adapters
 
+import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
-import com.example.magnugadrift.classes.Menu.Enums.PizzaSizes
+import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
+import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 
 
@@ -60,7 +62,10 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
         holder.menuItemIngredienti.text = getIngredientsString(currentMenuItem)
         holder.menuItemPrice.text = currentMenuItem.getCurrentPrice().toString() + "€"
         holder.menuItemSwitch.setOnClickListener(View.OnClickListener {
-            currentMenuItem.increaseCurrSize()
+            if (currentMenuItem.getSizesValues().isNotEmpty())
+                currentMenuItem.increaseCurrSize()
+            else
+                currentMenuItem.increaseCurrPieces()
             refreshRowData(holder, currentMenuItem)
             //notifyItemChanged(position)
         })
@@ -91,11 +96,25 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
     }
 
     fun setSwitchButtonTxt(holder: MenuViewHolder, currentMenuItem: MagnugaMenuItem) {
-        when (currentMenuItem.getCurrentSize()) {
-            PizzaSizes.PICCOLA -> holder.menuItemSwitch.text = "Piccola"
-            PizzaSizes.MEDIA -> holder.menuItemSwitch.text = "Media"
-            PizzaSizes.MAXI -> holder.menuItemSwitch.text = "Maxi"
-            else -> { holder.menuItemSwitch.text = "Unexp Err" }
+        if (currentMenuItem.getSizesValues().isNotEmpty()) {
+            holder.menuItemSwitch.text = currentMenuItem.getSizesString(currentMenuItem.getCurrentSize()!!)
+        } else if (currentMenuItem.getPieces().isNotEmpty()) {
+                when (currentMenuItem.getCurrentPieces()?.first) {
+                    PiecesSizes.MIN_CUT -> holder.menuItemSwitch.text =
+                        currentMenuItem.getCurrentPieces()?.second.toString() + " pezzi"
+
+                    PiecesSizes.MIDDLE_CUT -> holder.menuItemSwitch.text =
+                        currentMenuItem.getCurrentPieces()?.second.toString() + " pezzi"
+
+                    PiecesSizes.MAXIMUM_CUT -> holder.menuItemSwitch.text =
+                        currentMenuItem.getCurrentPieces()?.second.toString() + " pezzi"
+
+                    else -> {
+                        holder.menuItemSwitch.visibility = View.GONE
+                    }
+                }
+        } else {
+            holder.menuItemSwitch.visibility = View.GONE
         }
     }
 }
