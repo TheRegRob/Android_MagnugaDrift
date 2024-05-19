@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
                            lst: ArrayList<MagnugaMenuItem>) {
         for (p in pizzeNapoletane) {
             val nPizza = PizzaNapoletanaMI(
-                p.nome, p.prezzo.toTypedArray(),
+                p.nome, p.descrizione, p.prezzo.toTypedArray(),
                 FoodType.values()[p.tipo], ArrayList(p.ingredienti), sizesToArray(p.taglie)
             )
             lst.add(nPizza)
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
     fun getSpianate(spianate: List<FoodFamilies.FoodEntry>, lst: ArrayList<MagnugaMenuItem>) {
         for (s in spianate) {
             val nSpianata = SpianataMI(
-                s.nome, s.prezzo.toTypedArray(),
+                s.nome, s.descrizione, s.prezzo.toTypedArray(),
                 FoodType.values()[s.tipo], ArrayList(s.ingredienti), sizesToArray(s.taglie)
             )
             lst.add(nSpianata)
@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                            lst: ArrayList<MagnugaMenuItem>) {
         for (s in spianateRipiene) {
             val nSpianata = SpianataRipienaMI(
-                s.nome, s.prezzo.toTypedArray(),
+                s.nome, s.descrizione, s.prezzo.toTypedArray(),
                 FoodType.values()[s.tipo], ArrayList(s.ingredienti), sizesToArray(s.taglie)
             )
             lst.add(nSpianata)
@@ -118,11 +118,11 @@ class MainActivity : AppCompatActivity() {
 
     fun getFritti(fritti: List<FoodFamilies.FoodEntry>,
                            lst: ArrayList<MagnugaMenuItem>) {
-        for (s in fritti) {
+        for (f in fritti) {
             val nFritto = FrittiMI(
-                s.nome, s.prezzo.toTypedArray(),
-                FoodType.values()[s.tipo], ArrayList(s.ingredienti), sizesToArray(s.taglie),
-                piecesToArray(s.pezzi),
+                f.nome, f.descrizione, f.prezzo.toTypedArray(),
+                FoodType.values()[f.tipo], ArrayList(f.ingredienti), sizesToArray(f.taglie),
+                piecesToArray(f.pezzi),
             )
             lst.add(nFritto)
         }

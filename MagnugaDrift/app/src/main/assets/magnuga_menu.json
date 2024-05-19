@@ -4,6 +4,7 @@
       "pizze_napoletane": [
         {
           "nome": "Margerita",
+          "descrizione": null,
           "ingredienti": [
             "Pomodoro",
             "Mozzarella"
@@ -24,6 +25,7 @@
         },
         {
           "nome": "Biancaneve",
+          "descrizione": null,
           "ingredienti": [
             "Mozzarella"
           ],
@@ -43,6 +45,7 @@
         },
         {
           "nome": "Pomodoro",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -61,6 +64,7 @@
         },
         {
           "nome": "Marinara",
+          "descrizione": null,
           "ingredienti": [
             "Pomodoro",
             "Aglio"
@@ -81,6 +85,7 @@
         },
         {
           "nome": "Prosciutto",
+          "descrizione": null,
           "ingredienti": [
             "Pomodoro",
             "Mozzarella",
@@ -102,6 +107,7 @@
         },
         {
           "nome": "Funghi Freschi",
+          "descrizione": null,
           "ingredienti": [
             "Pomodoro",
             "Mozzarella",
@@ -125,6 +131,7 @@
       "spianate": [
         {
           "nome": "Vuota",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -143,6 +150,7 @@
         },
         {
           "nome": "Prosciutto",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -159,6 +167,7 @@
         },
         {
           "nome": "Prosciutto e Formaggio",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -175,6 +184,7 @@
         },
         {
           "nome": "Prosciutto e Mozzarella",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -191,6 +201,7 @@
         },
         {
           "nome": "Prosciutto cotto e Formaggio fresco",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -207,6 +218,7 @@
         },
         {
           "nome": "Pancetta",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -225,6 +237,7 @@
       "spianate_ripiene": [
         {
           "nome": "Cinese",
+          "descrizione": null,
           "ingredienti": [
             "fontina",
             "funghi",
@@ -245,6 +258,7 @@
         },
         {
           "nome": "Goloso",
+          "descrizione": null,
           "ingredienti": [
             "fontina",
             "funghi",
@@ -266,6 +280,7 @@
         },
         {
           "nome": "Tonnaro",
+          "descrizione": null,
           "ingredienti": [
             "pomodoro",
             "tonno",
@@ -286,6 +301,7 @@
         },
         {
           "nome": "Freschezza",
+          "descrizione": null,
           "ingredienti": [
             "prosciutto cotto",
             "fontina",
@@ -308,6 +324,7 @@
       "fritti": [
         {
           "nome": "Patate fritte",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -326,6 +343,7 @@
         },
         {
           "nome": "Patate fritte al cheddar fuso",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -339,6 +357,7 @@
         },
         {
           "nome": "Patate fritte al cheddar fuso e bacon",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -352,6 +371,7 @@
         },
         {
           "nome": "Patate fritte al cheddar fuso e chili",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -365,6 +385,7 @@
         },
         {
           "nome": "Patate julienne",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -378,6 +399,7 @@
         },
         {
           "nome": "Patate chips",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -391,6 +413,7 @@
         },
         {
           "nome": "Patate strips",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -404,6 +427,7 @@
         },
         {
           "nome": "Patate a griglia speziate",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -417,6 +441,7 @@
         },
         {
           "nome": "Potato pops",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -430,6 +455,7 @@
         },
         {
           "nome": "Crocchette di patate",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -444,6 +470,7 @@
         },
         {
           "nome": "Crocchette di patate al cheddar",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -458,6 +485,7 @@
         },
         {
           "nome": "Olive all'ascolana",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -472,6 +500,7 @@
         },
         {
           "nome": "Crema fritta",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -486,6 +515,7 @@
         },
         {
           "nome": "Chicken nuggets",
+          "descrizione": null,
           "ingredienti": [
           ],
           "taglie": [
@@ -497,7 +527,52 @@
             3.3, 4.8, 6.4, 8, 9.5, 11.5
           ],
           "tipo": 3
+        },
+        {
+          "nome": "Caciottini",
+          "descrizione": null,
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+            4
+          ],
+          "prezzo": [
+            4.2
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Pepite di pollo speziate",
+          "descrizione": null,
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+          ],
+          "prezzo": [
+            5
+          ],
+          "tipo": 3
+        },
+        {
+          "nome": "Pulled pork nuggets",
+          "descrizione": "Crocchette di sfilacci di maiale",
+          "ingredienti": [
+          ],
+          "taglie": [
+          ],
+          "pezzi": [
+            5
+          ],
+          "prezzo": [
+            4.6
+          ],
+          "tipo": 3
         }
+
       ]
     }
 }

@@ -40,15 +40,20 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var bt_Size: Button
     private lateinit var tv_Family: TextView
     private lateinit var tv_Price: TextView
+    private lateinit var tv_Description: TextView
+    private lateinit var vd_BottomDivider: View
     private lateinit var tv_finalPrice: TextView
     private lateinit var rv_ingredients: RecyclerView
     private lateinit var rv_additions: RecyclerView
     private lateinit var ib_addAddition: ImageButton
     private lateinit var et_Notes: EditText
+    private lateinit var ll_group: LinearLayout
+    private lateinit var llc_ingredients: LinearLayout
+    private lateinit var llc_additions: LinearLayout
+    private lateinit var ll_DescriptionLayout: LinearLayout
     private lateinit var ingredientsAdapter: DetailsIngredientsRVAdapter
     private lateinit var additionAdapter: DetailsAdditionsRVAdapter
     private lateinit var orderItem: MagnugaOrderItem
-
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,6 +114,10 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         rv_ingredients = findViewById(R.id.lv_ingredients)
         rv_additions = findViewById(R.id.lv_additions)
         ib_addAddition = findViewById(R.id.ib_add_addition)
+        llc_ingredients = findViewById(R.id.lvcustom_ingredients)
+        llc_additions = findViewById(R.id.lvcustom_additions)
+        ll_DescriptionLayout = findViewById(R.id.ll_DescriptionLayout)
+        ll_group = findViewById(R.id.ll_list_group)
         et_Notes = findViewById(R.id.et_Notes)
         tv_Ingredients.text = "Ingredienti"
         tv_Aggiunte.text = "Aggiunte"
@@ -117,41 +126,46 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun setValuesToViews() {
         orderItem = intent.getSerializableExtra("order_item") as MagnugaOrderItem
-        if (orderItem != null) {
-            iv_Image.setImageResource(orderItem.getOrderItemFoodImage())
-            tv_Name.text = orderItem.getOrderItemName()
-            val sizeVal = orderItem.getOrderItemSize()
-            val piecesVal = orderItem.getOrderItemPieces()
-            if (sizeVal != null) {
-                bt_Size.text = orderItem.magnugaMenuItem.getCurrentSize()!!.getString(orderItem.getOrderItemFamily())
-            } else if (piecesVal != null) {
-                bt_Size.text = orderItem.magnugaMenuItem.getCurrentPieces()!!.second.toString() + "pezzi"
-            } else {
-                bt_Size.visibility = View.GONE
-            }
-            et_Notes.setText(orderItem.getOrderItemNote())
-            tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
-            currentPrice += orderItem.getOrderItemPrice()
-            tv_Family.text = orderItem.getOrderItemFamily().toString()
-            if (orderItem.getOrderItemIngredients().isNotEmpty()) {
-                for (food in orderItem.getOrderItemIngredients()) {
-                    lst_ingredients.add(food)
-                }
-            } else {
-                val lv: LinearLayout = findViewById(R.id.lvcustom_ingredients)
-                lv.visibility = View.GONE
-            }
-            if (orderItem.getOrderItemAggiunte() != null) {
-                for (addition in orderItem.getOrderItemAggiunte()!!) {
-                    currentPrice += getMainPrice(addition)
-                    lst_additions.add(addition)
-                }
-            } else {
-                val lv: LinearLayout = findViewById(R.id.lvcustom_additions)
-                lv.visibility = View.GONE
-            }
-            tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
+        iv_Image.setImageResource(orderItem.getOrderItemFoodImage())
+        tv_Name.text = orderItem.getOrderItemName()
+        val sizeVal = orderItem.getOrderItemSize()
+        val piecesVal = orderItem.getOrderItemPieces()
+        if (sizeVal != null) {
+            bt_Size.text = orderItem.magnugaMenuItem.getCurrentSize()!!.getString(orderItem.getOrderItemFamily())
+        } else if (piecesVal != null) {
+            bt_Size.text = orderItem.magnugaMenuItem.getCurrentPieces()!!.second.toString() + " pezzi"
+        } else {
+            bt_Size.visibility = View.GONE
         }
+        if (orderItem.magnugaMenuItem.menuItemDescription() != null) {
+            tv_Description.text = orderItem.magnugaMenuItem.menuItemDescription()
+        } else {
+            vd_BottomDivider.visibility = View.GONE
+            ll_DescriptionLayout.visibility = View.GONE
+        }
+        et_Notes.setText(orderItem.getOrderItemNote())
+        tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
+        currentPrice += orderItem.getOrderItemPrice()
+        tv_Family.text = orderItem.getOrderItemFamily().toString()
+        if (orderItem.getOrderItemIngredients().isNotEmpty()) {
+            for (food in orderItem.getOrderItemIngredients()) {
+                lst_ingredients.add(food)
+            }
+        } else {
+            llc_ingredients.visibility = View.GONE
+        }
+        if (orderItem.getOrderItemAggiunte() != null) {
+            for (addition in orderItem.getOrderItemAggiunte()!!) {
+                currentPrice += getMainPrice(addition)
+                lst_additions.add(addition)
+            }
+        } else {
+            llc_additions.visibility = View.GONE
+        }
+        if (llc_ingredients.visibility == View.GONE &&
+            llc_additions.visibility == View.GONE)
+            ll_group.visibility = View.GONE
+        tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
     }
 
     override fun onClick(v: View) {
@@ -186,8 +200,8 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         builder.setItems(listItems) {
                 dialog, position ->
             orderItem.addToOrderItemAggiunte(tmpEnrichLst[position])
-            MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
-            tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
+            currentPrice += getMainPrice(tmpEnrichLst[position])
+            tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
             additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
             refreshOrderValues()
         }
@@ -196,9 +210,13 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun refreshOrderValues() {
-        bt_Size.text = orderItem.getOrderItemSize().toString()
+        if (orderItem.getOrderItemSize() != null) {
+            bt_Size.text =  orderItem.getOrderItemSize()!!.getString(orderItem.getOrderItemFamily())
+        } else if (orderItem.getOrderItemPieces() != null) {
+            bt_Size.text =  orderItem.getOrderItemPieces()!!.second.toString() + " pezzi"
+        }
         tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
-        MagnuItemDetailsActivity.currentPrice = orderItem.getOrderItemPrice()
+        currentPrice = orderItem.getOrderItemPrice()
         if (orderItem.getOrderItemAggiunte() != null) {
             additionAdapter = DetailsAdditionsRVAdapter(orderItem.getOrderItemAggiunte()!!,
                 orderItem.getOrderItemSize(), tv_finalPrice)
@@ -209,10 +227,10 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (orderItem.getOrderItemAggiunte() != null){
             for (addition in orderItem.getOrderItemAggiunte()!!) {
-                MagnuItemDetailsActivity.currentPrice += getMainPrice(addition)
+                currentPrice += getMainPrice(addition)
             }
         }
-        tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
+        tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
     }
 
     private fun getMainPrice(addition: AggiuntaType): Float {

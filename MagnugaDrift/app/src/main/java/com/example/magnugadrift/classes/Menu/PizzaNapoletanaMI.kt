@@ -7,11 +7,13 @@ import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 
 class PizzaNapoletanaMI(name: String,
+                        descrizione: String?,
                         price: Array<Float>,
                         type: FoodType,
                         ingredients: ArrayList<String>,
                         sizes: ArrayList<FoodSizes>) :
-                        MagnugaMenuItem(FoodFamilies.PIZZA_NAPOLETANA, name, ingredients, price, type,
+                        MagnugaMenuItem(FoodFamilies.PIZZA_NAPOLETANA, name, descrizione,
+                            ingredients, price, type,
                             true, arrayListOf()),
                         isEnrichable {
     //region Properties

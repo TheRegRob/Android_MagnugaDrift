@@ -10,6 +10,7 @@ import java.io.Serializable
 
 open class MagnugaMenuItem(foodFamily: FoodFamilies,
                            name: String,
+                           description: String?,
                            ingredients: ArrayList<String>,
                            price: Array<Float>,
                            type: FoodType,
@@ -19,6 +20,7 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
     //region Properties
     val _menuItemImageIdx: FoodFamilies
     val _menuItemName: String
+    val _menuItemDescription: String?
     val _menuItemPrice: Array<Float>
     val _menuItemIngredients: ArrayList<String>
     val _foodType: FoodType
@@ -30,6 +32,10 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
     }
     fun menuItemName(): String {
         return _menuItemName
+    }
+
+    fun menuItemDescription(): String? {
+        return _menuItemDescription
     }
      fun menuItemIngredients(): ArrayList<String> {
          return _menuItemIngredients
@@ -46,6 +52,7 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
     init {
         _menuItemImageIdx = foodFamily
         _menuItemName = name
+        _menuItemDescription = description
         _menuItemIngredients = ingredients
         _menuItemPrice = price
         _foodType = type

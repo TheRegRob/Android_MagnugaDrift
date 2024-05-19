@@ -4,11 +4,12 @@ import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 
 class SpianataRipienaMI (name: String,
+                         descrizione: String?,
                          price: Array<Float>,
                          type: FoodType,
                          ingredients: ArrayList<String>,
                          sizes: ArrayList<FoodSizes>) :
-    MagnugaMenuItem(FoodFamilies.SPIANATE_RIPIENE, name, ingredients, price, type, false, arrayListOf()) {
+    MagnugaMenuItem(FoodFamilies.SPIANATE_RIPIENE, name, descrizione, ingredients, price, type, false, arrayListOf()) {
     //region Properties
     private val _ingredients: ArrayList<String>
     private val _sizes: ArrayList<FoodSizes>
