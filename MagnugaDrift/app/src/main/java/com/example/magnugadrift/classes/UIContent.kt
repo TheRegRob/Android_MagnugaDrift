@@ -12,9 +12,9 @@ class FoodFamilies(
 class FoodEntry(
     val nome: String,
     val descrizione: String?,
-    val ingredienti: List<String>,
-    val taglie: List<Int>,
-    val pezzi: List<Int>,
+    val ingredienti: List<String>?,
+    val taglie: List<Int>?,
+    val pezzi: List<Int>?,
     val prezzo: List<Float>,
     val tipo: Int
 )

@@ -10,26 +10,25 @@ class FrittiMI(
     descrizione: String?,
     price: Array<Float>,
     type: FoodType,
-    ingredients: ArrayList<String>,
-    sizes: ArrayList<FoodSizes>,
-    pieces: ArrayList<Pair<PiecesSizes, Int>>
+    ingredients: ArrayList<String>?,
+    sizes: ArrayList<FoodSizes>?,
+    pieces: ArrayList<Pair<PiecesSizes, Int>>?
 ) :
-    MagnugaMenuItem(FoodFamilies.FRITTI, name, descrizione, ingredients, price, type,
-        false, arrayListOf()) {
+    MagnugaMenuItem(FoodFamilies.FRITTI, name, descrizione, ingredients, price, type) {
     //region Properties
-    private val _ingredients: ArrayList<String>
-    private val _sizes: ArrayList<FoodSizes>
+    private val _ingredients: ArrayList<String>?
+    private val _sizes: ArrayList<FoodSizes>?
     private val _prices: Array<Float>
-    private val _pieces: ArrayList<Pair<PiecesSizes, Int>>
+    private val _pieces: ArrayList<Pair<PiecesSizes, Int>>?
     private var _curSize: FoodSizes?
     private var _curPieces: Pair<PiecesSizes, Int>?
     //endregion
 
     //region Getters and Setters
-    fun getIngredients(): ArrayList<String> {
+    fun getIngredients(): ArrayList<String>? {
         return _ingredients
     }
-    override fun getSizesValues(): ArrayList<FoodSizes> {
+    override fun getSizesValues(): ArrayList<FoodSizes>? {
         return _sizes
     }
     override fun getSizesPrices(): Array<Float> {
@@ -43,16 +42,8 @@ class FrittiMI(
         _sizes = sizes
         _prices = price
         _pieces = pieces
-        if (sizes.isNotEmpty()) {
-            _curSize = sizes[0]
-        } else {
-            _curSize = null
-        }
-        if (pieces.isNotEmpty()) {
-            _curPieces = pieces[0]
-        } else {
-            _curPieces = null
-        }
+        _curSize = sizes?.get(0)
+        _curPieces = pieces?.get(0)
 
     }
     //endregion
@@ -63,7 +54,7 @@ class FrittiMI(
     }
 
     override fun increaseCurrSize() {
-        _curSize = if (_curSize == _sizes.last()) {
+        _curSize = if (_curSize == _sizes!!.last()) {
             _sizes[0]
         } else {
             _sizes[_sizes.indexOf(_curSize) + 1]
@@ -71,7 +62,7 @@ class FrittiMI(
     }
 
     override fun increaseCurrPieces()  {
-        _curPieces = if (_curPieces == _pieces.last()) {
+        _curPieces = if (_curPieces == _pieces!!.last()) {
             _pieces[0]
         } else {
             _pieces[_pieces.indexOf(_curPieces) + 1]
@@ -82,11 +73,7 @@ class FrittiMI(
         return _foodType
     }
 
-    override fun getTaglie(): ArrayList<FoodSizes> {
-        return _sizes
-    }
-
-    override fun getPieces(): ArrayList<Pair<PiecesSizes, Int>> {
+    override fun getPieces(): ArrayList<Pair<PiecesSizes, Int>>? {
         return _pieces
     }
 
@@ -103,9 +90,9 @@ class FrittiMI(
     }
 
     override fun getCurrentPrice(): Float {
-        return if (_sizes.isNotEmpty()) {
+        return if (_sizes != null) {
             _prices[getCurrentSize()!!.getValue()]
-        } else if (_pieces.isNotEmpty()) {
+        } else if (_pieces != null) {
             _prices[getCurrentPieces()!!.first.getValue()]
         } else {
             _prices[0]

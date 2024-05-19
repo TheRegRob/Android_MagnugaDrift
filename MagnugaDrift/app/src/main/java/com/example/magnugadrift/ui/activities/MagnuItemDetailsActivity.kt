@@ -147,8 +147,8 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
         currentPrice += orderItem.getOrderItemPrice()
         tv_Family.text = orderItem.getOrderItemFamily().toString()
-        if (orderItem.getOrderItemIngredients().isNotEmpty()) {
-            for (food in orderItem.getOrderItemIngredients()) {
+        if (orderItem.getOrderItemIngredients() != null) {
+            for (food in orderItem.getOrderItemIngredients()!!) {
                 lst_ingredients.add(food)
             }
         } else {
@@ -174,7 +174,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
                 setupAdditionDialog()
             }
             R.id.bt_food_size -> {
-                if (orderItem.magnugaMenuItem.getSizesValues().isNotEmpty())
+                if (orderItem.magnugaMenuItem.getSizesValues()!!.isNotEmpty())
                     orderItem.increaseSize()
                 else
                     orderItem.increasePieces()

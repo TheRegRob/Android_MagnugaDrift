@@ -11,18 +11,16 @@ import java.io.Serializable
 open class MagnugaMenuItem(foodFamily: FoodFamilies,
                            name: String,
                            description: String?,
-                           ingredients: ArrayList<String>,
+                           ingredients: ArrayList<String>?,
                            price: Array<Float>,
-                           type: FoodType,
-                           enrichable: Boolean,
-                           aggiunte: ArrayList<AggiunteEntry>
+                           type: FoodType
 ) : Serializable {
     //region Properties
     val _menuItemImageIdx: FoodFamilies
     val _menuItemName: String
     val _menuItemDescription: String?
     val _menuItemPrice: Array<Float>
-    val _menuItemIngredients: ArrayList<String>
+    val _menuItemIngredients: ArrayList<String>?
     val _foodType: FoodType
     //endregion
 
@@ -37,7 +35,7 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
     fun menuItemDescription(): String? {
         return _menuItemDescription
     }
-     fun menuItemIngredients(): ArrayList<String> {
+     fun menuItemIngredients(): ArrayList<String>? {
          return _menuItemIngredients
      }
     fun menuItemPrice(): Array<Float> {
@@ -80,8 +78,13 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
         return ""
     }
 
-    open fun getSizesValues(): ArrayList<FoodSizes> {
-        return arrayListOf()
+    /** Returns the available sizes of the menu item.
+     * If it's null, then no sizes are available
+     * @return     the value of the available sizes
+     */
+
+    open fun getSizesValues(): ArrayList<FoodSizes>? {
+        return null
     }
 
     open fun getCurrentSize(): FoodSizes? {
@@ -107,19 +110,11 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
         return _foodType
     }
 
-    /** Returns the available sizes of the menu item.
-      * If it's null, then no sizes are available
-      * @return     the value of the available sizes
-      */
-    open fun getTaglie(): ArrayList<FoodSizes>? {
-         return null
-     }
-
     /** Returns the available pieces of the menu item.
      * If it's null, then no sizes are available
      * @return     the value of the available sizes
      */
-    open fun getPieces(): ArrayList<Pair<PiecesSizes, Int>> {
+    open fun getPieces(): ArrayList<Pair<PiecesSizes, Int>>? {
         return arrayListOf()
     }
 

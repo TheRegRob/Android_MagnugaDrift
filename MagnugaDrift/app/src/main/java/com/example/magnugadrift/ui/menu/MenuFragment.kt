@@ -64,15 +64,4 @@ class MenuFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    fun getIngredientsString(item: MagnugaMenuItem): String {
-        val ingredientsLst = StringBuilder()
-        for (i in item.menuItemIngredients())
-            ingredientsLst.append(i + ", ")
-        var ingredients = ingredientsLst.toString()
-        if (ingredients != "") {
-            ingredients = ingredients.substring(0, ingredients.length - 2)
-        }
-        return ingredients
-    }
 }

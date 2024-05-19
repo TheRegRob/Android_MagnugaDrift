@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         for (p in pizzeNapoletane) {
             val nPizza = PizzaNapoletanaMI(
                 p.nome, p.descrizione, p.prezzo.toTypedArray(),
-                FoodType.values()[p.tipo], ArrayList(p.ingredienti), sizesToArray(p.taglie)
+                FoodType.values()[p.tipo], ingredientsToArray(p.ingredienti), sizesToArray(p.taglie)
             )
             lst.add(nPizza)
         }
@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         for (s in spianate) {
             val nSpianata = SpianataMI(
                 s.nome, s.descrizione, s.prezzo.toTypedArray(),
-                FoodType.values()[s.tipo], ArrayList(s.ingredienti), sizesToArray(s.taglie)
+                FoodType.values()[s.tipo], ingredientsToArray(s.ingredienti), sizesToArray(s.taglie)
             )
             lst.add(nSpianata)
         }
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         for (s in spianateRipiene) {
             val nSpianata = SpianataRipienaMI(
                 s.nome, s.descrizione, s.prezzo.toTypedArray(),
-                FoodType.values()[s.tipo], ArrayList(s.ingredienti), sizesToArray(s.taglie)
+                FoodType.values()[s.tipo], ingredientsToArray(s.ingredienti), sizesToArray(s.taglie)
             )
             lst.add(nSpianata)
         }
@@ -121,30 +121,50 @@ class MainActivity : AppCompatActivity() {
         for (f in fritti) {
             val nFritto = FrittiMI(
                 f.nome, f.descrizione, f.prezzo.toTypedArray(),
-                FoodType.values()[f.tipo], ArrayList(f.ingredienti), sizesToArray(f.taglie),
+                FoodType.values()[f.tipo], ingredientsToArray(f.ingredienti), sizesToArray(f.taglie),
                 piecesToArray(f.pezzi),
             )
             lst.add(nFritto)
         }
     }
 
-    fun sizesToArray(taglie: List<Int>): ArrayList<FoodSizes> {
-        val lst = mutableListOf<FoodSizes>()
-        for (t in taglie) {
-            lst.add(FoodSizes.values()[t])
+    fun ingredientsToArray(ingredients: List<String>?): ArrayList<String>? {
+        return if (ingredients != null) {
+            val lst = mutableListOf<String>()
+            for (t in ingredients) {
+                lst.add(t)
+            }
+            ArrayList(lst)
+        } else {
+            null
         }
-        return ArrayList(lst)
     }
 
-    fun piecesToArray(pieces: List<Int>): ArrayList<Pair<PiecesSizes, Int>> {
-        val lst = mutableListOf<Pair<PiecesSizes, Int>>()
-        if (pieces.isNotEmpty()) {
-            for (i in 0 ..< pieces.count()) {
-                val dbg1 = PiecesSizes.values()[i]
-                val dbg2 = pieces[i]
-                lst.add(Pair(PiecesSizes.values()[i], pieces[i]))
+    fun sizesToArray(taglie: List<Int>?): ArrayList<FoodSizes>? {
+        return if (taglie != null) {
+            val lst = mutableListOf<FoodSizes>()
+            for (t in taglie) {
+                lst.add(FoodSizes.values()[t])
             }
+            ArrayList(lst)
+        } else {
+            null
         }
-        return ArrayList(lst)
+    }
+
+    fun piecesToArray(pieces: List<Int>?): ArrayList<Pair<PiecesSizes, Int>>? {
+        return if (pieces != null) {
+            val lst = mutableListOf<Pair<PiecesSizes, Int>>()
+            if (pieces.isNotEmpty()) {
+                for (i in 0 ..< pieces.count()) {
+                    val dbg1 = PiecesSizes.values()[i]
+                    val dbg2 = pieces[i]
+                    lst.add(Pair(PiecesSizes.values()[i], pieces[i]))
+                }
+            }
+                ArrayList(lst)
+        } else {
+            null
+        }
     }
 }

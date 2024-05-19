@@ -57,14 +57,7 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
         holder.orderItemIngredienti.text = HtmlCompat.fromHtml(generateIngredientsString(currentOrderItem), HtmlCompat.FROM_HTML_MODE_LEGACY)
         holder.orderItemPrice.text = String.format("%.2f", currentOrderItem.getFinalPrice()) + "€"
         holder.orderItemAggiunte.text = HtmlCompat.fromHtml(generateAdditionsString(currentOrderItem), HtmlCompat.FROM_HTML_MODE_LEGACY)
-        if (currentOrderItem.magnugaMenuItem.getTaglie() != null) {
-            holder.orderItemSize.visibility = View.VISIBLE
-            setLabelTxt(holder, currentOrderItem)
-        } else if (currentOrderItem.magnugaMenuItem.getPieces().isNotEmpty()) {
-            holder.orderItemSize.visibility = View.VISIBLE
-        } else {
-            holder.orderItemSize.visibility = View.GONE
-        }
+        setLabelTxt(holder, currentOrderItem)
     }
 
     fun generateFoodNameString(item: MagnugaOrderItem): String {
@@ -76,13 +69,13 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
 
     fun generateIngredientsString(item: MagnugaOrderItem): String {
         val ingredientsLst = StringBuilder()
-        if (item.getOrderItemIngredients().isNotEmpty()) {
-            if (item.getOrderItemIngredients().count() > 0) {
+        if (item.getOrderItemIngredients() != null) {
+            if (item.getOrderItemIngredients() != null) {
                 if (checkNoIngredients(item)) {
                     ingredientsLst.append("<b><i>Nessun ingrediente</i></b>")
                 } else {
                     ingredientsLst.append("<b>Ingredienti:</b><br>")
-                    for (i in item.getOrderItemIngredients())
+                    for (i in item.getOrderItemIngredients()!!)
                         if (i.second)
                             ingredientsLst.append(i.first + "<br>")
                 }
@@ -98,7 +91,7 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
     fun generateAdditionsString(item: MagnugaOrderItem): String {
         val additionsLst = StringBuilder()
         if (item.getOrderItemAggiunte() != null) {
-            if (item.getOrderItemAggiunte()!!.count() > 0) {
+            if (item.getOrderItemAggiunte()!!.isNotEmpty()) {
                 additionsLst.append("<b>Aggiunte:</b><br>")
                 for (i in item.getOrderItemAggiunte()!!) {
                     additionsLst.append(i.getName() + "<br>")
@@ -113,17 +106,17 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
         }
     }
     fun setLabelTxt(holder: NewOrderRVAdapter.NewOrderViewHolder, currentOrderItem: MagnugaOrderItem) {
-        if (currentOrderItem.magnugaMenuItem.getSizesValues().isNotEmpty()) {
+        if (currentOrderItem.magnugaMenuItem.getSizesValues() != null) {
+            holder.orderItemSize.visibility = View.VISIBLE
             holder.orderItemSize.text = currentOrderItem.getOrderItemSize()!!.getString(currentOrderItem.getOrderItemFamily())
-        } else if (currentOrderItem.magnugaMenuItem.getPieces().isNotEmpty()) {
+        } else if (currentOrderItem.magnugaMenuItem.getPieces() != null) {
+            holder.orderItemSize.visibility = View.VISIBLE
             holder.orderItemSize.text = currentOrderItem.getOrderItemPieces()!!.second.toString() + " pezzi"
-        } else {
-            holder.orderItemSize.text = "unexp_err"
         }
     }
     fun checkNoIngredients(item: MagnugaOrderItem): Boolean {
         var ret = true
-        for (i in item.getOrderItemIngredients())
+        for (i in item.getOrderItemIngredients()!!)
             if (i.second) {
                 ret = false
                 break

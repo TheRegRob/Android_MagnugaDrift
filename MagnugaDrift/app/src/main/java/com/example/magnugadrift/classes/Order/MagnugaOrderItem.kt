@@ -19,7 +19,7 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     private var _name: String
     private var _size: FoodSizes?
     private var _pieces: Pair<PiecesSizes, Int>?
-    private var _ingredients: ArrayList<Pair<String, Boolean>>
+    private var _ingredients: ArrayList<Pair<String, Boolean>>?
     private var _aggiunte: ArrayList<AggiuntaType>?
     private var _enricheables: ArrayList<AggiuntaType>?
     private var _note: String
@@ -57,10 +57,10 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     fun getOrderItemPieces(): Pair<PiecesSizes, Int>? {
         return _pieces
     }
-    fun getOrderItemIngredients(): ArrayList<Pair<String, Boolean>> {
+    fun getOrderItemIngredients(): ArrayList<Pair<String, Boolean>>? {
         return _ingredients
     }
-    fun setOrderItemIngredients(nList: ArrayList<Pair<String, Boolean>>) {
+    fun setOrderItemIngredients(nList: ArrayList<Pair<String, Boolean>>?) {
         _ingredients = nList
     }
     fun getOrderItemAggiunte(): ArrayList<AggiuntaType>? {
@@ -94,10 +94,12 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
         _name = magnugaMenuItem.menuItemName()
         _size = magnugaMenuItem.getCurrentSize()
         _pieces = magnugaMenuItem.getCurrentPieces()
-        _ingredients = ArrayList()
-        if (magnugaMenuItem.menuItemIngredients().isNotEmpty()) {
-            for (ingredient in magnugaMenuItem.menuItemIngredients())
+        if (magnugaMenuItem.menuItemIngredients() != null) {
+            _ingredients = arrayListOf()
+            for (ingredient in magnugaMenuItem.menuItemIngredients()!!)
                 _ingredients!!.add(Pair(ingredient, true))
+        } else {
+            _ingredients = null
         }
         _finalPrice = 0f
         var lst_enricheables = arrayListOf<AggiuntaType>()
@@ -114,17 +116,17 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
 
     //region Methods and Functions
     fun increaseSize() {
-        _size = if (_size == _magnugaItem.getSizesValues().last()) {
-            _magnugaItem.getSizesValues()[0]
+        _size = if (_size == _magnugaItem.getSizesValues()?.last()) {
+            _magnugaItem.getSizesValues()!![0]
         } else {
-            _magnugaItem.getSizesValues()[_magnugaItem.getSizesValues().indexOf(_size) + 1]
+            _magnugaItem.getSizesValues()!![_magnugaItem.getSizesValues()!!.indexOf(_size) + 1]
         }
     }
     fun increasePieces() {
-        _pieces = if (_pieces == _magnugaItem.getPieces().last()) {
-            _magnugaItem.getPieces()[0]
+        _pieces = if (_pieces == _magnugaItem.getPieces()!!.last()) {
+            _magnugaItem.getPieces()!![0]
         } else {
-            _magnugaItem.getPieces()[_magnugaItem.getPieces().indexOf(_pieces) + 1]
+            _magnugaItem.getPieces()!![_magnugaItem.getPieces()!!.indexOf(_pieces) + 1]
         }
     }
     //endregion

@@ -59,19 +59,24 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
         holder.curMenuItem = currentMenuItem
         holder.menuItemImage.setImageResource(currentMenuItem.getResourceImage())
         holder.menuItemName.text = currentMenuItem.menuItemName()
-        holder.menuItemIngredienti.text = getIngredientsString(currentMenuItem)
+        if (currentMenuItem.menuItemIngredients() != null) {
+            holder.menuItemIngredienti.visibility = View.VISIBLE
+            holder.menuItemIngredienti.text = getIngredientsString(currentMenuItem)
+        } else {
+            holder.menuItemIngredienti.visibility = View.GONE
+        }
         holder.menuItemPrice.text = currentMenuItem.getCurrentPrice().toString() + "€"
         holder.menuItemSwitch.setOnClickListener(View.OnClickListener {
-            if (currentMenuItem.getSizesValues().isNotEmpty())
+            if (currentMenuItem.getSizesValues() != null)
                 currentMenuItem.increaseCurrSize()
             else
                 currentMenuItem.increaseCurrPieces()
             refreshRowData(holder, currentMenuItem)
             //notifyItemChanged(position)
         })
-        if (currentMenuItem.getTaglie() != null) {
+        if (currentMenuItem.getSizesValues() != null) {
             holder.menuItemSwitch.visibility = View.VISIBLE
-        } else if (currentMenuItem.getPieces().isNotEmpty()) {
+        } else if (currentMenuItem.getPieces() != null) {
             holder.menuItemSwitch.visibility = View.VISIBLE
         } else {
             holder.menuItemSwitch.visibility = View.GONE
@@ -81,7 +86,7 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
 
     fun getIngredientsString(item: MagnugaMenuItem): String {
         val ingredientsLst = StringBuilder()
-        for (i in item.menuItemIngredients())
+        for (i in item.menuItemIngredients()!!)
             ingredientsLst.append(i + ", ")
         var ingredients = ingredientsLst.toString()
         if (ingredients != "") {
@@ -96,9 +101,9 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
     }
 
     fun setSwitchButtonTxt(holder: MenuViewHolder, currentMenuItem: MagnugaMenuItem) {
-        if (currentMenuItem.getSizesValues().isNotEmpty()) {
+        if (currentMenuItem.getSizesValues() != null) {
             holder.menuItemSwitch.text = currentMenuItem.getCurrentSize()!!.getString(currentMenuItem.menuItemFamily())
-        } else if (currentMenuItem.getPieces().isNotEmpty()) {
+        } else if (currentMenuItem.getPieces() != null) {
             holder.menuItemSwitch.text = currentMenuItem.getCurrentPieces()!!.second.toString() + " pezzi"
         } else {
             holder.menuItemSwitch.visibility = View.GONE

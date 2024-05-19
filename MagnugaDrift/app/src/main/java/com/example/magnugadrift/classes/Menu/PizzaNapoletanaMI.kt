@@ -10,26 +10,25 @@ class PizzaNapoletanaMI(name: String,
                         descrizione: String?,
                         price: Array<Float>,
                         type: FoodType,
-                        ingredients: ArrayList<String>,
-                        sizes: ArrayList<FoodSizes>) :
+                        ingredients: ArrayList<String>?,
+                        sizes: ArrayList<FoodSizes>?) :
                         MagnugaMenuItem(FoodFamilies.PIZZA_NAPOLETANA, name, descrizione,
-                            ingredients, price, type,
-                            true, arrayListOf()),
+                            ingredients, price, type),
                         isEnrichable {
     //region Properties
-    private val _ingredients: ArrayList<String>
-    private val _sizes: ArrayList<FoodSizes>
+    private val _ingredients: ArrayList<String>?
+    private val _sizes: ArrayList<FoodSizes>?
     private val _prices: Array<Float>
     private val _enricheables: ArrayList<AggiunteEntry>
-    private val _aggiunte: ArrayList<AggiuntaType>
-    private var _curSize: FoodSizes
+    private val _aggiunte: ArrayList<AggiuntaType>?
+    private var _curSize: FoodSizes?
     //endregion
 
     //region Getters and Setters
-    fun getIngredients(): ArrayList<String> {
+    fun getIngredients(): ArrayList<String>? {
         return _ingredients
     }
-    override fun getSizesValues(): ArrayList<FoodSizes> {
+    override fun getSizesValues(): ArrayList<FoodSizes>? {
         return _sizes
     }
     override fun getSizesPrices(): Array<Float> {
@@ -42,8 +41,8 @@ class PizzaNapoletanaMI(name: String,
         _ingredients = ingredients
         _sizes = sizes
         _prices = price
-        _aggiunte = ArrayList<AggiuntaType>()
-        _curSize = sizes[0]
+        _aggiunte = ArrayList()
+        _curSize = sizes?.get(0)
         _enricheables = arrayListOf(
             AggiunteEntry.PZ_AGGIUNTA_DI_PROSCIUTTO,
             AggiunteEntry.PZ_BURRATA,
@@ -60,10 +59,10 @@ class PizzaNapoletanaMI(name: String,
     }
 
     override fun increaseCurrSize() {
-        _curSize = if (_curSize == _sizes.last()) {
-            _sizes[0]
+        _curSize = if (_curSize == _sizes?.last()) {
+            _sizes?.get(0)
         } else {
-            _sizes[_sizes.indexOf(_curSize) + 1]
+            _sizes?.get(_sizes.indexOf(_curSize) + 1)
         }
     }
 
@@ -71,15 +70,11 @@ class PizzaNapoletanaMI(name: String,
         return _foodType
     }
 
-    override fun getTaglie(): ArrayList<FoodSizes> {
-        return _sizes
-    }
-
     override fun getEnricheables(): ArrayList<AggiunteEntry> {
         return _enricheables
     }
 
-    override fun getAggiunte(): ArrayList<AggiuntaType> {
+    override fun getAggiunte(): ArrayList<AggiuntaType>? {
         return _aggiunte
     }
 

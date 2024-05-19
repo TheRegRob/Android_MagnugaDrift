@@ -14,8 +14,7 @@
             1,
             2
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             2.7,
             3.8,
@@ -34,8 +33,7 @@
             1,
             2
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             2.7,
             3.8,
@@ -46,15 +44,13 @@
         {
           "nome": "Pomodoro",
           "descrizione": null,
-          "ingredienti": [
-          ],
+          "ingredienti": null,
           "taglie": [
             0,
             1,
             2
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             2.4,
             3.5,
@@ -74,8 +70,7 @@
             1,
             2
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             2.7,
             3.7,
@@ -96,8 +91,7 @@
             1,
             2
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             3.7,
             4.8,
@@ -118,8 +112,7 @@
             1,
             2
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             3.7,
             4.8,
@@ -132,15 +125,13 @@
         {
           "nome": "Vuota",
           "descrizione": null,
-          "ingredienti": [
-          ],
+          "ingredienti": null,
           "taglie": [
             0,
             1,
             2
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             1.2,
             1.9,
@@ -151,14 +142,12 @@
         {
           "nome": "Prosciutto",
           "descrizione": null,
-          "ingredienti": [
-          ],
+          "ingredienti": null,
           "taglie": [
             0,
             1
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             4.0,
             5
@@ -168,14 +157,12 @@
         {
           "nome": "Prosciutto e Formaggio",
           "descrizione": null,
-          "ingredienti": [
-          ],
+          "ingredienti": null,
           "taglie": [
             0,
             1
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             4.2,
             5.2
@@ -185,14 +172,12 @@
         {
           "nome": "Prosciutto e Mozzarella",
           "descrizione": null,
-          "ingredienti": [
-          ],
+          "ingredienti": null,
           "taglie": [
             0,
             1
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             4.5,
             5.6
@@ -202,14 +187,12 @@
         {
           "nome": "Prosciutto cotto e Formaggio fresco",
           "descrizione": null,
-          "ingredienti": [
-          ],
+          "ingredienti": null,
           "taglie": [
             0,
             1
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             4.2,
             5.2
@@ -219,14 +202,12 @@
         {
           "nome": "Pancetta",
           "descrizione": null,
-          "ingredienti": [
-          ],
+          "ingredienti": null,
           "taglie": [
             0,
             1
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             4.0,
             5.0
@@ -248,8 +229,7 @@
             0,
             1
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             4.3,
             5.5
@@ -270,8 +250,7 @@
             0,
             1
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             4.5,
             5.8
@@ -291,8 +270,7 @@
             0,
             1
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             4.3,
             5.5
@@ -312,8 +290,7 @@
             0,
             1
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             4.3,
             5.5
@@ -325,15 +302,13 @@
         {
           "nome": "Patate fritte",
           "descrizione": null,
-          "ingredienti": [
-          ],
+          "ingredienti": null,
           "taglie": [
             0,
             1,
             2
           ],
-          "pezzi": [
-          ],
+          "pezzi": null,
           "prezzo": [
             1.9,
             3.0,
@@ -344,12 +319,9 @@
         {
           "nome": "Patate fritte al cheddar fuso",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
-          "pezzi": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
+          "pezzi": null,
           "prezzo": [
             4.3
           ],
@@ -358,12 +330,9 @@
         {
           "nome": "Patate fritte al cheddar fuso e bacon",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
-          "pezzi": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
+          "pezzi": null,
           "prezzo": [
             4.9
           ],
@@ -372,12 +341,9 @@
         {
           "nome": "Patate fritte al cheddar fuso e chili",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
-          "pezzi": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
+          "pezzi": null,
           "prezzo": [
             4.9
           ],
@@ -386,12 +352,9 @@
         {
           "nome": "Patate julienne",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
-          "pezzi": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
+          "pezzi": null,
           "prezzo": [
             3.0
           ],
@@ -400,12 +363,9 @@
         {
           "nome": "Patate chips",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
-          "pezzi": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
+          "pezzi": null,
           "prezzo": [
             3.0
           ],
@@ -414,12 +374,9 @@
         {
           "nome": "Patate strips",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
-          "pezzi": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
+          "pezzi": null,
           "prezzo": [
             3.0
           ],
@@ -428,12 +385,9 @@
         {
           "nome": "Patate a griglia speziate",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
-          "pezzi": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
+          "pezzi": null,
           "prezzo": [
             3.5
           ],
@@ -442,12 +396,9 @@
         {
           "nome": "Potato pops",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
-          "pezzi": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
+          "pezzi": null,
           "prezzo": [
             3.5
           ],
@@ -456,10 +407,8 @@
         {
           "nome": "Crocchette di patate",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
           "pezzi": [
             8
           ],
@@ -471,10 +420,8 @@
         {
           "nome": "Crocchette di patate al cheddar",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
           "pezzi": [
             5
           ],
@@ -486,10 +433,8 @@
         {
           "nome": "Olive all'ascolana",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
           "pezzi": [
             8
           ],
@@ -501,10 +446,8 @@
         {
           "nome": "Crema fritta",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
           "pezzi": [
             8
           ],
@@ -516,10 +459,8 @@
         {
           "nome": "Chicken nuggets",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
           "pezzi": [
             4, 6, 8, 10, 12, 15
           ],
@@ -531,10 +472,8 @@
         {
           "nome": "Caciottini",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
           "pezzi": [
             4
           ],
@@ -546,12 +485,9 @@
         {
           "nome": "Pepite di pollo speziate",
           "descrizione": null,
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
-          "pezzi": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
+          "pezzi": null,
           "prezzo": [
             5
           ],
@@ -560,10 +496,8 @@
         {
           "nome": "Pulled pork nuggets",
           "descrizione": "Crocchette di sfilacci di maiale",
-          "ingredienti": [
-          ],
-          "taglie": [
-          ],
+          "ingredienti": null,
+          "taglie": null,
           "pezzi": [
             5
           ],

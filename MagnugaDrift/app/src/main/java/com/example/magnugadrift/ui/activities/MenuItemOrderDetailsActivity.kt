@@ -152,8 +152,8 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
         MagnuItemDetailsActivity.currentPrice += orderItem.getOrderItemPrice()
         tv_Family.text = orderItem.getOrderItemFamily().toString()
-        if (orderItem.getOrderItemIngredients().isNotEmpty()) {
-            for (food in orderItem.getOrderItemIngredients()) {
+        if (orderItem.getOrderItemIngredients() != null) {
+            for (food in orderItem.getOrderItemIngredients()!!) {
                 lst_ingredients.add(food)
             }
         } else {
@@ -179,7 +179,7 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
                 setupAdditionDialog()
             }
             R.id.bt_food_size -> {
-                if (orderItem.magnugaMenuItem.getSizesValues().isNotEmpty())
+                if (orderItem.magnugaMenuItem.getSizesValues() != null)
                     orderItem.increaseSize()
                 else
                     orderItem.increasePieces()
@@ -190,7 +190,11 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
                 var nOrder = orderItem
                 nOrder.setFinalPrice(MagnuItemDetailsActivity.currentPrice)
                 nOrder.getOrderItemAggiunte()
-                nOrder.setOrderItemIngredients(lst_ingredients)
+                if (orderItem.getOrderItemIngredients() != null) {
+                    nOrder.setOrderItemIngredients(lst_ingredients)
+                } else {
+                    nOrder.setOrderItemIngredients(null)
+                }
                 MainActivity.lstOrder.add(nOrder)
                 val intent = Intent(this, NewOrderActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
