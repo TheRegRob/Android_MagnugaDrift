@@ -14,6 +14,8 @@ import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
 import com.example.magnugadrift.classes.Menu.FrittiMI
+import com.example.magnugadrift.classes.Menu.HamburgerMI
+import com.example.magnugadrift.classes.Menu.HamburgerPatateMI
 import com.example.magnugadrift.classes.Menu.SpianataMI
 import com.example.magnugadrift.classes.Menu.SpianataRipienaMI
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
@@ -75,13 +77,24 @@ class MainActivity : AppCompatActivity() {
         val spianateRipieneJson = jsonFile.food_list.spianate_ripiene
         val fritti = ArrayList<MagnugaMenuItem>()
         val frittiJson = jsonFile.food_list.fritti
+        val hamburger = ArrayList<MagnugaMenuItem>()
+        val hamburgerJson = jsonFile.food_list.hamburger
+        val hamburgerPatate = ArrayList<MagnugaMenuItem>()
+        val hamburgerPatateJson = jsonFile.food_list.hamburger_con_patate
 
         getPizzeNapoletane(pizzeNapoletaneJson, pizzeNapoletane)
         getSpianate(spianateJson, spianate)
         getSpianateRipiene(spianateRipieneJson, spianateRipiene)
         getFritti(frittiJson, fritti)
+        getHamburger(hamburgerJson, hamburger)
+        getHamburgerPatate(hamburgerPatateJson, hamburgerPatate)
 
-        magnuMenu = MagnugaMenu(pizzeNapoletane, spianate, spianateRipiene, fritti)
+        magnuMenu = MagnugaMenu(pizzeNapoletane,
+            spianate,
+            spianateRipiene,
+            fritti,
+            hamburger,
+            hamburgerPatate)
     }
 
     fun getPizzeNapoletane(pizzeNapoletane: List<FoodFamilies.FoodEntry>,
@@ -125,6 +138,28 @@ class MainActivity : AppCompatActivity() {
                 piecesToArray(f.pezzi),
             )
             lst.add(nFritto)
+        }
+    }
+
+    fun getHamburger(hamburger: List<FoodFamilies.FoodEntry>,
+                  lst: ArrayList<MagnugaMenuItem>) {
+        for (h in hamburger) {
+            val nHamburger = HamburgerMI(
+                h.nome, h.descrizione, h.prezzo.toTypedArray(),
+                FoodType.values()[h.tipo], ingredientsToArray(h.ingredienti)
+            )
+            lst.add(nHamburger)
+        }
+    }
+
+    fun getHamburgerPatate(hamburger_patate: List<FoodFamilies.FoodEntry>,
+                           lst: ArrayList<MagnugaMenuItem>) {
+        for (h in hamburger_patate) {
+            val nHamburger = HamburgerPatateMI(
+                h.nome, h.descrizione, h.prezzo.toTypedArray(),
+                FoodType.values()[h.tipo], ingredientsToArray(h.ingredienti)
+            )
+            lst.add(nHamburger)
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.magnugadrift.classes.Menu
 
+import com.example.magnugadrift.classes.Menu.Enums.FoodFamilies
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 

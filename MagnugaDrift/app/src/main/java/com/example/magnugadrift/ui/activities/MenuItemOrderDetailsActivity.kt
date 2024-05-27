@@ -151,7 +151,7 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         et_Notes.setText(orderItem.getOrderItemNote())
         tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
         MagnuItemDetailsActivity.currentPrice += orderItem.getOrderItemPrice()
-        tv_Family.text = orderItem.getOrderItemFamily().toString()
+        tv_Family.text = orderItem.getOrderItemFamily().getString()
         if (orderItem.getOrderItemIngredients() != null) {
             for (food in orderItem.getOrderItemIngredients()!!) {
                 lst_ingredients.add(food)

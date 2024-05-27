@@ -1,8 +1,8 @@
 package com.example.magnugadrift.classes.Menu
 
 import com.example.magnugadrift.classes.AggiuntaType
-import com.example.magnugadrift.classes.Enrich.isEnrichable
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
+import com.example.magnugadrift.classes.Menu.Enums.FoodFamilies
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 
@@ -12,9 +12,9 @@ class PizzaNapoletanaMI(name: String,
                         type: FoodType,
                         ingredients: ArrayList<String>?,
                         sizes: ArrayList<FoodSizes>?) :
-                        MagnugaMenuItem(FoodFamilies.PIZZA_NAPOLETANA, name, descrizione,
-                            ingredients, price, type),
-                        isEnrichable {
+                        MagnugaMenuItem(
+                            FoodFamilies.PIZZA_NAPOLETANA, name, descrizione,
+                            ingredients, price, type) {
     //region Properties
     private val _ingredients: ArrayList<String>?
     private val _sizes: ArrayList<FoodSizes>?

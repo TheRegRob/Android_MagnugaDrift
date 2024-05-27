@@ -109,6 +109,8 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         tv_Aggiunte = findViewById(R.id.tv_additions_header)
         bt_Size = findViewById(R.id.bt_food_size)
         tv_Price = findViewById(R.id.tb_food_price)
+        tv_Description = findViewById(R.id.tv_FoodDescription)
+        vd_BottomDivider = findViewById(R.id.vd_BottomDivider)
         tv_Family = findViewById(R.id.tv_food_family)
         tv_finalPrice = findViewById(R.id.tv_finalPrice)
         rv_ingredients = findViewById(R.id.lv_ingredients)
@@ -146,7 +148,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         et_Notes.setText(orderItem.getOrderItemNote())
         tv_Price.text = String.format("%.2f", orderItem.getOrderItemPrice()) + "€"
         currentPrice += orderItem.getOrderItemPrice()
-        tv_Family.text = orderItem.getOrderItemFamily().toString()
+        tv_Family.text = orderItem.getOrderItemFamily().getString()
         if (orderItem.getOrderItemIngredients() != null) {
             for (food in orderItem.getOrderItemIngredients()!!) {
                 lst_ingredients.add(food)
@@ -174,7 +176,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
                 setupAdditionDialog()
             }
             R.id.bt_food_size -> {
-                if (orderItem.magnugaMenuItem.getSizesValues()!!.isNotEmpty())
+                if (orderItem.magnugaMenuItem.getSizesValues() != null)
                     orderItem.increaseSize()
                 else
                     orderItem.increasePieces()

@@ -3,6 +3,7 @@ package com.example.magnugadrift.classes.Menu
 import com.example.magnugadrift.R
 import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
+import com.example.magnugadrift.classes.Menu.Enums.FoodFamilies
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
@@ -67,6 +68,8 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
              FoodFamilies.SPIANATE -> R.drawable.spianate_img
              FoodFamilies.SPIANATE_RIPIENE -> R.drawable.spianateripiene_img
              FoodFamilies.FRITTI -> R.drawable.fritti_img
+             FoodFamilies.HAMBURGER -> R.drawable.hamburger_img
+             FoodFamilies.HAMBURGER_PATATE -> R.drawable.hamburger_img
          }
      }
 
@@ -115,7 +118,7 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
      * @return     the value of the available sizes
      */
     open fun getPieces(): ArrayList<Pair<PiecesSizes, Int>>? {
-        return arrayListOf()
+        return null
     }
 
     /** Return the available addable foods to enrich the order.

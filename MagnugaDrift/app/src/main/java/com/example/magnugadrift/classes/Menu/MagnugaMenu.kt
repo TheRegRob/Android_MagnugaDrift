@@ -3,12 +3,16 @@ package com.example.magnugadrift.classes.Menu
 class MagnugaMenu(pizzeNapoletane: ArrayList<MagnugaMenuItem>,
                   spianate: ArrayList<MagnugaMenuItem>,
                   spianateRipiene: ArrayList<MagnugaMenuItem>,
-                  fritti: ArrayList<MagnugaMenuItem>) {
+                  fritti: ArrayList<MagnugaMenuItem>,
+                  hamburger: ArrayList<MagnugaMenuItem>,
+                  hamburgerPatate: ArrayList<MagnugaMenuItem>) {
     //region Properties
     private val _pizzeNapoletane: ArrayList<MagnugaMenuItem>
     private val _spianate: ArrayList<MagnugaMenuItem>
     private val _spianateRipiene: ArrayList<MagnugaMenuItem>
     private val _fritti: ArrayList<MagnugaMenuItem>
+    private val _hamburger: ArrayList<MagnugaMenuItem>
+    private val _hamburgerPatate: ArrayList<MagnugaMenuItem>
     //endregion
 
     //region Getters and Setters
@@ -26,6 +30,14 @@ class MagnugaMenu(pizzeNapoletane: ArrayList<MagnugaMenuItem>,
     fun getFritti(): ArrayList<MagnugaMenuItem> {
         return _fritti
     }
+
+    fun getHamburger(): ArrayList<MagnugaMenuItem> {
+        return _hamburger
+    }
+
+    fun getHamburgerPatate(): ArrayList<MagnugaMenuItem> {
+        return _hamburgerPatate
+    }
     //endregion
 
     //region Constructors
@@ -34,6 +46,8 @@ class MagnugaMenu(pizzeNapoletane: ArrayList<MagnugaMenuItem>,
         _spianate = spianate
         _spianateRipiene = spianateRipiene
         _fritti = fritti
+        _hamburger = hamburger
+        _hamburgerPatate = hamburgerPatate
     }
 
     fun getAllMenu() : ArrayList<MagnugaMenuItem> {
@@ -45,6 +59,10 @@ class MagnugaMenu(pizzeNapoletane: ArrayList<MagnugaMenuItem>,
         for (i in getSpianateRipiene())
             menuLst.add(i)
         for (i in getFritti())
+            menuLst.add(i)
+        for (i in getHamburger())
+            menuLst.add(i)
+        for (i in getHamburgerPatate())
             menuLst.add(i)
         return menuLst
     }

@@ -104,7 +104,7 @@ class NewOrderActivity: AppCompatActivity(), View.OnClickListener {
                 MainActivity.lstOrder.removeAt((viewHolder.adapterPosition))
                 rvAdapter.notifyItemRemoved(viewHolder.adapterPosition)
                 tv_FinalPrice.text = String.format("%.2f", calculateOrderPrice()) + "€"
-                Snackbar.make(rv_OrderList, order.getOrderItemName(), Snackbar.LENGTH_LONG)
+                Snackbar.make(rv_OrderList, "Rimosso: " + order.getOrderItemName(), Snackbar.LENGTH_LONG)
                     .setAction(
                         "Annulla"
                     ) {

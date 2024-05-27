@@ -1,6 +1,6 @@
 package com.example.magnugadrift.classes.Menu
 
-import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
+import com.example.magnugadrift.classes.Menu.Enums.FoodFamilies
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
@@ -44,7 +44,6 @@ class FrittiMI(
         _pieces = pieces
         _curSize = sizes?.get(0)
         _curPieces = pieces?.get(0)
-
     }
     //endregion
 

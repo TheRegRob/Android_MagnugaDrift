@@ -489,7 +489,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            5
+            5.0
           ],
           "tipo": 3
         },
@@ -507,6 +507,287 @@
           "tipo": 3
         }
 
+      ],
+      "hamburger": [
+        {
+          "nome": "Hamburger",
+          "descrizione": null,
+          "ingredienti": [
+            "carne",
+            "insalata",
+            "pomodoro"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            4.0
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Bacon Burger",
+          "descrizione": null,
+          "ingredienti": [
+            "carne",
+            "fontina",
+            "pomodoro",
+            "ketchup"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            5.0
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Cheeseburger",
+          "descrizione": null,
+          "ingredienti": [
+            "carne",
+            "fontina",
+            "ketchup"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            4.0
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "King Burger",
+          "descrizione": null,
+          "ingredienti": [
+            "carne",
+            "uovo sodo",
+            "pomodoro",
+            "fontina",
+            "insalata",
+            "cipolla",
+            "ketchup"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            5.2
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Bis Burger",
+          "descrizione": null,
+          "ingredienti": [
+            "doppia carne",
+            "fontina",
+            "insalata",
+            "pomodoro",
+            "ketchup"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            5.2
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Sfizioso",
+          "descrizione": null,
+          "ingredienti": [
+            "carne",
+            "pomodoro",
+            "fontina",
+            "insalata",
+            "salsa rosa"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            5.0
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Doppio Cheeseburger",
+          "descrizione": null,
+          "ingredienti": [
+            "doppia carne",
+            "fontina",
+            "maionese",
+            "ketchup"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            5.2
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Chicken Burger",
+          "descrizione": null,
+          "ingredienti": [
+            "pollo",
+            "pomodoro",
+            "insalata",
+            "maionese"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            5.0
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Superchicken",
+          "descrizione": null,
+          "ingredienti": [
+            "pollo",
+            "cipolla",
+            "fontina",
+            "insalata",
+            "salsa rosa"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            5.2
+          ],
+          "tipo": 0
+        }
+      ],
+      "hamburger_con_patate": [
+        {
+          "nome": "Twin Burger",
+          "descrizione": null,
+          "ingredienti": [
+            "doppia carne",
+            "bacon",
+            "cheddar",
+            "insalata",
+            "salsa burger"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            8.9
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Maxi Cheddar Burger",
+          "descrizione": null,
+          "ingredienti": [
+            "carne di manzo 230g",
+            "pomodoro",
+            "insalata",
+            "cheddar",
+            "ketchup"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            9.9
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Maxi Cheesebacon Burger",
+          "descrizione": null,
+          "ingredienti": [
+            "carne di manzo 230g",
+            "cheddar",
+            "cipolla",
+            "bacon",
+            "pomodoro",
+            "insalata",
+            "salsa ranch"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            9.9
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Maxi Chicken Burger",
+          "descrizione": null,
+          "ingredienti": [
+            "pollo croccante",
+            "bacon",
+            "fontina",
+            "pomodoro",
+            "insalata",
+            "salsa rosa"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            9.9
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Maxi Rosti Burger",
+          "descrizione": null,
+          "ingredienti": [
+            "carne di manzo 230g",
+            "medaglione di patate e cipolla",
+            "pomodoro",
+            "insalata",
+            "cheddar fuso",
+            "salsa barbecue",
+            "salsa ranch"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            9.9
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Maxi Chili Burger",
+          "descrizione": null,
+          "ingredienti": [
+            "carne di manzo 230g",
+            "chili",
+            "cipolla",
+            "pomodoro",
+            "cheddar",
+            "insalata",
+            "salsa piccante"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            9.9
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "GigaBurger",
+          "descrizione": null,
+          "ingredienti": [
+            "carne di manzo 340g",
+            "cheddar",
+            "anelli di peperoni",
+            "pomodoro",
+            "insalata",
+            "cheddar",
+            "fontina",
+            "salsa barbecue"
+          ],
+          "taglie": null,
+          "pezzi": null,
+          "prezzo": [
+            11.9
+          ],
+          "tipo": 0
+        }
       ]
     }
 }

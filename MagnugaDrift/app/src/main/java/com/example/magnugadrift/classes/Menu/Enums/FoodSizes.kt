@@ -1,9 +1,9 @@
 package com.example.magnugadrift.classes.Menu.Enums
 
-import com.example.magnugadrift.classes.Menu.FoodFamilies
-
 enum class FoodSizes(value: Int){
-    S(0), M(1), L(2);
+    S(0),
+    M(1),
+    L(2);
 
     private var value = 0
     init {

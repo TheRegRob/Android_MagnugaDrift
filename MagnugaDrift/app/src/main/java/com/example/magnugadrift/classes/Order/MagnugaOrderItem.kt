@@ -4,7 +4,7 @@ import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
-import com.example.magnugadrift.classes.Menu.FoodFamilies
+import com.example.magnugadrift.classes.Menu.Enums.FoodFamilies
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import java.io.Serializable
 
