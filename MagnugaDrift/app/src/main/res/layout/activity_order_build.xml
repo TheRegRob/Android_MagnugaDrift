@@ -2,18 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ActivityOrderBuild_ll_Root"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:gravity="center"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:text="Ordine"
-        android:textStyle="bold"
-        android:textColor="?android:textColorPrimary"
-        android:textSize="30sp"/>
+
     <Button
         android:id="@+id/bt_AddNewToOrder"
         android:layout_width="match_parent"
@@ -21,11 +15,18 @@
         android:layout_margin="15dp"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
+        android:layout_marginBottom="90dp"
         android:textSize="18sp"
+
         android:text="Aggiungi piatto"
         android:background="@drawable/ripple_effect_generalbutton"
         android:drawableLeft="@drawable/ic_add_food">
     </Button>
+    <LinearLayout
+        android:id="@+id/ActivityOrderBuild_ll_Container"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -39,60 +40,59 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="10dp"
-                android:visibility="invisible"
+                android:layout_marginTop="40dp"
                 android:layout_weight="1"/>
-        <LinearLayout
-            android:id="@+id/ly_priceLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_gravity="center"
-                android:text="Totale">
-            </TextView>
-            <View
+            <LinearLayout
+                android:id="@+id/ly_priceLayout"
                 android:layout_width="match_parent"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_height="1dp"
-                android:background="@color/dull_gray"/>
-            <TextView
-                android:id="@+id/tv_finalPrice"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="27sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:text="_PRICE_">
-            </TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            android:layout_weight="1">
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bt_SaveOrder"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    android:text="Totale">
+                </TextView>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_height="1dp"
+                    android:background="@color/dull_gray"/>
+                <TextView
+                    android:id="@+id/tv_finalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="27sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:text="_PRICE_">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="15dp"
-                android:layout_weight="1"
-                android:background="@drawable/ripple_effect_savebutton"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp"
-                android:visibility="invisible"
-                android:drawableLeft="@drawable/ic_save"
-                android:text="Salva">
-            </androidx.appcompat.widget.AppCompatButton>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_weight="1">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_SaveOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ripple_effect_savebutton"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp"
+                    android:drawableLeft="@drawable/ic_save"
+                    android:text="Salva">
+                </androidx.appcompat.widget.AppCompatButton>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

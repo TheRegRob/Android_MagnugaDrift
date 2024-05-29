@@ -16,9 +16,9 @@
           ],
           "pezzi": null,
           "prezzo": [
-            2.7,
-            3.8,
-            5.0
+            3.0,
+            4.0,
+            5.2
           ],
           "tipo": 2
         },
@@ -35,9 +35,9 @@
           ],
           "pezzi": null,
           "prezzo": [
-            2.7,
-            3.8,
-            5.0
+            3.0,
+            4.0,
+            5.2
           ],
           "tipo": 2
         },
@@ -52,9 +52,9 @@
           ],
           "pezzi": null,
           "prezzo": [
-            2.4,
-            3.5,
-            4.4
+            2.7,
+            3.8,
+            4.8
           ],
           "tipo": 2
         },
@@ -72,9 +72,9 @@
           ],
           "pezzi": null,
           "prezzo": [
-            2.7,
-            3.7,
-            4.9
+            3.0,
+            4.0,
+            5.2
           ],
           "tipo": 2
         },
@@ -93,9 +93,9 @@
           ],
           "pezzi": null,
           "prezzo": [
-            3.7,
-            4.8,
-            7.3
+            4.0,
+            5.0,
+            7.5
           ],
           "tipo": 0
         },
@@ -114,11 +114,11 @@
           ],
           "pezzi": null,
           "prezzo": [
-            3.7,
-            4.8,
-            7.3
+            4.0,
+            5.0,
+            7.5
           ],
-          "tipo": 0
+          "tipo": 2
         }
         ],
       "spianate": [
@@ -133,9 +133,9 @@
           ],
           "pezzi": null,
           "prezzo": [
-            1.2,
-            1.9,
-            2.9
+            1.3,
+            2.0,
+            3.0
           ],
           "tipo": 2
         },
@@ -149,8 +149,8 @@
           ],
           "pezzi": null,
           "prezzo": [
-            4.0,
-            5
+            4.2,
+            5.3
           ],
           "tipo": 0
         },
@@ -164,8 +164,8 @@
           ],
           "pezzi": null,
           "prezzo": [
-            4.2,
-            5.2
+            4.4,
+            5.5
           ],
           "tipo": 0
         },
@@ -179,8 +179,8 @@
           ],
           "pezzi": null,
           "prezzo": [
-            4.5,
-            5.6
+            4.7,
+            5.9
           ],
           "tipo": 0
         },
@@ -194,8 +194,8 @@
           ],
           "pezzi": null,
           "prezzo": [
-            4.2,
-            5.2
+            4.4,
+            5.5
           ],
           "tipo": 0
         },
@@ -209,8 +209,8 @@
           ],
           "pezzi": null,
           "prezzo": [
-            4.0,
-            5.0
+            4.2,
+            5.3
           ],
           "tipo": 0
         }
@@ -231,8 +231,8 @@
           ],
           "pezzi": null,
           "prezzo": [
-            4.3,
-            5.5
+            4.5,
+            5.8
           ],
           "tipo": 0
         },
@@ -252,8 +252,8 @@
           ],
           "pezzi": null,
           "prezzo": [
-            4.5,
-            5.8
+            4.7,
+            6.1
           ],
           "tipo": 0
         },
@@ -272,8 +272,8 @@
           ],
           "pezzi": null,
           "prezzo": [
-            4.3,
-            5.5
+            4.5,
+            5.8
           ],
           "tipo": 0
         },
@@ -292,8 +292,8 @@
           ],
           "pezzi": null,
           "prezzo": [
-            4.3,
-            5.5
+            4.5,
+            5.8
           ],
           "tipo": 0
         }
@@ -310,11 +310,11 @@
           ],
           "pezzi": null,
           "prezzo": [
-            1.9,
-            3.0,
-            5.5
+            2.0,
+            3.2,
+            5.9
           ],
-          "tipo": 3
+          "tipo": 4
         },
         {
           "nome": "Patate fritte al cheddar fuso",
@@ -323,9 +323,9 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            4.3
+            4.5
           ],
-          "tipo": 3
+          "tipo": 2
         },
         {
           "nome": "Patate fritte al cheddar fuso e bacon",
@@ -334,9 +334,9 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            4.9
+            5.2
           ],
-          "tipo": 3
+          "tipo": 0
         },
         {
           "nome": "Patate fritte al cheddar fuso e chili",
@@ -345,9 +345,9 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            4.9
+            5.2
           ],
-          "tipo": 3
+          "tipo": 1
         },
         {
           "nome": "Patate julienne",
@@ -356,9 +356,9 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            3.0
+            3.2
           ],
-          "tipo": 3
+          "tipo": 4
         },
         {
           "nome": "Patate chips",
@@ -367,9 +367,9 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            3.0
+            3.2
           ],
-          "tipo": 3
+          "tipo": 4
         },
         {
           "nome": "Patate strips",
@@ -378,9 +378,9 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            3.0
+            3.7
           ],
-          "tipo": 3
+          "tipo": 4
         },
         {
           "nome": "Patate a griglia speziate",
@@ -389,9 +389,9 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            3.5
+            3.7
           ],
-          "tipo": 3
+          "tipo": 4
         },
         {
           "nome": "Potato pops",
@@ -400,9 +400,9 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            3.5
+            3.7
           ],
-          "tipo": 3
+          "tipo": 4
         },
         {
           "nome": "Crocchette di patate",
@@ -413,9 +413,9 @@
             8
           ],
           "prezzo": [
-            3.0
+            3.2
           ],
-          "tipo": 3
+          "tipo": 4
         },
         {
           "nome": "Crocchette di patate al cheddar",
@@ -426,7 +426,7 @@
             5
           ],
           "prezzo": [
-            3.5
+            3.8
           ],
           "tipo": 3
         },
@@ -439,9 +439,9 @@
             8
           ],
           "prezzo": [
-            3.2
+            3.4
           ],
-          "tipo": 3
+          "tipo": 0
         },
         {
           "nome": "Crema fritta",
@@ -452,9 +452,9 @@
             8
           ],
           "prezzo": [
-            3.2
+            3.4
           ],
-          "tipo": 3
+          "tipo": 4
         },
         {
           "nome": "Chicken nuggets",
@@ -467,7 +467,7 @@
           "prezzo": [
             3.3, 4.8, 6.4, 8, 9.5, 11.5
           ],
-          "tipo": 3
+          "tipo": 0
         },
         {
           "nome": "Caciottini",
@@ -478,9 +478,9 @@
             4
           ],
           "prezzo": [
-            4.2
+            4.4
           ],
-          "tipo": 3
+          "tipo": 2
         },
         {
           "nome": "Pepite di pollo speziate",
@@ -489,9 +489,9 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            5.0
+            5.2
           ],
-          "tipo": 3
+          "tipo": 0
         },
         {
           "nome": "Pulled pork nuggets",
@@ -502,25 +502,25 @@
             5
           ],
           "prezzo": [
-            4.6
+            4.8
           ],
-          "tipo": 3
+          "tipo": 0
         }
-
       ],
       "hamburger": [
         {
           "nome": "Hamburger",
           "descrizione": null,
           "ingredienti": [
-            "carne",
+            "carne di maiale",
             "insalata",
-            "pomodoro"
+            "pomodoro",
+            "ketchup"
           ],
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            4.0
+            4.3
           ],
           "tipo": 0
         },
@@ -528,15 +528,15 @@
           "nome": "Bacon Burger",
           "descrizione": null,
           "ingredienti": [
-            "carne",
+            "carne di maiale",
             "fontina",
-            "pomodoro",
-            "ketchup"
+            "bacon",
+            "maionese"
           ],
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            5.0
+            5.5
           ],
           "tipo": 0
         },
@@ -544,14 +544,14 @@
           "nome": "Cheeseburger",
           "descrizione": null,
           "ingredienti": [
-            "carne",
+            "carne di maiale",
             "fontina",
             "ketchup"
           ],
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            4.0
+            4.3
           ],
           "tipo": 0
         },
@@ -559,7 +559,7 @@
           "nome": "King Burger",
           "descrizione": null,
           "ingredienti": [
-            "carne",
+            "carne di maiale",
             "uovo sodo",
             "pomodoro",
             "fontina",
@@ -570,7 +570,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            5.2
+            5.5
           ],
           "tipo": 0
         },
@@ -578,7 +578,7 @@
           "nome": "Bis Burger",
           "descrizione": null,
           "ingredienti": [
-            "doppia carne",
+            "doppia carne di maiale",
             "fontina",
             "insalata",
             "pomodoro",
@@ -587,7 +587,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            5.2
+            5.5
           ],
           "tipo": 0
         },
@@ -595,7 +595,7 @@
           "nome": "Sfizioso",
           "descrizione": null,
           "ingredienti": [
-            "carne",
+            "carne di maiale",
             "pomodoro",
             "fontina",
             "insalata",
@@ -604,7 +604,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            5.0
+            5.5
           ],
           "tipo": 0
         },
@@ -612,7 +612,7 @@
           "nome": "Doppio Cheeseburger",
           "descrizione": null,
           "ingredienti": [
-            "doppia carne",
+            "doppia carne di maiale",
             "fontina",
             "maionese",
             "ketchup"
@@ -620,7 +620,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            5.2
+            5.5
           ],
           "tipo": 0
         },
@@ -628,7 +628,7 @@
           "nome": "Chicken Burger",
           "descrizione": null,
           "ingredienti": [
-            "pollo",
+            "cotoletta di pollo",
             "pomodoro",
             "insalata",
             "maionese"
@@ -636,7 +636,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            5.0
+            5.5
           ],
           "tipo": 0
         },
@@ -644,7 +644,7 @@
           "nome": "Superchicken",
           "descrizione": null,
           "ingredienti": [
-            "pollo",
+            "cotoletta di pollo",
             "cipolla",
             "fontina",
             "insalata",
@@ -653,7 +653,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            5.2
+            5.5
           ],
           "tipo": 0
         }
@@ -663,7 +663,7 @@
           "nome": "Twin Burger",
           "descrizione": null,
           "ingredienti": [
-            "doppia carne",
+            "doppia carne di maiale",
             "bacon",
             "cheddar",
             "insalata",
@@ -672,7 +672,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            8.9
+            9.5
           ],
           "tipo": 0
         },
@@ -689,7 +689,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            9.9
+            10.5
           ],
           "tipo": 0
         },
@@ -708,7 +708,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            9.9
+            10.5
           ],
           "tipo": 0
         },
@@ -716,7 +716,7 @@
           "nome": "Maxi Chicken Burger",
           "descrizione": null,
           "ingredienti": [
-            "pollo croccante",
+            "pollo croccante maxi",
             "bacon",
             "fontina",
             "pomodoro",
@@ -726,7 +726,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            9.9
+            10.5
           ],
           "tipo": 0
         },
@@ -739,13 +739,12 @@
             "pomodoro",
             "insalata",
             "cheddar fuso",
-            "salsa barbecue",
-            "salsa ranch"
+            "salsa barbecue"
           ],
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            9.9
+            10.5
           ],
           "tipo": 0
         },
@@ -764,17 +763,17 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            9.9
+            10.5
           ],
-          "tipo": 0
+          "tipo": 1
         },
         {
           "nome": "GigaBurger",
           "descrizione": null,
           "ingredienti": [
             "carne di manzo 340g",
-            "cheddar",
-            "anelli di peperoni",
+            "bacon",
+            "peperoni sticks",
             "pomodoro",
             "insalata",
             "cheddar",
@@ -784,7 +783,7 @@
           "taglie": null,
           "pezzi": null,
           "prezzo": [
-            11.9
+            12.9
           ],
           "tipo": 0
         }

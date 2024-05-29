@@ -1,13 +1,16 @@
 package com.example.magnugadrift.adapters
 
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
+import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
 class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
@@ -20,14 +23,16 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
         mListener = clickListener
     }
     inner class NewOrderViewHolder(itemView: View, clickListener: NewOrderRVAdapter.RecyclerViewEvent) : RecyclerView.ViewHolder(itemView){
-        val orderItemImage : ImageView = itemView.findViewById(R.id.iv_OrderItemImage)
-        val orderItemName : TextView = itemView.findViewById(R.id.tv_OrderItemName)
-        val orderItemIngredienti: TextView = itemView.findViewById(R.id.tv_OrderItemIngredients)
-        val orderItemAggiunte: TextView = itemView.findViewById(R.id.tv_OrderItemAdditions)
-        val orderItemSize: TextView = itemView.findViewById(R.id.tv_OrderItemSize)
-        val orderItemPrice : TextView = itemView.findViewById(R.id.tv_OrderItemPrice)
-        val vd_TitleDivider: View = itemView.findViewById(R.id.vd_TitleDivider)
-        val vd_IngregientsDivider: View = itemView.findViewById(R.id.vd_IngregientsDivider)
+        val orderItemImage : ImageView = itemView.findViewById(R.id.RecyclerviewItemOrder_iv_ItemImage)
+        val orderItemName : TextView = itemView.findViewById(R.id.RecyclerviewItemOrder_tv_ItemName)
+        val orderItemIngredienti: TextView = itemView.findViewById(R.id.RecyclerviewItemOrder_tv_ItemIngredients)
+        val orderItemAggiunte: TextView = itemView.findViewById(R.id.RecyclerviewItemOrder_tv_ItemAdditions)
+        val orderItemSize: TextView = itemView.findViewById(R.id.RecyclerviewItemOrder_tv_ItemSize)
+        val orderItemPrice : TextView = itemView.findViewById(R.id.RecyclerviewItemOrder_tv_ItemPrice)
+        val vd_TitleDivider: View = itemView.findViewById(R.id.RecyclerviewItemOrder_vd_TitleDivider)
+        val vd_IngregientsDivider: View = itemView.findViewById(R.id.RecyclerviewItemOrder_vd_IngregientsDivider)
+        val iv_FoodType: ImageView = itemView.findViewById(R.id.RecyclerviewItemOrder_iv_ItemType)
+        val ll_FoodType: LinearLayout = itemView.findViewById(R.id.RecyclerviewItemOrder_ll_ItemType)
         lateinit var curOrderItem: MagnugaOrderItem
 
         init {
@@ -55,6 +60,17 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
         holder.orderItemIngredienti.text = HtmlCompat.fromHtml(generateIngredientsString(holder, currentOrderItem), HtmlCompat.FROM_HTML_MODE_LEGACY)
         holder.orderItemPrice.text = String.format("%.2f", currentOrderItem.getFinalPrice()) + "€"
         holder.orderItemAggiunte.text = HtmlCompat.fromHtml(generateAdditionsString(holder, currentOrderItem), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        if (holder.curOrderItem.getOrderItemType() != FoodType.NORMALE) {
+            holder.ll_FoodType.visibility = View.VISIBLE
+            holder.iv_FoodType.layoutParams.width = holder.curOrderItem.getOrderItemType().getIconWidth()
+            val icon = holder.curOrderItem.getOrderItemType().getIconIdx()
+            if (icon != null)
+                holder.iv_FoodType.setImageResource(icon)
+            else
+                holder.ll_FoodType.visibility = View.GONE
+        } else {
+            holder.ll_FoodType.visibility = View.GONE
+        }
         setLabelTxt(holder, currentOrderItem)
     }
 

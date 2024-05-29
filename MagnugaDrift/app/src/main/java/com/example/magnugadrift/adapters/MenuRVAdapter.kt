@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
+import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 
@@ -26,11 +28,13 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
         mListener = clickListener
     }
     inner class MenuViewHolder(itemView: View, clickListener: RecyclerViewEvent) : RecyclerView.ViewHolder(itemView){
-        val menuItemImage : ImageView = itemView.findViewById(R.id.ivMenuItemImage)
-        val menuItemName : TextView = itemView.findViewById(R.id.tvMenuItemName)
-        val menuItemIngredienti: TextView = itemView.findViewById(R.id.tvMenuItemIngredienti)
-        val menuItemPrice : TextView = itemView.findViewById(R.id.tvMenuItemPrice)
-        val menuItemSwitch: Button = itemView.findViewById(R.id.bt_size_qnt)
+        val menuItemImage : ImageView = itemView.findViewById(R.id.RecyclerviewItemMenu_iv_ItemImage)
+        val menuItemName : TextView = itemView.findViewById(R.id.RecyclerviewItemMenu_tv_ItemName)
+        val menuItemIngredienti: TextView = itemView.findViewById(R.id.RecyclerviewItemMenu_tv_ItemIngredients)
+        val menuItemPrice : TextView = itemView.findViewById(R.id.RecyclerviewItemMenu_tv_ItemPrice)
+        val menuItemSwitch: Button = itemView.findViewById(R.id.RecyclerviewItemMenu_bt_Size)
+        val iv_FoodType: ImageView = itemView.findViewById(R.id.RecyclerviewItemMenu_iv_ItemType)
+        val ll_FoodType: LinearLayout = itemView.findViewById(R.id.RecyclerviewItemMenu_ll_ItemType)
         lateinit var curMenuItem: MagnugaMenuItem
 
         init {
@@ -80,6 +84,17 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
             holder.menuItemSwitch.visibility = View.VISIBLE
         } else {
             holder.menuItemSwitch.visibility = View.GONE
+        }
+        if (holder.curMenuItem.getFoodType() != FoodType.NORMALE) {
+            holder.ll_FoodType.visibility = View.VISIBLE
+            holder.iv_FoodType.layoutParams.width = holder.curMenuItem.getFoodType().getIconWidth()
+            val icon = holder.curMenuItem.getFoodType().getIconIdx()
+            if (icon != null)
+                holder.iv_FoodType.setImageResource(icon)
+            else
+                holder.ll_FoodType.visibility = View.GONE
+        } else {
+            holder.ll_FoodType.visibility = View.GONE
         }
         setSwitchButtonTxt(holder, currentMenuItem)
     }

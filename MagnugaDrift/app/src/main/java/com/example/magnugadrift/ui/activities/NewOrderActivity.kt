@@ -3,6 +3,7 @@ package com.example.magnugadrift.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.text.Layout
+import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -28,6 +29,8 @@ class NewOrderActivity: AppCompatActivity(), View.OnClickListener {
     lateinit var rv_OrderList: RecyclerView
     lateinit var lvcustom_order: LinearLayout
     lateinit var tv_FinalPrice: TextView
+    lateinit var ll_Root: LinearLayout
+    lateinit var ll_Container: LinearLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
@@ -38,6 +41,8 @@ class NewOrderActivity: AppCompatActivity(), View.OnClickListener {
         lvcustom_order = findViewById(R.id.lvcustom_order)
         tv_FinalPrice = findViewById(R.id.tv_finalPrice)
         rv_OrderList = findViewById(R.id.rv_OrderList)
+        ll_Root = findViewById(R.id.ActivityOrderBuild_ll_Root)
+        ll_Container = findViewById(R.id.ActivityOrderBuild_ll_Container)
         rv_OrderList.layoutManager = LinearLayoutManager(this)
         rv_OrderList.setHasFixedSize(true)
         rvAdapter = NewOrderRVAdapter(MainActivity.lstOrder)
@@ -62,9 +67,8 @@ class NewOrderActivity: AppCompatActivity(), View.OnClickListener {
         if (MainActivity.lstOrder.isNotEmpty()) {
             val ly_Price = findViewById<LinearLayout>(R.id.ly_priceLayout)
             val bt_Save = findViewById<AppCompatButton>(R.id.bt_SaveOrder)
-            lvcustom_order.visibility = View.VISIBLE
-            ly_Price.visibility = View.VISIBLE
-            bt_Save.visibility = View.VISIBLE
+            ll_Root.gravity = Gravity.FILL
+            ll_Container.visibility = View.VISIBLE
             tv_FinalPrice.text = String.format("%.2f", calculateOrderPrice()) + "€"
 
         }

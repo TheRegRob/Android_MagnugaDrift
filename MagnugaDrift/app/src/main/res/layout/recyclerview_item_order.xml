@@ -21,7 +21,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/iv_OrderItemImage"
+                android:id="@+id/RecyclerviewItemOrder_iv_ItemImage"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_margin="10dp"
@@ -38,7 +38,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_OrderItemName"
+                    android:id="@+id/RecyclerviewItemOrder_tv_ItemName"
                     android:textSize="15sp"
                     android:textColor="@color/lst_item_text"
                     android:layout_margin="5dp"
@@ -47,7 +47,7 @@
                 </TextView>
 
                 <View
-                    android:id="@+id/vd_TitleDivider"
+                    android:id="@+id/RecyclerviewItemOrder_vd_TitleDivider"
                     android:layout_width="match_parent"
                     android:layout_marginRight="30dp"
                     android:layout_height="1dp"
@@ -56,7 +56,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_OrderItemIngredients"
+                    android:id="@+id/RecyclerviewItemOrder_tv_ItemIngredients"
                     android:textSize="13sp"
                     android:textColor="@color/lst_item_text"
                     android:layout_margin="5dp"
@@ -64,7 +64,7 @@
                     android:text="_INGREDIENTS_">
                 </TextView>
                 <View
-                    android:id="@+id/vd_IngregientsDivider"
+                    android:id="@+id/RecyclerviewItemOrder_vd_IngregientsDivider"
                     android:layout_width="match_parent"
                     android:layout_marginRight="30dp"
                     android:layout_height="1dp"
@@ -73,13 +73,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_OrderItemAdditions"
+                    android:id="@+id/RecyclerviewItemOrder_tv_ItemAdditions"
                     android:textSize="13sp"
                     android:textColor="@color/lst_item_text"
                     android:layout_margin="5dp"
                     android:gravity="start"
                     android:text="_ADDITIONS_">
                 </TextView>
+                <LinearLayout
+                    android:id="@+id/RecyclerviewItemOrder_ll_ItemType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/RecyclerviewItemOrder_iv_ItemType"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="5dp"/>
+                </LinearLayout>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="100dp"
@@ -90,7 +105,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_OrderItemSize"
+                    android:id="@+id/RecyclerviewItemOrder_tv_ItemSize"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_gravity="top|center"
@@ -101,7 +116,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:id="@+id/tv_OrderItemPrice"
+                    android:id="@+id/RecyclerviewItemOrder_tv_ItemPrice"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_gravity="bottom|center"

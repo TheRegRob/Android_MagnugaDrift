@@ -64,12 +64,12 @@ open class MagnugaMenuItem(foodFamily: FoodFamilies,
       */
      fun getResourceImage(): Int {
          return when (_menuItemImageIdx) {
-             FoodFamilies.PIZZA_NAPOLETANA -> R.drawable.pizzenapoletane_img
-             FoodFamilies.SPIANATE -> R.drawable.spianate_img
-             FoodFamilies.SPIANATE_RIPIENE -> R.drawable.spianateripiene_img
-             FoodFamilies.FRITTI -> R.drawable.fritti_img
-             FoodFamilies.HAMBURGER -> R.drawable.hamburger_img
-             FoodFamilies.HAMBURGER_PATATE -> R.drawable.hamburger_img
+             FoodFamilies.PIZZA_NAPOLETANA -> R.drawable.img_pizzenapoletane
+             FoodFamilies.SPIANATE -> R.drawable.img_spianate
+             FoodFamilies.SPIANATE_RIPIENE -> R.drawable.img_spianateripiene
+             FoodFamilies.FRITTI -> R.drawable.img_fritti
+             FoodFamilies.HAMBURGER -> R.drawable.img_hamburger
+             FoodFamilies.HAMBURGER_PATATE -> R.drawable.img_hamburger
          }
      }
 

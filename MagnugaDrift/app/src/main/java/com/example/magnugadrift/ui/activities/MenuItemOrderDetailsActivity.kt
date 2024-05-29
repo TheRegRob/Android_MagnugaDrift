@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.TooltipCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.MainActivity
@@ -25,6 +26,7 @@ import com.example.magnugadrift.adapters.DetailsAdditionsRVAdapter
 import com.example.magnugadrift.adapters.DetailsIngredientsRVAdapter
 import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
+import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
 class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener {
@@ -56,6 +58,8 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
     private lateinit var ingredientsAdapter: DetailsIngredientsRVAdapter
     private lateinit var additionAdapter: DetailsAdditionsRVAdapter
     private lateinit var orderItem: MagnugaOrderItem
+    private lateinit var ll_FoodType: LinearLayout
+    private lateinit var iv_FoodType: ImageView
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,6 +127,8 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         ll_DescriptionLayout = findViewById(R.id.ll_DescriptionLayout)
         ll_group = findViewById(R.id.ll_list_group)
         et_Notes = findViewById(R.id.et_Notes)
+        ll_FoodType = findViewById(R.id.ActivityItemDetails_ll_FoodType)
+        iv_FoodType = findViewById(R.id.ActivityItemDetails_iv_FoodType)
         et_Notes.isEnabled = false
         tv_Ingredients.text = "Ingredienti"
         tv_Aggiunte.text = "Aggiunte"
@@ -135,6 +141,20 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         tv_Name.text = orderItem.getOrderItemName()
         val sizeVal = orderItem.getOrderItemSize()
         val piecesVal = orderItem.getOrderItemPieces()
+        if (orderItem.getOrderItemType() != FoodType.NORMALE) {
+            ll_FoodType.visibility = View.VISIBLE
+            iv_FoodType.layoutParams.width = orderItem.getOrderItemType().getIconWidth()
+            val icon = orderItem.getOrderItemType().getIconIdx()
+            if (icon != null) {
+                iv_FoodType.setImageResource(icon)
+                TooltipCompat.setTooltipText(iv_FoodType, orderItem.getOrderItemType().getTooltipText())
+                iv_FoodType.setOnClickListener{ onClick(iv_FoodType) }
+            }
+            else
+                ll_FoodType.visibility = View.GONE
+        } else {
+            ll_FoodType.visibility = View.GONE
+        }
         if (sizeVal != null) {
             bt_Size.text = orderItem.magnugaMenuItem.getCurrentSize()!!.getString(orderItem.getOrderItemFamily())
         } else if (piecesVal != null) {
@@ -184,6 +204,9 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
                 else
                     orderItem.increasePieces()
                 refreshOrderValues()
+            }
+            R.id.ActivityItemDetails_iv_FoodType -> {
+                iv_FoodType.performLongClick()
             }
             R.id.btSaveAddDetails -> {
                 /* Aggiungere alla lista il piatto selezionato e tornare alla schermata dell'ordine*/

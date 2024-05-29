@@ -21,10 +21,11 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/ivMenuItemImage"
+                android:id="@+id/RecyclerviewItemMenu_iv_ItemImage"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_margin="10dp"
+                android:layout_gravity="center"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <LinearLayout
@@ -35,7 +36,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvMenuItemName"
+                    android:id="@+id/RecyclerviewItemMenu_tv_ItemName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -46,7 +47,7 @@
                     android:textColor="?android:textColorPrimary"/>
 
                 <TextView
-                    android:id="@+id/tvMenuItemIngredienti"
+                    android:id="@+id/RecyclerviewItemMenu_tv_ItemIngredients"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -55,7 +56,19 @@
                     android:textColor="?android:textColorPrimary"
                     android:textAlignment="gravity"
                     android:textSize="15sp"
-                    app:layout_constraintTop_toBottomOf="@+id/tvMenuItemName" />
+                    app:layout_constraintTop_toBottomOf="@+id/RecyclerviewItemMenu_tv_ItemName" />
+                <LinearLayout
+                    android:id="@+id/RecyclerviewItemMenu_ll_ItemType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/RecyclerviewItemMenu_iv_ItemType"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -66,7 +79,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/bt_size_qnt"
+                    android:id="@+id/RecyclerviewItemMenu_bt_Size"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minHeight="0dp"
@@ -74,7 +87,7 @@
                     android:textSize="12sp"/>
 
                 <TextView
-                    android:id="@+id/tvMenuItemPrice"
+                    android:id="@+id/RecyclerviewItemMenu_tv_ItemPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PREZZO"

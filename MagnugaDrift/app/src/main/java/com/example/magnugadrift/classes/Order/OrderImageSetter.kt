@@ -9,7 +9,7 @@ class OrderImageSetter(magnugaMenuItem: MagnugaMenuItem) {
 
     init {
         imageSetterIdx = when (magnugaMenuItem.menuItemFamily()) {
-            FoodFamilies.PIZZA_NAPOLETANA -> R.drawable.pizza_res //Impostare con gli indici corretti
+            FoodFamilies.PIZZA_NAPOLETANA -> R.drawable.thbn_pizza //Impostare con gli indici corretti
             FoodFamilies.SPIANATE -> 0
             FoodFamilies.SPIANATE_RIPIENE -> 0
             FoodFamilies.FRITTI -> 0
