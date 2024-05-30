@@ -35,7 +35,8 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     companion object  {
         var currentPrice: Float = 0.0f
     }
-    private lateinit var iv_Image: ImageView
+    private lateinit var iv_FoodIcon: ImageView
+    private lateinit var iv_FoodImage: ImageView
     private lateinit var tv_Name: TextView
     private lateinit var tv_Ingredients: TextView
     private lateinit var tv_Aggiunte: TextView
@@ -106,7 +107,8 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun initView() {
-        iv_Image = findViewById(R.id.iv_menu_food_icon)
+        iv_FoodIcon = findViewById(R.id.ActivityItemDetails_iv_FoodIcon)
+        iv_FoodImage = findViewById(R.id.ActivityItemDetails_iv_FoodImage)
         tv_Name = findViewById(R.id.tv_food_name)
         tv_Ingredients = findViewById(R.id.tv_ingredients_header)
         tv_Aggiunte = findViewById(R.id.tv_additions_header)
@@ -132,7 +134,12 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun setValuesToViews() {
         orderItem = intent.getSerializableExtra("order_item") as MagnugaOrderItem
-        iv_Image.setImageResource(orderItem.getOrderItemFoodImage())
+        iv_FoodIcon.setImageResource(orderItem.getOrderItemFoodImage())
+        if (orderItem.getOrderItemFamily().getThumbnailIdx() != null) {
+            iv_FoodImage.setImageResource(orderItem.getOrderItemFamily().getThumbnailIdx()!!)
+        } else {
+            iv_FoodImage.setImageResource(android.R.color.transparent)
+        }
         tv_Name.text = orderItem.getOrderItemName()
         val sizeVal = orderItem.getOrderItemSize()
         val piecesVal = orderItem.getOrderItemPieces()

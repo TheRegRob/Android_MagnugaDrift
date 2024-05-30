@@ -1,5 +1,7 @@
 package com.example.magnugadrift.classes.Menu.Enums
 
+import com.example.magnugadrift.R
+
 enum class FoodFamilies(value: Int) {
     PIZZA_NAPOLETANA(0),
     SPIANATE(1),
@@ -15,6 +17,18 @@ enum class FoodFamilies(value: Int) {
 
     open fun getValue(): Int {
         return value
+    }
+
+    fun getThumbnailIdx(): Int? {
+        return when (value) {
+            0 -> R.drawable.thbn_pizza_napoletana
+            1 -> R.drawable.thbn_spianata
+            2 -> R.drawable.thbn_spianata_ripiena
+            3 -> R.drawable.thbn_fritti
+            4 -> R.drawable.thbn_hamburger
+            5 -> R.drawable.thbn_hamburger_patate
+            else -> null
+        }
     }
 
     fun getString(): String {
