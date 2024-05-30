@@ -62,7 +62,7 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
         holder.orderItemAggiunte.text = HtmlCompat.fromHtml(generateAdditionsString(holder, currentOrderItem), HtmlCompat.FROM_HTML_MODE_LEGACY)
         if (holder.curOrderItem.getOrderItemType() != FoodType.NORMALE) {
             holder.ll_FoodType.visibility = View.VISIBLE
-            holder.iv_FoodType.layoutParams.width = holder.curOrderItem.getOrderItemType().getIconWidth()
+            holder.iv_FoodType.layoutParams.width = holder.curOrderItem.getOrderItemType().getIconWidth(FoodType.SizeValues.MEDIUM)
             val icon = holder.curOrderItem.getOrderItemType().getIconIdx()
             if (icon != null)
                 holder.iv_FoodType.setImageResource(icon)

@@ -10,6 +10,11 @@ enum class FoodType(value: Int) {
     VEGANO(4),
     PICCANTE_VEGANO(5);
 
+    enum class SizeValues {
+        SMALL,
+        MEDIUM
+    }
+
     private var value = 0
     init {
         this.value = value
@@ -31,11 +36,11 @@ enum class FoodType(value: Int) {
         }
     }
 
-    fun getIconWidth(): Int {
+    fun getIconWidth(size: SizeValues): Int {
         return when (value) {
-            0, 1, 2, 4 ->  60
-            3, 5 -> 120/* Icona foglia + fiamma*/
-            else -> 0 /* No icona */
+            0, 1, 2, 4 -> if (size == SizeValues.SMALL) 45 else 60
+            3, 5 -> if (size == SizeValues.SMALL) 90 else 120
+            else -> 0
         }
     }
 

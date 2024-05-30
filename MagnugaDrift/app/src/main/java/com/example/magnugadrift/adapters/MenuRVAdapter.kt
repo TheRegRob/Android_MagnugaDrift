@@ -87,7 +87,7 @@ class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :
         }
         if (holder.curMenuItem.getFoodType() != FoodType.NORMALE) {
             holder.ll_FoodType.visibility = View.VISIBLE
-            holder.iv_FoodType.layoutParams.width = holder.curMenuItem.getFoodType().getIconWidth()
+            holder.iv_FoodType.layoutParams.width = holder.curMenuItem.getFoodType().getIconWidth(FoodType.SizeValues.MEDIUM)
             val icon = holder.curMenuItem.getFoodType().getIconIdx()
             if (icon != null)
                 holder.iv_FoodType.setImageResource(icon)

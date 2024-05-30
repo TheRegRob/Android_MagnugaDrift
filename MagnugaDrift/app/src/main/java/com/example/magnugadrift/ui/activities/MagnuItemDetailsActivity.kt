@@ -56,7 +56,6 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var ingredientsAdapter: DetailsIngredientsRVAdapter
     private lateinit var additionAdapter: DetailsAdditionsRVAdapter
     private lateinit var orderItem: MagnugaOrderItem
-    private lateinit var ll_FoodType: LinearLayout
     private lateinit var iv_FoodType: ImageView
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -124,9 +123,8 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         llc_additions = findViewById(R.id.lvcustom_additions)
         ll_DescriptionLayout = findViewById(R.id.ll_DescriptionLayout)
         ll_group = findViewById(R.id.ll_list_group)
-        et_Notes = findViewById(R.id.et_Notes)
-        ll_FoodType = findViewById(R.id.ActivityItemDetails_ll_FoodType)
-        iv_FoodType = findViewById(R.id.ActivityItemDetails_iv_FoodType)
+        et_Notes = findViewById(R.id.CustviewItemDetailsNotes_et_Notes)
+        iv_FoodType = findViewById(R.id.CustviewItemDetailsInfo_iv_FoodType)
         tv_Ingredients.text = "Ingredienti"
         tv_Aggiunte.text = "Aggiunte"
     }
@@ -139,8 +137,8 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         val sizeVal = orderItem.getOrderItemSize()
         val piecesVal = orderItem.getOrderItemPieces()
         if (orderItem.getOrderItemType() != FoodType.NORMALE) {
-            ll_FoodType.visibility = View.VISIBLE
-            iv_FoodType.layoutParams.width = orderItem.getOrderItemType().getIconWidth()
+            iv_FoodType.visibility = View.VISIBLE
+            iv_FoodType.layoutParams.width = orderItem.getOrderItemType().getIconWidth(FoodType.SizeValues.SMALL)
             val icon = orderItem.getOrderItemType().getIconIdx()
             if (icon != null) {
                 iv_FoodType.setImageResource(icon)
@@ -148,9 +146,9 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
                 iv_FoodType.setOnClickListener{ onClick(iv_FoodType) }
             }
             else
-                ll_FoodType.visibility = GONE
+                iv_FoodType.visibility = GONE
         } else {
-            ll_FoodType.visibility = GONE
+            iv_FoodType.visibility = GONE
         }
         if (sizeVal != null) {
             bt_Size.text = orderItem.magnugaMenuItem.getCurrentSize()!!.getString(orderItem.getOrderItemFamily())
@@ -202,7 +200,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
                     orderItem.increasePieces()
                 refreshOrderValues()
             }
-            R.id.ActivityItemDetails_iv_FoodType -> {
+            R.id.CustviewItemDetailsInfo_iv_FoodType -> {
                 iv_FoodType.performLongClick()
             }
         }
