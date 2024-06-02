@@ -18,6 +18,7 @@ class FoodEntry(
     val taglie: List<Int>?,
     val pezzi: List<Int>?,
     val prezzo: List<Float>,
-    val tipo: Int
+    val tipo: Int,
+    val formato: Int?
 )
 }

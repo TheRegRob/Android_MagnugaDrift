@@ -12,6 +12,7 @@ import com.example.magnugadrift.classes.Menu.MagnugaMenu
 import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
+import com.example.magnugadrift.classes.Menu.Enums.FormatoType
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
 import com.example.magnugadrift.classes.Menu.FrittiMI
 import com.example.magnugadrift.classes.Menu.HamburgerMI
@@ -146,7 +147,8 @@ class MainActivity : AppCompatActivity() {
         for (h in hamburger) {
             val nHamburger = HamburgerMI(
                 h.nome, h.descrizione, h.prezzo.toTypedArray(),
-                FoodType.values()[h.tipo], ingredientsToArray(h.ingredienti)
+                FoodType.values()[h.tipo], ingredientsToArray(h.ingredienti),
+                if (h.formato != null) FormatoType.fromInt(h.formato) else null
             )
             lst.add(nHamburger)
         }
@@ -157,7 +159,8 @@ class MainActivity : AppCompatActivity() {
         for (h in hamburger_patate) {
             val nHamburger = HamburgerPatateMI(
                 h.nome, h.descrizione, h.prezzo.toTypedArray(),
-                FoodType.values()[h.tipo], ingredientsToArray(h.ingredienti)
+                FoodType.values()[h.tipo], ingredientsToArray(h.ingredienti),
+                if (h.formato != null) FormatoType.fromInt(h.formato) else null
             )
             lst.add(nHamburger)
         }

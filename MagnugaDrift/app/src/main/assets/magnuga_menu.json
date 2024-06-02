@@ -522,7 +522,8 @@
           "prezzo": [
             4.3
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 0
         },
         {
           "nome": "Bacon Burger",
@@ -538,7 +539,8 @@
           "prezzo": [
             5.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 0
         },
         {
           "nome": "Cheeseburger",
@@ -553,7 +555,8 @@
           "prezzo": [
             4.3
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 0
         },
         {
           "nome": "King Burger",
@@ -572,7 +575,8 @@
           "prezzo": [
             5.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 0
         },
         {
           "nome": "Bis Burger",
@@ -589,7 +593,8 @@
           "prezzo": [
             5.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": null
         },
         {
           "nome": "Sfizioso",
@@ -606,7 +611,8 @@
           "prezzo": [
             5.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 0
         },
         {
           "nome": "Doppio Cheeseburger",
@@ -622,7 +628,8 @@
           "prezzo": [
             5.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": null
         },
         {
           "nome": "Chicken Burger",
@@ -638,7 +645,8 @@
           "prezzo": [
             5.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 1
         },
         {
           "nome": "Superchicken",
@@ -655,7 +663,8 @@
           "prezzo": [
             5.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 1
         }
       ],
       "hamburger_con_patate": [
@@ -674,7 +683,8 @@
           "prezzo": [
             9.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": null
         },
         {
           "nome": "Maxi Cheddar Burger",
@@ -691,7 +701,8 @@
           "prezzo": [
             10.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 2
         },
         {
           "nome": "Maxi Cheesebacon Burger",
@@ -710,7 +721,8 @@
           "prezzo": [
             10.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 2
         },
         {
           "nome": "Maxi Chicken Burger",
@@ -728,7 +740,8 @@
           "prezzo": [
             10.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 1
         },
         {
           "nome": "Maxi Rosti Burger",
@@ -746,7 +759,8 @@
           "prezzo": [
             10.5
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 2
         },
         {
           "nome": "Maxi Chili Burger",
@@ -765,7 +779,8 @@
           "prezzo": [
             10.5
           ],
-          "tipo": 1
+          "tipo": 1,
+          "formato": 2
         },
         {
           "nome": "GigaBurger",
@@ -785,7 +800,8 @@
           "prezzo": [
             12.9
           ],
-          "tipo": 0
+          "tipo": 0,
+          "formato": 4
         }
       ]
     }
