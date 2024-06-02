@@ -12,6 +12,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
@@ -238,12 +239,23 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
                 builderAdditionName.setView(editTextField)
                     .setPositiveButton("OK") { _, _ ->
                         val editTextInput = editTextField .text.toString()
-                        orderItem.addToOrderItemAggiunte(Pair(tmpEnrichLst[position],
-                            editTextInput.replaceFirstChar { firstChar -> firstChar.uppercase() }))
-                        MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
-                        tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
-                        additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
-                        refreshOrderValues()
+                        if (editTextInput.isNotEmpty()) {
+                            orderItem.addToOrderItemAggiunte(
+                                Pair(tmpEnrichLst[position],
+                                    editTextInput.replaceFirstChar { firstChar -> firstChar.uppercase() })
+                            )
+                            MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
+                            tv_finalPrice.text =
+                                String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
+                            additionAdapter.notifyItemInserted(
+                                orderItem.getOrderItemAggiunte()!!.count()
+                            )
+                            refreshOrderValues()
+                        } else {
+                            Toast.makeText(this,
+                                "Il campo non può essere vuoto",
+                                Toast.LENGTH_SHORT).show()
+                        }
                     }
                     .setNegativeButton("Cancel", null)
                     .create()

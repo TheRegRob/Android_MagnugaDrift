@@ -1,5 +1,6 @@
 package com.example.magnugadrift.ui.activities
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -13,6 +14,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
@@ -264,16 +266,22 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
                 builderAdditionName.setView(editTextField)
                     .setPositiveButton("OK") { _, _ ->
                         val editTextInput = editTextField.text.toString()
-                        orderItem.addToOrderItemAggiunte(Pair(tmpEnrichLst[position],
-                            editTextInput.replaceFirstChar { firstChar -> firstChar.uppercase() }))
-                        MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
-                        tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
-                        additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
-                        refreshOrderValues()
+                        if (editTextInput.isNotEmpty()) {
+                            orderItem.addToOrderItemAggiunte(Pair(tmpEnrichLst[position],
+                                editTextInput.replaceFirstChar { firstChar -> firstChar.uppercase() }))
+                            MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
+                            tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
+                            additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
+                            refreshOrderValues()
+                        } else {
+                            Toast.makeText(this,
+                                "Il campo non può essere vuoto",
+                                Toast.LENGTH_SHORT).show()
+                        }
                     }
                     .setNegativeButton("Cancel", null)
-                    .create()
-                builderAdditionName.show()
+                val dialogAddition = builderAdditionName.create()
+                dialogAddition.show()
             } else {
                 orderItem.addToOrderItemAggiunte(Pair(tmpEnrichLst[position], null))
                 MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
@@ -285,7 +293,6 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         val dialog = builder.create()
         dialog.show()
     }
-    
     fun refreshOrderValues() {
         if (orderItem.getOrderItemSize() != null) {
             bt_Size.text =  orderItem.getOrderItemSize()!!.getString(orderItem.getOrderItemFamily())
