@@ -170,7 +170,7 @@ class MainActivity : AppCompatActivity() {
         return if (ingredients != null) {
             val lst = mutableListOf<String>()
             for (t in ingredients) {
-                lst.add(t)
+                lst.add(t.replaceFirstChar { firstChar -> firstChar.uppercase() })
             }
             ArrayList(lst)
         } else {

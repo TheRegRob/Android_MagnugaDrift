@@ -44,10 +44,11 @@ class PizzaNapoletanaMI(name: String,
         _aggiunte = ArrayList()
         _curSize = sizes?.get(0)
         _enricheables = arrayListOf(
-            AggiunteEntry.PZ_AGGIUNTA_DI_PROSCIUTTO,
+            AggiunteEntry.PZ_AGGIUNTA_DI_AFFETTATI,
             AggiunteEntry.PZ_BURRATA,
             AggiunteEntry.PZ_IMPASTO_DI_KAMUT,
             AggiunteEntry.PZ_DOPPIA_MOZZARELLA,
+            AggiunteEntry.PZ_AGGIUNTA_DI_VERDURE,
             AggiunteEntry.PZ_MOZZARELLA_BUFALA)
 
     }

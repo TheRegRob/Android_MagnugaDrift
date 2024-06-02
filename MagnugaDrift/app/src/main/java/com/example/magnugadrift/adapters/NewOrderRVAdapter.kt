@@ -109,7 +109,12 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
             if (item.getOrderItemAggiunte()!!.isNotEmpty()) {
                 additionsLst.append("<b>Aggiunte:</b><br>")
                 for (i in item.getOrderItemAggiunte()!!) {
-                    additionsLst.append(i.getName() + "<br>")
+                    if (i.second == null) {
+                        additionsLst.append(i.first.getName() + "<br>")
+                    } else {
+                        additionsLst.append("<font color='blue'>" + i.second+ "<br>")
+                    }
+
                 }
             } else {
                 additionsLst.append("<b><i>Nessuna aggiunta</i></b>")

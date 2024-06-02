@@ -194,7 +194,7 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         }
         if (orderItem.getOrderItemAggiunte() != null) {
             for (addition in orderItem.getOrderItemAggiunte()!!) {
-                MagnuItemDetailsActivity.currentPrice += getMainPrice(addition)
+                MagnuItemDetailsActivity.currentPrice += getMainPrice(addition.first)
                 orderItem.addToOrderItemAggiunte(addition)
             }
         } else {
@@ -246,7 +246,9 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         var lst_enrichNames = arrayListOf<String>()
         if (orderItem.getOrderItemEnricheables() != null) {
             for (enrich in orderItem.getOrderItemEnricheables()!!) {
-                if (!orderItem.getOrderItemAggiunte()!!.contains(enrich)) {
+                val enrichPair = Pair(enrich, null)
+                if ((enrichPair.first.isRecallable()) ||
+                    (!orderItem.getOrderItemAggiunte()!!.contains(enrichPair))) {
                     lst_enrichNames.add(enrich.getName())
                     tmpEnrichLst.add(enrich)
                 }
@@ -255,11 +257,30 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         val listItems = lst_enrichNames.toTypedArray<CharSequence>()
         builder.setItems(listItems) {
                 dialog, position ->
-            orderItem.addToOrderItemAggiunte(tmpEnrichLst[position])
-            MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
-            tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
-            additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
-            refreshOrderValues()
+            if (tmpEnrichLst[position].isRecallable()) {
+                var editTextField: EditText = EditText(this)
+                val builderAdditionName = AlertDialog.Builder(this)
+                builderAdditionName.setTitle("Digita il nome dell'ingrediente")
+                builderAdditionName.setView(editTextField)
+                    .setPositiveButton("OK") { _, _ ->
+                        val editTextInput = editTextField.text.toString()
+                        orderItem.addToOrderItemAggiunte(Pair(tmpEnrichLst[position],
+                            editTextInput.replaceFirstChar { firstChar -> firstChar.uppercase() }))
+                        MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
+                        tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
+                        additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
+                        refreshOrderValues()
+                    }
+                    .setNegativeButton("Cancel", null)
+                    .create()
+                builderAdditionName.show()
+            } else {
+                orderItem.addToOrderItemAggiunte(Pair(tmpEnrichLst[position], null))
+                MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
+                tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
+                additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
+                refreshOrderValues()
+            }
         }
         val dialog = builder.create()
         dialog.show()
@@ -283,7 +304,7 @@ class MenuItemOrderDetailsActivity  : AppCompatActivity(), View.OnClickListener 
         }
         if (orderItem.getOrderItemAggiunte() != null){
             for (addition in orderItem.getOrderItemAggiunte()!!) {
-                MagnuItemDetailsActivity.currentPrice += getMainPrice(addition)
+                MagnuItemDetailsActivity.currentPrice += getMainPrice(addition.first)
             }
         }
         tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"

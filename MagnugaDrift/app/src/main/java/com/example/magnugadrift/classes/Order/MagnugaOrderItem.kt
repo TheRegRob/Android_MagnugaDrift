@@ -20,7 +20,7 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     private var _size: FoodSizes?
     private var _pieces: Pair<PiecesSizes, Int>?
     private var _ingredients: ArrayList<Pair<String, Boolean>>?
-    private var _aggiunte: ArrayList<AggiuntaType>?
+    private var _aggiunte: ArrayList<Pair<AggiuntaType, String?>>?
     private var _enricheables: ArrayList<AggiuntaType>?
     private var _note: String
     private var _finalPrice: Float
@@ -63,10 +63,10 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     fun setOrderItemIngredients(nList: ArrayList<Pair<String, Boolean>>?) {
         _ingredients = nList
     }
-    fun getOrderItemAggiunte(): ArrayList<AggiuntaType>? {
+    fun getOrderItemAggiunte(): ArrayList<Pair<AggiuntaType, String?>>? {
         return _aggiunte
     }
-    fun addToOrderItemAggiunte(aggiunta: AggiuntaType) {
+    fun addToOrderItemAggiunte(aggiunta: Pair<AggiuntaType, String?>) {
         _aggiunte?.add(aggiunta)
     }
     fun getOrderItemEnricheables(): ArrayList<AggiuntaType>? {
@@ -109,7 +109,7 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
             }
         }
         _enricheables = lst_enricheables
-        _aggiunte = magnugaMenuItem.getAggiunte()
+        _aggiunte = getAggiuntePaired()
         _note = "" // Dovrà essere recuperato dalla memoria
     }
     //endregion
@@ -127,6 +127,19 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
             _magnugaItem.getPieces()!![0]
         } else {
             _magnugaItem.getPieces()!![_magnugaItem.getPieces()!!.indexOf(_pieces) + 1]
+        }
+    }
+
+    private fun getAggiuntePaired(): ArrayList<Pair<AggiuntaType, String?>>? {
+        val lst = mutableListOf<Pair<AggiuntaType, String?>>()
+        val aggiunte = magnugaMenuItem.getAggiunte()
+        if (aggiunte != null) {
+            for (addition in aggiunte) {
+                lst.add(Pair(addition, null))
+            }
+            return ArrayList(lst)
+        } else {
+            return null
         }
     }
     //endregion

@@ -11,7 +11,7 @@ import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.ui.activities.MagnuItemDetailsActivity
 
-class DetailsAdditionsRVAdapter(private var additionsList: ArrayList<AggiuntaType>,
+class DetailsAdditionsRVAdapter(private var additionsList: ArrayList<Pair<AggiuntaType, String?>>,
                                 private val size: FoodSizes? = null,
                                 private val tv_fPrice: TextView) :
     RecyclerView.Adapter<DetailsAdditionsRVAdapter.MenuViewHolder>() {
@@ -49,10 +49,14 @@ class DetailsAdditionsRVAdapter(private var additionsList: ArrayList<AggiuntaTyp
         position: Int
     ) {
         val addition = additionsList[position]
-        additionName.text = addition.getName()
-        additionPrice.text = getMainPrice(addition).toString() + "€"
+        if (addition.second == null) {
+            additionName.text = addition.first.getName()
+        } else {
+            additionName.text = addition.second
+        }
+        additionPrice.text = getMainPrice(addition.first).toString() + "€"
         bt_delete.setOnClickListener(View.OnClickListener {
-            var newPrice: Float = MagnuItemDetailsActivity.currentPrice - getMainPrice(additionsList[holder.adapterPosition])
+            var newPrice: Float = MagnuItemDetailsActivity.currentPrice - getMainPrice(additionsList[holder.adapterPosition].first)
             additionsList.removeAt(holder.adapterPosition)
             notifyItemRemoved(holder.adapterPosition)
             MagnuItemDetailsActivity.currentPrice = newPrice

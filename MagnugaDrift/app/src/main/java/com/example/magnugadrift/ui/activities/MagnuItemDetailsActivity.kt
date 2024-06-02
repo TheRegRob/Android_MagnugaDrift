@@ -31,7 +31,7 @@ import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private var favourite: Boolean = true
     private var lst_ingredients: ArrayList<Pair<String, Boolean>> = ArrayList()
-    private var lst_additions: ArrayList<AggiuntaType> = ArrayList<AggiuntaType>()
+    private var lst_additions: ArrayList<Pair<AggiuntaType, String?>> = ArrayList()
     companion object  {
         var currentPrice: Float = 0.0f
     }
@@ -183,7 +183,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (orderItem.getOrderItemAggiunte() != null) {
             for (addition in orderItem.getOrderItemAggiunte()!!) {
-                currentPrice += getMainPrice(addition)
+                currentPrice += getMainPrice(addition.first)
                 lst_additions.add(addition)
             }
         } else {
@@ -220,7 +220,9 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         var lst_enrichNames = arrayListOf<String>()
         if (orderItem.getOrderItemEnricheables() != null) {
             for (enrich in orderItem.getOrderItemEnricheables()!!) {
-                if (!orderItem.getOrderItemAggiunte()!!.contains(enrich)) {
+                val enrichPair = Pair(enrich, null)
+                if ((enrichPair.first.isRecallable()) ||
+                    (!orderItem.getOrderItemAggiunte()!!.contains(enrichPair))) {
                     lst_enrichNames.add(enrich.getName())
                     tmpEnrichLst.add(enrich)
                 }
@@ -229,11 +231,30 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         val listItems = lst_enrichNames.toTypedArray<CharSequence>()
         builder.setItems(listItems) {
                 dialog, position ->
-            orderItem.addToOrderItemAggiunte(tmpEnrichLst[position])
-            currentPrice += getMainPrice(tmpEnrichLst[position])
-            tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
-            additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
-            refreshOrderValues()
+            if (tmpEnrichLst[position].isRecallable()) {
+                var editTextField: EditText = EditText(this)
+                val builderAdditionName = AlertDialog.Builder(this)
+                builderAdditionName.setTitle("Digita il nome dell'ingrediente")
+                builderAdditionName.setView(editTextField)
+                    .setPositiveButton("OK") { _, _ ->
+                        val editTextInput = editTextField .text.toString()
+                        orderItem.addToOrderItemAggiunte(Pair(tmpEnrichLst[position],
+                            editTextInput.replaceFirstChar { firstChar -> firstChar.uppercase() }))
+                        MagnuItemDetailsActivity.currentPrice += getMainPrice(tmpEnrichLst[position])
+                        tv_finalPrice.text = String.format("%.2f", MagnuItemDetailsActivity.currentPrice) + "€"
+                        additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
+                        refreshOrderValues()
+                    }
+                    .setNegativeButton("Cancel", null)
+                    .create()
+                builderAdditionName.show()
+            } else {
+                orderItem.addToOrderItemAggiunte(Pair(tmpEnrichLst[position], null))
+                currentPrice += getMainPrice(tmpEnrichLst[position])
+                tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
+                additionAdapter.notifyItemInserted(orderItem.getOrderItemAggiunte()!!.count())
+                refreshOrderValues()
+            }
         }
         val dialog = builder.create()
         dialog.show()
@@ -257,7 +278,7 @@ class MagnuItemDetailsActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (orderItem.getOrderItemAggiunte() != null){
             for (addition in orderItem.getOrderItemAggiunte()!!) {
-                currentPrice += getMainPrice(addition)
+                currentPrice += getMainPrice(addition.first)
             }
         }
         tv_finalPrice.text = String.format("%.2f", currentPrice) + "€"
