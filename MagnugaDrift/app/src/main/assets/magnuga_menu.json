@@ -804,5 +804,26 @@
           "formato": 4
         }
       ]
-    }
+    },
+      "drink_list":
+      {
+        "bevande_spina": [
+          {
+            "nome": "Coca-Cola",
+            "descrizione": null,
+            "ingredienti": null,
+            "taglie": [
+              0,
+              1,
+              2
+            ],
+            "prezzo" : [
+              2.5,
+              2.8,
+              3.0
+          ],
+            "tipo": 0
+          }
+        ]
+      }
 }

@@ -14,11 +14,11 @@ enum class FoodSizes(value: Int){
         return value
     }
 
-    fun getString(foodFam: FoodFamilies): String {
+    fun getString(foodFam: MenuItemFamilies): String {
         return when (value) {
-            0 -> if (foodFam == FoodFamilies.FRITTI) "Piccole" else "Piccola"
-            1 -> if (foodFam == FoodFamilies.FRITTI) "Normali" else "Media"
-            2 -> if (foodFam == FoodFamilies.FRITTI) "Grandi" else "Maxi"
+            0 -> if (foodFam == MenuItemFamilies.FRITTI) "Piccole" else "Piccola"
+            1 -> if (foodFam == MenuItemFamilies.FRITTI) "Normali" else "Media"
+            2 -> if (foodFam == MenuItemFamilies.FRITTI) "Grandi" else "Maxi"
             else -> "unexp err"
         }
     }

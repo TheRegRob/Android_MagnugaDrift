@@ -1,5 +1,6 @@
 package com.example.magnugadrift.ui.menu
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,19 +15,34 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.magnugadrift.MainActivity
 import com.example.magnugadrift.R
 import com.example.magnugadrift.adapters.MenuRVAdapter
-import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
+import com.example.magnugadrift.classes.Menu.Enums.MenuType
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 import com.example.magnugadrift.databinding.FragmentMenuBinding
 import com.example.magnugadrift.ui.activities.MagnuItemDetailsActivity
 
-class MenuFragment : Fragment() {
+class MenuFragment() : Fragment() {
+    companion object {
+        fun newInstance(menuType: MenuType) = MenuFragment().apply {
+            arguments = Bundle().apply {
+                putInt("SELECTED_MENU_TYPE", menuType.getValue())
+            }
+        }
+    }
 
     private var _binding: FragmentMenuBinding? = null
+    lateinit private var _selectedMenuType: MenuType
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
     private val viewModel : MenuViewModel by activityViewModels()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        arguments?.getInt("SELECTED_MENU_TYPE")?.let {
+            _selectedMenuType = MenuType.fromInt(it)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,8 +53,13 @@ class MenuFragment : Fragment() {
             ViewModelProvider(this).get(MenuViewModel::class.java)
 
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
+        val view = inflater.inflate(R.layout.fragment_menu, container, false)
         //var view: View = inflater.inflate(R.layout.activity_magnu_item_details, container, false)
-        var menuList = MainActivity.magnuMenu.getAllMenu()
+        val menuList = when (_selectedMenuType) {
+            MenuType.CIBO -> MainActivity.foodMagnuMenu.GetAllMenu()
+            MenuType.BERE -> MainActivity.drinkMagnuMenu.GetAllDrinks()
+            MenuType.DOLCI -> MainActivity.foodMagnuMenu.GetAllMenu()
+        }
         val rvAdapter = MenuRVAdapter(menuList)
         val recyclerView = binding.rvMenuList
         val dd = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
@@ -59,6 +80,8 @@ class MenuFragment : Fragment() {
         val root: View = binding.root
         return root
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

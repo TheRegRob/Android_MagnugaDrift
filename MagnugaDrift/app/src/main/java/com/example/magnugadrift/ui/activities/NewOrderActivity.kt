@@ -2,12 +2,10 @@ package com.example.magnugadrift.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Layout
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
@@ -18,9 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.MainActivity
 import com.example.magnugadrift.R
-import com.example.magnugadrift.adapters.MenuRVAdapter
 import com.example.magnugadrift.adapters.NewOrderRVAdapter
-import com.example.magnugadrift.classes.Menu.MagnugaMenu
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 import com.google.android.material.snackbar.Snackbar
 

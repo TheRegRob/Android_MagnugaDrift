@@ -1,6 +1,6 @@
-package com.example.magnugadrift.classes.Menu
+package com.example.magnugadrift.classes.Menu.Foods
 
-import com.example.magnugadrift.classes.Menu.Enums.FoodFamilies
+import com.example.magnugadrift.classes.Menu.Enums.MenuItemFamilies
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
@@ -14,7 +14,7 @@ class FrittiMI(
     sizes: ArrayList<FoodSizes>?,
     pieces: ArrayList<Pair<PiecesSizes, Int>>?
 ) :
-    MagnugaMenuItem(FoodFamilies.FRITTI, name, descrizione, ingredients, price, type) {
+    MagnugaMenuItem(MenuItemFamilies.FRITTI, name, descrizione, ingredients, price, type) {
     //region Properties
     private val _ingredients: ArrayList<String>?
     private val _sizes: ArrayList<FoodSizes>?

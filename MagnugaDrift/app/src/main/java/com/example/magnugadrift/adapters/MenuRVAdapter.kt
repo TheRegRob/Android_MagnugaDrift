@@ -1,6 +1,5 @@
 package com.example.magnugadrift.adapters
 
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
-import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
-import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
-import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
+import com.example.magnugadrift.classes.Menu.Foods.MagnugaMenuItem
 
 
 class MenuRVAdapter(private val menuList: ArrayList<MagnugaMenuItem>) :

@@ -1,18 +1,18 @@
-package com.example.magnugadrift.classes.Menu
+package com.example.magnugadrift.classes.Menu.Foods
 
 import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
-import com.example.magnugadrift.classes.Menu.Enums.FoodFamilies
+import com.example.magnugadrift.classes.Menu.Enums.MenuItemFamilies
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.FormatoType
 
-class HamburgerPatateMI (name: String,
-                         descrizione: String?,
-                         price: Array<Float>,
-                         type: FoodType,
-                         ingredients: ArrayList<String>?,
-                         formato: FormatoType?) :
-    MagnugaMenuItem(FoodFamilies.HAMBURGER_PATATE, name, descrizione, ingredients, price, type) {
+class HamburgerMI(name: String,
+                  descrizione: String?,
+                  price: Array<Float>,
+                  type: FoodType,
+                  ingredients: ArrayList<String>?,
+                  formato: FormatoType?) :
+    MagnugaMenuItem(MenuItemFamilies.HAMBURGER, name, descrizione, ingredients, price, type) {
     //region Properties
     private val _ingredients: ArrayList<String>?
     private val _prices: Array<Float>
@@ -50,7 +50,7 @@ class HamburgerPatateMI (name: String,
     }
 
     override fun getCurrentPrice(): Float {
-        return _prices[0]
+            return _prices[0]
     }
 
     override fun getEnricheables(): ArrayList<AggiunteEntry> {

@@ -4,8 +4,8 @@ import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
-import com.example.magnugadrift.classes.Menu.Enums.FoodFamilies
-import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
+import com.example.magnugadrift.classes.Menu.Enums.MenuItemFamilies
+import com.example.magnugadrift.classes.Menu.Foods.MagnugaMenuItem
 import java.io.Serializable
 
 data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable {
@@ -15,7 +15,7 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     private val _price: Float
     private val _type: FoodType
     private val _magnugaItem: MagnugaMenuItem
-    private var _family: FoodFamilies
+    private var _family: MenuItemFamilies
     private var _name: String
     private var _size: FoodSizes?
     private var _pieces: Pair<PiecesSizes, Int>?
@@ -45,7 +45,7 @@ data class MagnugaOrderItem(val magnugaMenuItem: MagnugaMenuItem) : Serializable
     fun getOrderItemType(): FoodType {
         return _type
     }
-    fun getOrderItemFamily(): FoodFamilies {
+    fun getOrderItemFamily(): MenuItemFamilies {
         return _family
     }
     fun getOrderItemName(): String {

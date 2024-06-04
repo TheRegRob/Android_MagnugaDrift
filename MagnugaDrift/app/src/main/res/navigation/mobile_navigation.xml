@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_menu"
-        android:name="com.example.magnugadrift.ui.menu.MenuFragment"
+        android:name="com.example.magnugadrift.ui.menu.TabLayoutMenuPager"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/tablayout_menu_pager" />
 
     <fragment
         android:id="@+id/navigation_order"

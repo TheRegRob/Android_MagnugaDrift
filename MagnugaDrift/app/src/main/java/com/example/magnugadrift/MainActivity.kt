@@ -2,23 +2,27 @@ package com.example.magnugadrift
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.magnugadrift.classes.FoodFamilies
+import com.example.magnugadrift.classes.DrinkFamiliesContent
+import com.example.magnugadrift.classes.FoodFamiliesContent
+import com.example.magnugadrift.classes.Menu.DrinkMagnugaMenu
+import com.example.magnugadrift.classes.Menu.Drinks.BevandeSpinaMI
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
-import com.example.magnugadrift.classes.Menu.MagnugaMenu
-import com.example.magnugadrift.classes.Menu.MagnugaMenuItem
-import com.example.magnugadrift.classes.Menu.PizzaNapoletanaMI
+import com.example.magnugadrift.classes.Menu.FoodMagnugaMenu
+import com.example.magnugadrift.classes.Menu.Foods.MagnugaMenuItem
+import com.example.magnugadrift.classes.Menu.Foods.PizzaNapoletanaMI
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.FormatoType
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
-import com.example.magnugadrift.classes.Menu.FrittiMI
-import com.example.magnugadrift.classes.Menu.HamburgerMI
-import com.example.magnugadrift.classes.Menu.HamburgerPatateMI
-import com.example.magnugadrift.classes.Menu.SpianataMI
-import com.example.magnugadrift.classes.Menu.SpianataRipienaMI
+import com.example.magnugadrift.classes.Menu.Foods.FrittiMI
+import com.example.magnugadrift.classes.Menu.Foods.HamburgerMI
+import com.example.magnugadrift.classes.Menu.Foods.HamburgerPatateMI
+import com.example.magnugadrift.classes.Menu.Foods.SpianataMI
+import com.example.magnugadrift.classes.Menu.Foods.SpianataRipienaMI
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 import com.example.magnugadrift.classes.UIContent
 import com.example.magnugadrift.databinding.ActivityMainBinding
@@ -28,9 +32,10 @@ import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
     companion object {
-        lateinit var magnuMenu: MagnugaMenu
-        /* Gestire pulizia lista se esco dall'ordine */
+        lateinit var foodMagnuMenu: FoodMagnugaMenu
+        lateinit var drinkMagnuMenu: DrinkMagnugaMenu
         lateinit var lstOrder: ArrayList<MagnugaOrderItem>
+        lateinit var fragManager: FragmentManager
     }
 
 
@@ -41,12 +46,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val jsonStr = loadMenuEntries()
         data = Gson().fromJson(jsonStr, UIContent::class.java)
-        createMenu(data)
+        food_CreateMenu(data)
+        drink_CreateMenu(data)
         supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         lstOrder = ArrayList()
-
+        fragManager = supportFragmentManager
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
@@ -69,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         return data
     }
 
-    fun createMenu(jsonFile: UIContent) {
+    fun food_CreateMenu(jsonFile: UIContent) {
         val pizzeNapoletane = ArrayList<MagnugaMenuItem>()
         val pizzeNapoletaneJson = jsonFile.food_list.pizze_napoletane
         val spianate = ArrayList<MagnugaMenuItem>()
@@ -90,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         getHamburger(hamburgerJson, hamburger)
         getHamburgerPatate(hamburgerPatateJson, hamburgerPatate)
 
-        magnuMenu = MagnugaMenu(pizzeNapoletane,
+        foodMagnuMenu = FoodMagnugaMenu(pizzeNapoletane,
             spianate,
             spianateRipiene,
             fritti,
@@ -98,7 +104,21 @@ class MainActivity : AppCompatActivity() {
             hamburgerPatate)
     }
 
-    fun getPizzeNapoletane(pizzeNapoletane: List<FoodFamilies.FoodEntry>,
+    fun drink_CreateMenu(jsonFile: UIContent) {
+        val bevande_spina = ArrayList<MagnugaMenuItem>()
+        val bevande_spinaJson = jsonFile.drink_list.bevande_spina
+        val bevande_lattina =  ArrayList<MagnugaMenuItem>()
+        val bevande_lattinaJson = jsonFile.drink_list.bevande_lattina
+        val bevande_bottiglia = ArrayList<MagnugaMenuItem>()
+        val bevande_bottigliaJson = jsonFile.drink_list.bevande_bottiglia
+
+        getBevandeSpina(bevande_spinaJson, bevande_spina)
+
+        drinkMagnuMenu = DrinkMagnugaMenu(bevande_spina)
+
+    }
+
+    fun getPizzeNapoletane(pizzeNapoletane: List<FoodFamiliesContent.FoodEntry>,
                            lst: ArrayList<MagnugaMenuItem>) {
         for (p in pizzeNapoletane) {
             val nPizza = PizzaNapoletanaMI(
@@ -109,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getSpianate(spianate: List<FoodFamilies.FoodEntry>, lst: ArrayList<MagnugaMenuItem>) {
+    fun getSpianate(spianate: List<FoodFamiliesContent.FoodEntry>, lst: ArrayList<MagnugaMenuItem>) {
         for (s in spianate) {
             val nSpianata = SpianataMI(
                 s.nome, s.descrizione, s.prezzo.toTypedArray(),
@@ -119,7 +139,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getSpianateRipiene(spianateRipiene: List<FoodFamilies.FoodEntry>,
+    fun getSpianateRipiene(spianateRipiene: List<FoodFamiliesContent.FoodEntry>,
                            lst: ArrayList<MagnugaMenuItem>) {
         for (s in spianateRipiene) {
             val nSpianata = SpianataRipienaMI(
@@ -130,8 +150,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getFritti(fritti: List<FoodFamilies.FoodEntry>,
-                           lst: ArrayList<MagnugaMenuItem>) {
+    fun getFritti(fritti: List<FoodFamiliesContent.FoodEntry>,
+                  lst: ArrayList<MagnugaMenuItem>) {
         for (f in fritti) {
             val nFritto = FrittiMI(
                 f.nome, f.descrizione, f.prezzo.toTypedArray(),
@@ -142,8 +162,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getHamburger(hamburger: List<FoodFamilies.FoodEntry>,
-                  lst: ArrayList<MagnugaMenuItem>) {
+    fun getHamburger(hamburger: List<FoodFamiliesContent.FoodEntry>,
+                     lst: ArrayList<MagnugaMenuItem>) {
         for (h in hamburger) {
             val nHamburger = HamburgerMI(
                 h.nome, h.descrizione, h.prezzo.toTypedArray(),
@@ -154,7 +174,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getHamburgerPatate(hamburger_patate: List<FoodFamilies.FoodEntry>,
+    fun getHamburgerPatate(hamburger_patate: List<FoodFamiliesContent.FoodEntry>,
                            lst: ArrayList<MagnugaMenuItem>) {
         for (h in hamburger_patate) {
             val nHamburger = HamburgerPatateMI(
@@ -163,6 +183,17 @@ class MainActivity : AppCompatActivity() {
                 if (h.formato != null) FormatoType.fromInt(h.formato) else null
             )
             lst.add(nHamburger)
+        }
+    }
+
+    fun getBevandeSpina(bevandeSpina: List<DrinkFamiliesContent.DrinkEntry>,
+                        lst: ArrayList<MagnugaMenuItem>) {
+        for (b in bevandeSpina) {
+            val nBevanda = BevandeSpinaMI(
+                b.nome, sizesToArray(b.taglie), b.prezzo.toTypedArray(),
+                FoodType.values()[b.tipo]
+            )
+            lst.add(nBevanda)
         }
     }
 
