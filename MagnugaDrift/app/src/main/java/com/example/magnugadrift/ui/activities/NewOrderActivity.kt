@@ -66,7 +66,6 @@ class NewOrderActivity: AppCompatActivity(), View.OnClickListener {
             ll_Root.gravity = Gravity.FILL
             ll_Container.visibility = View.VISIBLE
             tv_FinalPrice.text = String.format("%.2f", calculateOrderPrice()) + "€"
-
         }
     }
 

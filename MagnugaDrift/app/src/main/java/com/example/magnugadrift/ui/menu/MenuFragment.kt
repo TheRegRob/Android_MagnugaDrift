@@ -15,22 +15,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.magnugadrift.MainActivity
 import com.example.magnugadrift.R
 import com.example.magnugadrift.adapters.MenuRVAdapter
+import com.example.magnugadrift.classes.Menu.Enums.MenuMode
 import com.example.magnugadrift.classes.Menu.Enums.MenuType
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 import com.example.magnugadrift.databinding.FragmentMenuBinding
 import com.example.magnugadrift.ui.activities.MagnuItemDetailsActivity
+import com.example.magnugadrift.ui.activities.MenuItemOrderDetailsActivity
 
 class MenuFragment() : Fragment() {
     companion object {
-        fun newInstance(menuType: MenuType) = MenuFragment().apply {
+        fun newInstance(menuType: MenuType, menuMode: MenuMode) = MenuFragment().apply {
             arguments = Bundle().apply {
                 putInt("SELECTED_MENU_TYPE", menuType.getValue())
+                putInt("SELECTED_MENU_MODE", menuMode.getValue())
             }
         }
     }
 
     private var _binding: FragmentMenuBinding? = null
     lateinit private var _selectedMenuType: MenuType
+    lateinit private var _selectedMenuMode: MenuMode
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -41,6 +45,9 @@ class MenuFragment() : Fragment() {
         super.onAttach(context)
         arguments?.getInt("SELECTED_MENU_TYPE")?.let {
             _selectedMenuType = MenuType.fromInt(it)
+        }
+        arguments?.getInt("SELECTED_MENU_MODE")?.let {
+            _selectedMenuMode = MenuMode.fromInt(it)
         }
     }
 
@@ -58,17 +65,19 @@ class MenuFragment() : Fragment() {
         }
         val rvAdapter = MenuRVAdapter(menuList)
         val recyclerView = binding.rvMenuList
-        val dd = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
-        ContextCompat.getDrawable(activity as MainActivity, R.drawable.divider)
-            ?.let { dd.setDrawable(it) }
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = rvAdapter
         val data = ArrayList<MenuRVAdapter>()
         rvAdapter.setRecyclerViewEvent(object : MenuRVAdapter.RecyclerViewEvent {
             override fun onItemClick(position: Int) {
-                val intent = Intent(activity, MagnuItemDetailsActivity::class.java)
+                var intent: Intent
                 val magnugaOrderItem = MagnugaOrderItem(menuList[position])
+                if (_selectedMenuMode == MenuMode.CONSULTATION) {
+                    intent = Intent(activity, MagnuItemDetailsActivity::class.java)
+                } else {
+                    intent = Intent(activity, MenuItemOrderDetailsActivity::class.java)
+                }
                 intent.putExtra("order_item", magnugaOrderItem)
                 startActivity(intent)
             }

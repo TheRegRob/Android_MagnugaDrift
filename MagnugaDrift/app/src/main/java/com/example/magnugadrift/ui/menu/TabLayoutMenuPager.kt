@@ -1,5 +1,6 @@
 package com.example.magnugadrift.ui.menu
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.loader.app.LoaderManager
+import androidx.navigation.NavArgument
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
@@ -18,6 +20,8 @@ import com.example.magnugadrift.MainActivity
 import com.example.magnugadrift.R
 import com.example.magnugadrift.adapters.MenuFPAdapter
 import com.example.magnugadrift.adapters.MenuRVAdapter
+import com.example.magnugadrift.classes.Menu.Enums.MenuMode
+import com.example.magnugadrift.classes.Menu.Enums.MenuType
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 import com.example.magnugadrift.databinding.FragmentMenuBinding
 import com.example.magnugadrift.databinding.TablayoutMenuPagerBinding
@@ -25,12 +29,21 @@ import com.example.magnugadrift.ui.activities.MagnuItemDetailsActivity
 import com.google.android.material.tabs.TabLayout
 
 class TabLayoutMenuPager: Fragment() {
+
     private var _binding: TablayoutMenuPagerBinding? = null
     private lateinit var tl_TabLayout: TabLayout
     private lateinit var vp_ViewPager: ViewPager2
     private lateinit var adapter: MenuFPAdapter
+    private var _selectedMenuMode: MenuMode = MenuMode.CONSULTATION
 
     private val binding get() = _binding!!
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        arguments?.getInt("SELECTED_MENU_MODE")?.let {
+            _selectedMenuMode = MenuMode.fromInt(it)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,7 +64,7 @@ class TabLayoutMenuPager: Fragment() {
     fun initView(view: View) {
         tl_TabLayout = view.findViewById(R.id.TablayoutMenuPager_tl_TabLayout)
         vp_ViewPager = view.findViewById(R.id.TablayoutMenuPager_vp_ViewPager)
-        adapter = MenuFPAdapter(parentFragmentManager, lifecycle)
+        adapter = MenuFPAdapter(parentFragmentManager, lifecycle, _selectedMenuMode)
 
         tl_TabLayout.addTab(tl_TabLayout.newTab().setText("Cibo"))
         tl_TabLayout.addTab(tl_TabLayout.newTab().setText("Bere"))

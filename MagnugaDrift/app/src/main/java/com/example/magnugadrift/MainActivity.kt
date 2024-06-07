@@ -3,6 +3,7 @@ package com.example.magnugadrift
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.NavArgument
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -18,6 +19,7 @@ import com.example.magnugadrift.classes.Menu.Foods.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.Foods.PizzaNapoletanaMI
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.FormatoType
+import com.example.magnugadrift.classes.Menu.Enums.MenuMode
 import com.example.magnugadrift.classes.Menu.Enums.MenuType
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
 import com.example.magnugadrift.classes.Menu.Foods.FrittiMI
@@ -65,6 +67,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_order, R.id.navigation_menu, R.id.navigation_history
             )
         )
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when (destination.id) {
+                R.id.TablayoutMenuPager_vp_ViewPager -> {
+                    val argument = NavArgument.Builder().setDefaultValue(MenuMode.CONSULTATION).build()
+                    destination.addArgument("SELECTED_MENU_MODE", argument)
+                }
+            }            }
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
