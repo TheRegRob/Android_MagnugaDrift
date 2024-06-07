@@ -61,7 +61,7 @@ class MenuFragment() : Fragment() {
         val menuList = when (_selectedMenuType) {
             MenuType.CIBO -> MainActivity.foodMagnuMenu.GetAllMenu()
             MenuType.BERE -> MainActivity.drinkMagnuMenu.GetAllDrinks()
-            MenuType.DOLCI -> MainActivity.foodMagnuMenu.GetAllMenu()
+            MenuType.DOLCI -> MainActivity.dessertMagnuMenu.GetAllDesserts()
         }
         val rvAdapter = MenuRVAdapter(menuList)
         val recyclerView = binding.rvMenuList

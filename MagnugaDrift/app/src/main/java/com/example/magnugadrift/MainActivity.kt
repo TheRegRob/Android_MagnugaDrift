@@ -9,8 +9,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.magnugadrift.classes.DessertFamiliesContent
 import com.example.magnugadrift.classes.DrinkFamiliesContent
 import com.example.magnugadrift.classes.FoodFamiliesContent
+import com.example.magnugadrift.classes.Menu.DessertMagnugaMenu
+import com.example.magnugadrift.classes.Menu.Desserts.AltriDolciMI
+import com.example.magnugadrift.classes.Menu.Desserts.DonutsMI
+import com.example.magnugadrift.classes.Menu.Desserts.FetteTortaMI
 import com.example.magnugadrift.classes.Menu.DrinkMagnugaMenu
 import com.example.magnugadrift.classes.Menu.Drinks.BevandeSpinaMI
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
@@ -41,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         lateinit var foodMagnuMenu: FoodMagnugaMenu
         lateinit var drinkMagnuMenu: DrinkMagnugaMenu
+        lateinit var dessertMagnuMenu: DessertMagnugaMenu
         lateinit var lstOrder: ArrayList<MagnugaOrderItem>
     }
 
@@ -54,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         data = Gson().fromJson(jsonStr, UIContent::class.java)
         food_CreateMenu(data)
         drink_CreateMenu(data)
+        dessert_CreateMenu(data)
         supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -127,6 +134,21 @@ class MainActivity : AppCompatActivity() {
 
         drinkMagnuMenu = DrinkMagnugaMenu(bevande_spina)
 
+    }
+
+    fun dessert_CreateMenu(jsonFile: UIContent) {
+        val fette_torta = ArrayList<MagnugaMenuItem>()
+        val fette_tortaJson = jsonFile.dessert_list.fette_torta
+        val donuts =  ArrayList<MagnugaMenuItem>()
+        val donutsJson = jsonFile.dessert_list.donuts
+        val altri_dolci = ArrayList<MagnugaMenuItem>()
+        val altri_dolciJson = jsonFile.dessert_list.altri_dolci
+
+        getFetteTorta(fette_tortaJson, fette_torta)
+        getDonuts(donutsJson, donuts)
+        getAltriDolci(altri_dolciJson, altri_dolci)
+
+        dessertMagnuMenu = DessertMagnugaMenu(fette_torta, donuts, altri_dolci)
     }
 
     fun getPizzeNapoletane(pizzeNapoletane: List<FoodFamiliesContent.FoodEntry>,
@@ -205,6 +227,39 @@ class MainActivity : AppCompatActivity() {
                 FoodType.values()[b.tipo]
             )
             lst.add(nBevanda)
+        }
+    }
+
+    fun getFetteTorta(fette_torta: List<DessertFamiliesContent.DessertEntry>,
+                      lst: ArrayList<MagnugaMenuItem>) {
+        for (f in fette_torta) {
+            val nTorta = FetteTortaMI(
+                f.nome, f.descrizione, f.prezzo.toTypedArray(),
+                FoodType.values()[f.tipo]
+            )
+            lst.add(nTorta)
+        }
+    }
+
+    fun getDonuts(donuts: List<DessertFamiliesContent.DessertEntry>,
+                      lst: ArrayList<MagnugaMenuItem>) {
+        for (d in donuts) {
+            val nDonut = DonutsMI(
+                d.nome, d.prezzo.toTypedArray(),
+                FoodType.values()[d.tipo]
+            )
+            lst.add(nDonut)
+        }
+    }
+
+    fun getAltriDolci(altri_dolci: List<DessertFamiliesContent.DessertEntry>,
+                      lst: ArrayList<MagnugaMenuItem>) {
+        for (a in altri_dolci) {
+            val nDolce = AltriDolciMI(
+                a.nome, a.descrizione, a.prezzo.toTypedArray(),
+                FoodType.values()[a.tipo]
+            )
+            lst.add(nDolce)
         }
     }
 

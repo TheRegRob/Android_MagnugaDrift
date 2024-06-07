@@ -805,25 +805,113 @@
         }
       ]
     },
-      "drink_list":
-      {
-        "bevande_spina": [
-          {
-            "nome": "Coca-Cola",
-            "descrizione": null,
-            "ingredienti": null,
-            "taglie": [
-              0,
-              1,
-              2
-            ],
-            "prezzo" : [
-              2.5,
-              2.8,
-              3.0
+  "drink_list":
+    {
+      "bevande_spina": [
+        {
+          "nome": "Coca-Cola",
+          "descrizione": null,
+          "ingredienti": null,
+          "taglie": [
+            0,
+            1,
+            2
           ],
-            "tipo": 0
-          }
-        ]
+          "prezzo" : [
+            2.5,
+            2.8,
+            3.0
+        ],
+          "tipo": 0
+        }
+      ]
+    },
+  "dessert_list": {
+    "fette_torta": [
+      {
+        "nome": "Red Velvet",
+        "descrizione": null,
+        "prezzo": [
+          3.7
+        ],
+        "tipo": 0
+      },
+      {
+        "nome": "Green Velvet",
+        "descrizione": null,
+        "prezzo": [
+          3.7
+        ],
+        "tipo": 0
+      },
+      {
+        "nome": "Rainbow Cake",
+        "descrizione": null,
+        "prezzo": [
+          3.7
+        ],
+        "tipo": 0
+      },
+      {
+        "nome": "Devil's Food Cake",
+        "descrizione": null,
+        "prezzo": [
+          3.7
+        ],
+        "tipo": 0
+      },
+      {
+        "nome": "Torta di sciroppo d'acero e noci",
+        "descrizione": null,
+        "prezzo": [
+          3.7
+        ],
+        "tipo": 0
       }
+    ],
+    "donuts": [
+      {
+        "nome": "Donut al cioccolato",
+        "descrizione": null,
+        "prezzo": [
+          1.4
+        ],
+        "tipo": 0
+      },
+      {
+        "nome": "Donut alla fragola",
+        "descrizione": null,
+        "prezzo": [
+          1.4
+        ],
+        "tipo": 0
+      },
+      {
+        "nome": "Donut Oreo",
+        "descrizione": null,
+        "prezzo": [
+          1.4
+        ],
+        "tipo": 0
+      }
+    ],
+    "altri_dolci": [
+      {
+        "nome": "Mascarpone",
+        "descrizione": null,
+        "prezzo": [
+          3.2
+        ],
+        "tipo": 0
+      },
+      {
+        "nome": "Nutellino",
+        "descrizione": "Quadretto di piadina ripieno alla nutella",
+        "prezzo": [
+          3.2
+        ],
+        "tipo": 0
+      }
+    ]
+  }
 }

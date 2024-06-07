@@ -1,6 +1,8 @@
 package com.example.magnugadrift.classes
 
-class UIContent(val food_list: FoodFamiliesContent, val drink_list: DrinkFamiliesContent)
+class UIContent(val food_list: FoodFamiliesContent,
+                val drink_list: DrinkFamiliesContent,
+                val dessert_list: DessertFamiliesContent)
 
 class FoodFamiliesContent(
     val pizze_napoletane: List<FoodEntry>,
@@ -29,6 +31,19 @@ class DrinkFamiliesContent(
     class DrinkEntry(
         val nome: String,
         val taglie: List<Int>?,
+        val prezzo: List<Float>,
+        val tipo: Int
+    )
+}
+
+class DessertFamiliesContent(
+    val fette_torta:  List<DessertEntry>,
+    val donuts: List<DessertEntry>,
+    val altri_dolci: List<DessertEntry>
+) {
+    class DessertEntry(
+        val nome: String,
+        val descrizione: String?,
         val prezzo: List<Float>,
         val tipo: Int
     )

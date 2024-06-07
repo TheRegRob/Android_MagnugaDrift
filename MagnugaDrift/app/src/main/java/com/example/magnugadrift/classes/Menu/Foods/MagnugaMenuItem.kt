@@ -74,6 +74,9 @@ open class MagnugaMenuItem(foodFamily: MenuItemFamilies,
              MenuItemFamilies.BEVANDE_SPINA -> R.drawable.img_bevande_spina
              MenuItemFamilies.BEVANDE_LATTINA -> R.drawable.img_bevande_lattina
              MenuItemFamilies.BEVANDE_BOTTIGLIA -> R.drawable.img_bevande_bottiglia
+             MenuItemFamilies.FETTE_TORTA -> R.drawable.img_ic_dolci
+             MenuItemFamilies.DONUTS -> R.drawable.img_ic_dolci
+             MenuItemFamilies.ALTRI_DOLCI -> R.drawable.img_ic_dolci
          }
      }
 

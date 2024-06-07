@@ -11,7 +11,10 @@ enum class MenuItemFamilies(value: Int) {
     HAMBURGER_PATATE(5),
     BEVANDE_SPINA(6),
     BEVANDE_LATTINA(7),
-    BEVANDE_BOTTIGLIA(8);
+    BEVANDE_BOTTIGLIA(8),
+    FETTE_TORTA(9),
+    DONUTS(10),
+    ALTRI_DOLCI(11);
 
     private var value = 0
     init {
@@ -33,6 +36,9 @@ enum class MenuItemFamilies(value: Int) {
             6 -> R.drawable.thbn_bevande_spina
             7 -> R.drawable.thbn_bevande_lattina
             8 -> R.drawable.thbn_bevande_bottiglia
+            9 -> R.drawable.thbn_torte
+            10 -> R.drawable.thbn_donuts
+            11 -> R.drawable.thbn_altri_dolci
             else -> null
         }
     }
@@ -48,6 +54,9 @@ enum class MenuItemFamilies(value: Int) {
             6 -> "Bevanda alla spina"
             7 -> "Bevanda in lattina"
             8 -> "Bevanda in bottiglia"
+            9 -> "Fetta di torta"
+            10 -> "Donut glassata"
+            11 -> "Altri dolci"
             else -> "unexp err"
         }
     }
