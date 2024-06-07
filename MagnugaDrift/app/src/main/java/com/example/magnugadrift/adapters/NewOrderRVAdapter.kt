@@ -92,7 +92,7 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
                     if (i.second)
                         ingredientsLst.append(i.first + "<br>")
                     else
-                        ingredientsLst.append("<s> <font color='red'>" + i.first + "</s><br>")
+                        ingredientsLst.append("<s> <font color='red'>" + i.first + "</font></s><br>")
 
             }
         } else {
@@ -112,7 +112,7 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
                     if (i.second == null) {
                         additionsLst.append(i.first.getName() + "<br>")
                     } else {
-                        additionsLst.append("<font color='blue'>" + i.second+ "<br>")
+                        additionsLst.append("<font color='blue'>" + i.second+ "</font><br>")
                     }
 
                 }

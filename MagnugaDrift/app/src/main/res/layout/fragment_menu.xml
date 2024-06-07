@@ -16,9 +16,8 @@
         android:layout_marginEnd="1dp"
         app:layout_constraintBottom_toTopOf="@+id/rvMenuList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMenuTitle" />
+        app:layout_constraintStart_toStartOf="@id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMenuList"
@@ -41,22 +40,6 @@
         app:layout_constraintTop_toBottomOf="@+id/spFilter"
         tools:listitem="@layout/recycview_item_menu" />
 
-    <TextView
-        android:id="@+id/tvMenuTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="15dp"
-        android:text="Menu"
-        android:textColor="?android:textColorPrimary"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:typeface="sans"
-        app:layout_constraintBottom_toTopOf="@+id/spFilter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"
@@ -66,6 +49,6 @@
         app:layout_constraintBottom_toTopOf="@+id/rvMenuList"
         app:layout_constraintEnd_toStartOf="@+id/spFilter"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMenuTitle"
+        app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,8 +19,8 @@ class MenuFPAdapter(
         return when (position) {
             MenuType.CIBO.getValue() -> MenuFragment.newInstance(MenuType.CIBO)
             MenuType.BERE.getValue() -> MenuFragment.newInstance(MenuType.BERE)
-            MenuType.DOLCI.getValue() -> MenuFragment()
-            else -> MenuFragment()
+            MenuType.DOLCI.getValue() -> MenuFragment.newInstance(MenuType.DOLCI)
+            else -> MenuFragment.newInstance(MenuType.CIBO)
         }
     }
 }

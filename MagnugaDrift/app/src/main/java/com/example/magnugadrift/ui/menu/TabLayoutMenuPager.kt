@@ -49,15 +49,16 @@ class TabLayoutMenuPager: Fragment() {
     }
 
     fun initView(view: View) {
-        tl_TabLayout = view.findViewById(R.id.FragmentMenu_tl_TabLayout)
-        vp_ViewPager = view.findViewById(R.id.FragmentMenu_vp_ViewPager)
-        adapter = MenuFPAdapter(childFragmentManager, lifecycle)
+        tl_TabLayout = view.findViewById(R.id.TablayoutMenuPager_tl_TabLayout)
+        vp_ViewPager = view.findViewById(R.id.TablayoutMenuPager_vp_ViewPager)
+        adapter = MenuFPAdapter(parentFragmentManager, lifecycle)
 
         tl_TabLayout.addTab(tl_TabLayout.newTab().setText("Cibo"))
         tl_TabLayout.addTab(tl_TabLayout.newTab().setText("Bere"))
         tl_TabLayout.addTab(tl_TabLayout.newTab().setText("Dolci"))
         vp_ViewPager.isSaveFromParentEnabled = false
         vp_ViewPager.adapter = adapter
+        vp_ViewPager.offscreenPageLimit = 3
         tl_TabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab != null) {

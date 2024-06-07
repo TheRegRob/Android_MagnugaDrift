@@ -49,12 +49,8 @@ class MenuFragment() : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(MenuViewModel::class.java)
-
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
-        //var view: View = inflater.inflate(R.layout.activity_magnu_item_details, container, false)
         val menuList = when (_selectedMenuType) {
             MenuType.CIBO -> MainActivity.foodMagnuMenu.GetAllMenu()
             MenuType.BERE -> MainActivity.drinkMagnuMenu.GetAllDrinks()
@@ -80,8 +76,6 @@ class MenuFragment() : Fragment() {
         val root: View = binding.root
         return root
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

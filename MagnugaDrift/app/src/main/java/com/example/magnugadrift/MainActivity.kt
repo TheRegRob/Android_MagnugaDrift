@@ -3,6 +3,7 @@ package com.example.magnugadrift
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -17,6 +18,7 @@ import com.example.magnugadrift.classes.Menu.Foods.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.Foods.PizzaNapoletanaMI
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.FormatoType
+import com.example.magnugadrift.classes.Menu.Enums.MenuType
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
 import com.example.magnugadrift.classes.Menu.Foods.FrittiMI
 import com.example.magnugadrift.classes.Menu.Foods.HamburgerMI
@@ -26,6 +28,9 @@ import com.example.magnugadrift.classes.Menu.Foods.SpianataRipienaMI
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 import com.example.magnugadrift.classes.UIContent
 import com.example.magnugadrift.databinding.ActivityMainBinding
+import com.example.magnugadrift.ui.history.HistoryFragment
+import com.example.magnugadrift.ui.menu.MenuFragment
+import com.example.magnugadrift.ui.order.OrderFragment
 import com.example.magnugadrift.utils.ReadJSONFromAssets
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
@@ -35,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         lateinit var foodMagnuMenu: FoodMagnugaMenu
         lateinit var drinkMagnuMenu: DrinkMagnugaMenu
         lateinit var lstOrder: ArrayList<MagnugaOrderItem>
-        lateinit var fragManager: FragmentManager
     }
 
 
@@ -52,9 +56,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         lstOrder = ArrayList()
-        fragManager = supportFragmentManager
         val navView: BottomNavigationView = binding.navView
-
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
