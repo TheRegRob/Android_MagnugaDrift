@@ -11,6 +11,8 @@ import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.magnugadrift.R
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
+import com.example.magnugadrift.classes.Menu.Enums.MenuCategory
+import com.example.magnugadrift.classes.Menu.Enums.MenuItemFamilies
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 
 class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
@@ -76,7 +78,12 @@ class NewOrderRVAdapter(private val orderList: ArrayList<MagnugaOrderItem>) :
 
     fun generateFoodNameString(item: MagnugaOrderItem): String {
         val foodName = StringBuilder()
-        foodName.append("<b>Piatto:</b><br>")
+        when(item.magnugaMenuItem.getCategory()) {
+            MenuCategory.CIBO -> foodName.append("<b>Piatto:</b><br>")
+            MenuCategory.BERE -> foodName.append("<b>Bevanda:</b><br>")
+            MenuCategory.DOLCI -> foodName.append("<b>Dolce:</b><br>")
+        }
+
         foodName.append(item.magnugaMenuItem.menuItemName())
         return foodName.toString()
     }

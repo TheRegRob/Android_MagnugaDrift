@@ -1,31 +1,16 @@
 package com.example.magnugadrift.ui.menu
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.loader.app.LoaderManager
-import androidx.navigation.NavArgument
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.example.magnugadrift.MainActivity
 import com.example.magnugadrift.R
 import com.example.magnugadrift.adapters.MenuFPAdapter
-import com.example.magnugadrift.adapters.MenuRVAdapter
 import com.example.magnugadrift.classes.Menu.Enums.MenuMode
-import com.example.magnugadrift.classes.Menu.Enums.MenuType
-import com.example.magnugadrift.classes.Order.MagnugaOrderItem
-import com.example.magnugadrift.databinding.FragmentMenuBinding
 import com.example.magnugadrift.databinding.TablayoutMenuPagerBinding
-import com.example.magnugadrift.ui.activities.MagnuItemDetailsActivity
 import com.google.android.material.tabs.TabLayout
 
 class TabLayoutMenuPager: Fragment() {

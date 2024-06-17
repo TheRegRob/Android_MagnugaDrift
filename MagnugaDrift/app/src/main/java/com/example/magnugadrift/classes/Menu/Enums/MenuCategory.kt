@@ -1,6 +1,6 @@
 package com.example.magnugadrift.classes.Menu.Enums
 
-enum class MenuType(value: Int) {
+enum class MenuCategory(value: Int) {
     CIBO(0),
     BERE(1),
     DOLCI(2);
@@ -15,6 +15,6 @@ enum class MenuType(value: Int) {
     }
 
     companion object {
-        fun fromInt(value: Int) = MenuType.values().first { it.value == value }
+        fun fromInt(value: Int) = MenuCategory.values().first { it.value == value }
     }
 }

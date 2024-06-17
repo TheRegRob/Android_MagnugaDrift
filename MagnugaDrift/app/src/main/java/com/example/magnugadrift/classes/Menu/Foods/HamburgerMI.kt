@@ -5,14 +5,16 @@ import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.MenuItemFamilies
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.FormatoType
+import com.example.magnugadrift.classes.Menu.Enums.MenuCategory
 
 class HamburgerMI(name: String,
                   descrizione: String?,
                   price: Array<Float>,
                   type: FoodType,
                   ingredients: ArrayList<String>?,
+                  category: MenuCategory,
                   formato: FormatoType?) :
-    MagnugaMenuItem(MenuItemFamilies.HAMBURGER, name, descrizione, ingredients, price, type) {
+    MagnugaMenuItem(MenuItemFamilies.HAMBURGER, name, descrizione, ingredients, price, category, type) {
     //region Properties
     private val _ingredients: ArrayList<String>?
     private val _prices: Array<Float>

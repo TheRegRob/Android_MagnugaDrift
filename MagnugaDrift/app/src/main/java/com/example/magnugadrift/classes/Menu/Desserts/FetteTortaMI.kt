@@ -2,15 +2,17 @@ package com.example.magnugadrift.classes.Menu.Desserts
 
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
+import com.example.magnugadrift.classes.Menu.Enums.MenuCategory
 import com.example.magnugadrift.classes.Menu.Enums.MenuItemFamilies
 import com.example.magnugadrift.classes.Menu.Foods.MagnugaMenuItem
 
 class FetteTortaMI(name: String,
                    description: String?,
                    price: Array<Float>,
+                   category: MenuCategory,
                    type: FoodType
                     ) : MagnugaMenuItem(
-    MenuItemFamilies.FETTE_TORTA, name, description, null, price, type) {
+    MenuItemFamilies.FETTE_TORTA, name, description, null, price, category, type) {
     //region Properties
     private val _prices: Array<Float>
     //endregion

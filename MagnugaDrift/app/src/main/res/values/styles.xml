@@ -14,4 +14,7 @@
         <item name="cornerSizeTopLeft">8dp</item>
         <item name="cornerSizeTopRight">0dp</item>
     </style>
+    <style name="selectedTabText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#00FF00</item>
+    </style>
 </resources>

@@ -4,6 +4,7 @@ import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
+import com.example.magnugadrift.classes.Menu.Enums.MenuCategory
 import com.example.magnugadrift.classes.Menu.Enums.MenuItemFamilies
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
 import com.example.magnugadrift.classes.Menu.Foods.MagnugaMenuItem
@@ -11,8 +12,9 @@ import com.example.magnugadrift.classes.Menu.Foods.MagnugaMenuItem
 class BevandeSpinaMI(name: String,
                      sizes: ArrayList<FoodSizes>?,
                      price: Array<Float>,
+                     category: MenuCategory,
                      type: FoodType) : MagnugaMenuItem (
-        MenuItemFamilies.BEVANDE_SPINA, name, null, null, price, type) {
+        MenuItemFamilies.BEVANDE_SPINA, name, null, null, price, category, type) {
     //region Properties
     private val _sizes: ArrayList<FoodSizes>?
     private val _prices: Array<Float>

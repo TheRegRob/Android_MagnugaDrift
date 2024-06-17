@@ -5,16 +5,18 @@ import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.MenuItemFamilies
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
+import com.example.magnugadrift.classes.Menu.Enums.MenuCategory
 
 class PizzaNapoletanaMI(name: String,
                         descrizione: String?,
                         price: Array<Float>,
                         type: FoodType,
                         ingredients: ArrayList<String>?,
+                        category: MenuCategory,
                         sizes: ArrayList<FoodSizes>?) :
                         MagnugaMenuItem(
                             MenuItemFamilies.PIZZA_NAPOLETANA, name, descrizione,
-                            ingredients, price, type) {
+                            ingredients, price, category, type) {
     //region Properties
     private val _ingredients: ArrayList<String>?
     private val _sizes: ArrayList<FoodSizes>?

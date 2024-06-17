@@ -2,9 +2,7 @@ package com.example.magnugadrift
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavArgument
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -24,8 +22,8 @@ import com.example.magnugadrift.classes.Menu.Foods.MagnugaMenuItem
 import com.example.magnugadrift.classes.Menu.Foods.PizzaNapoletanaMI
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
 import com.example.magnugadrift.classes.Menu.Enums.FormatoType
+import com.example.magnugadrift.classes.Menu.Enums.MenuCategory
 import com.example.magnugadrift.classes.Menu.Enums.MenuMode
-import com.example.magnugadrift.classes.Menu.Enums.MenuType
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
 import com.example.magnugadrift.classes.Menu.Foods.FrittiMI
 import com.example.magnugadrift.classes.Menu.Foods.HamburgerMI
@@ -35,9 +33,6 @@ import com.example.magnugadrift.classes.Menu.Foods.SpianataRipienaMI
 import com.example.magnugadrift.classes.Order.MagnugaOrderItem
 import com.example.magnugadrift.classes.UIContent
 import com.example.magnugadrift.databinding.ActivityMainBinding
-import com.example.magnugadrift.ui.history.HistoryFragment
-import com.example.magnugadrift.ui.menu.MenuFragment
-import com.example.magnugadrift.ui.order.OrderFragment
 import com.example.magnugadrift.utils.ReadJSONFromAssets
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
@@ -156,7 +151,8 @@ class MainActivity : AppCompatActivity() {
         for (p in pizzeNapoletane) {
             val nPizza = PizzaNapoletanaMI(
                 p.nome, p.descrizione, p.prezzo.toTypedArray(),
-                FoodType.values()[p.tipo], ingredientsToArray(p.ingredienti), sizesToArray(p.taglie)
+                FoodType.values()[p.tipo], ingredientsToArray(p.ingredienti), MenuCategory.CIBO,
+                sizesToArray(p.taglie)
             )
             lst.add(nPizza)
         }
@@ -166,7 +162,8 @@ class MainActivity : AppCompatActivity() {
         for (s in spianate) {
             val nSpianata = SpianataMI(
                 s.nome, s.descrizione, s.prezzo.toTypedArray(),
-                FoodType.values()[s.tipo], ingredientsToArray(s.ingredienti), sizesToArray(s.taglie)
+                FoodType.values()[s.tipo], ingredientsToArray(s.ingredienti), MenuCategory.CIBO,
+                sizesToArray(s.taglie)
             )
             lst.add(nSpianata)
         }
@@ -177,7 +174,8 @@ class MainActivity : AppCompatActivity() {
         for (s in spianateRipiene) {
             val nSpianata = SpianataRipienaMI(
                 s.nome, s.descrizione, s.prezzo.toTypedArray(),
-                FoodType.values()[s.tipo], ingredientsToArray(s.ingredienti), sizesToArray(s.taglie)
+                FoodType.values()[s.tipo], ingredientsToArray(s.ingredienti),
+                MenuCategory.CIBO, sizesToArray(s.taglie)
             )
             lst.add(nSpianata)
         }
@@ -189,7 +187,7 @@ class MainActivity : AppCompatActivity() {
             val nFritto = FrittiMI(
                 f.nome, f.descrizione, f.prezzo.toTypedArray(),
                 FoodType.values()[f.tipo], ingredientsToArray(f.ingredienti), sizesToArray(f.taglie),
-                piecesToArray(f.pezzi),
+                MenuCategory.CIBO, piecesToArray(f.pezzi)
             )
             lst.add(nFritto)
         }
@@ -200,7 +198,7 @@ class MainActivity : AppCompatActivity() {
         for (h in hamburger) {
             val nHamburger = HamburgerMI(
                 h.nome, h.descrizione, h.prezzo.toTypedArray(),
-                FoodType.values()[h.tipo], ingredientsToArray(h.ingredienti),
+                FoodType.values()[h.tipo], ingredientsToArray(h.ingredienti), MenuCategory.CIBO,
                 if (h.formato != null) FormatoType.fromInt(h.formato) else null
             )
             lst.add(nHamburger)
@@ -212,7 +210,7 @@ class MainActivity : AppCompatActivity() {
         for (h in hamburger_patate) {
             val nHamburger = HamburgerPatateMI(
                 h.nome, h.descrizione, h.prezzo.toTypedArray(),
-                FoodType.values()[h.tipo], ingredientsToArray(h.ingredienti),
+                FoodType.values()[h.tipo], ingredientsToArray(h.ingredienti), MenuCategory.CIBO,
                 if (h.formato != null) FormatoType.fromInt(h.formato) else null
             )
             lst.add(nHamburger)
@@ -223,7 +221,7 @@ class MainActivity : AppCompatActivity() {
                         lst: ArrayList<MagnugaMenuItem>) {
         for (b in bevandeSpina) {
             val nBevanda = BevandeSpinaMI(
-                b.nome, sizesToArray(b.taglie), b.prezzo.toTypedArray(),
+                b.nome, sizesToArray(b.taglie), b.prezzo.toTypedArray(), MenuCategory.BERE,
                 FoodType.values()[b.tipo]
             )
             lst.add(nBevanda)
@@ -234,7 +232,7 @@ class MainActivity : AppCompatActivity() {
                       lst: ArrayList<MagnugaMenuItem>) {
         for (f in fette_torta) {
             val nTorta = FetteTortaMI(
-                f.nome, f.descrizione, f.prezzo.toTypedArray(),
+                f.nome, f.descrizione, f.prezzo.toTypedArray(), MenuCategory.DOLCI,
                 FoodType.values()[f.tipo]
             )
             lst.add(nTorta)
@@ -245,7 +243,7 @@ class MainActivity : AppCompatActivity() {
                       lst: ArrayList<MagnugaMenuItem>) {
         for (d in donuts) {
             val nDonut = DonutsMI(
-                d.nome, d.prezzo.toTypedArray(),
+                d.nome, d.prezzo.toTypedArray(), MenuCategory.DOLCI,
                 FoodType.values()[d.tipo]
             )
             lst.add(nDonut)
@@ -256,7 +254,7 @@ class MainActivity : AppCompatActivity() {
                       lst: ArrayList<MagnugaMenuItem>) {
         for (a in altri_dolci) {
             val nDolce = AltriDolciMI(
-                a.nome, a.descrizione, a.prezzo.toTypedArray(),
+                a.nome, a.descrizione, a.prezzo.toTypedArray(), MenuCategory.DOLCI,
                 FoodType.values()[a.tipo]
             )
             lst.add(nDolce)

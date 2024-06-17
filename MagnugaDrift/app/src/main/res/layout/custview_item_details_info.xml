@@ -38,7 +38,7 @@
             android:layout_height="45dp"
             android:fontFamily="sans-serif-medium"
             android:textSize="16sp"
-            android:textColor="?android:textColorPrimary"
+            android:textColor="@color/white"
             android:background="@drawable/ripple_effect_generalbutton"
             android:layout_weight="0.2"
             android:paddingEnd="12dp"

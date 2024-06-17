@@ -1,12 +1,12 @@
 package com.example.magnugadrift.classes.Menu.Foods
 
-import android.view.Menu
 import com.example.magnugadrift.R
 import com.example.magnugadrift.classes.AggiuntaType
 import com.example.magnugadrift.classes.Menu.Enums.AggiunteEntry
 import com.example.magnugadrift.classes.Menu.Enums.MenuItemFamilies
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.Enums.FoodSizes
+import com.example.magnugadrift.classes.Menu.Enums.MenuCategory
 import com.example.magnugadrift.classes.Menu.Enums.PiecesSizes
 import java.io.Serializable
 
@@ -15,6 +15,7 @@ open class MagnugaMenuItem(foodFamily: MenuItemFamilies,
                            description: String?,
                            ingredients: ArrayList<String>?,
                            price: Array<Float>,
+                           category: MenuCategory,
                            type: FoodType
 ) : Serializable {
     //region Properties
@@ -23,6 +24,7 @@ open class MagnugaMenuItem(foodFamily: MenuItemFamilies,
     val _menuItemDescription: String?
     val _menuItemPrice: Array<Float>
     val _menuItemIngredients: ArrayList<String>?
+    val _menuItemCategory: MenuCategory
     val _foodType: FoodType
     //endregion
 
@@ -55,6 +57,7 @@ open class MagnugaMenuItem(foodFamily: MenuItemFamilies,
         _menuItemDescription = description
         _menuItemIngredients = ingredients
         _menuItemPrice = price
+        _menuItemCategory = category
         _foodType = type
     }
     //endregion
@@ -140,6 +143,10 @@ open class MagnugaMenuItem(foodFamily: MenuItemFamilies,
      */
     open fun getAggiunte(): ArrayList<AggiuntaType>? {
         return null
+    }
+
+    open fun getCategory(): MenuCategory {
+        return _menuItemCategory
     }
     //endregion
 }
