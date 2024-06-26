@@ -15,6 +15,8 @@ import com.example.magnugadrift.classes.Menu.Desserts.AltriDolciMI
 import com.example.magnugadrift.classes.Menu.Desserts.DonutsMI
 import com.example.magnugadrift.classes.Menu.Desserts.FetteTortaMI
 import com.example.magnugadrift.classes.Menu.DrinkMagnugaMenu
+import com.example.magnugadrift.classes.Menu.Drinks.BevandeBottigliaMI
+import com.example.magnugadrift.classes.Menu.Drinks.BevandeLattinaMI
 import com.example.magnugadrift.classes.Menu.Drinks.BevandeSpinaMI
 import com.example.magnugadrift.classes.Menu.Enums.FoodType
 import com.example.magnugadrift.classes.Menu.FoodMagnugaMenu
@@ -126,8 +128,12 @@ class MainActivity : AppCompatActivity() {
         val bevande_bottigliaJson = jsonFile.drink_list.bevande_bottiglia
 
         getBevandeSpina(bevande_spinaJson, bevande_spina)
+        getBevandeLattina(bevande_lattinaJson, bevande_lattina)
+        getBevandeBottiglia(bevande_bottigliaJson, bevande_bottiglia)
 
-        drinkMagnuMenu = DrinkMagnugaMenu(bevande_spina)
+        drinkMagnuMenu = DrinkMagnugaMenu(bevande_spina,
+            bevande_lattina,
+            bevande_bottiglia)
 
     }
 
@@ -222,6 +228,28 @@ class MainActivity : AppCompatActivity() {
         for (b in bevandeSpina) {
             val nBevanda = BevandeSpinaMI(
                 b.nome, sizesToArray(b.taglie), b.prezzo.toTypedArray(), MenuCategory.BERE,
+                FoodType.values()[b.tipo]
+            )
+            lst.add(nBevanda)
+        }
+    }
+
+    fun getBevandeLattina(bevandeLattina: List<DrinkFamiliesContent.DrinkEntry>,
+                        lst: ArrayList<MagnugaMenuItem>) {
+        for (b in bevandeLattina) {
+            val nBevanda = BevandeLattinaMI(
+                b.nome, b.descrizione, b.prezzo.toTypedArray(), MenuCategory.BERE,
+                FoodType.values()[b.tipo]
+            )
+            lst.add(nBevanda)
+        }
+    }
+
+    fun getBevandeBottiglia(bevandeBottiglia: List<DrinkFamiliesContent.DrinkEntry>,
+                          lst: ArrayList<MagnugaMenuItem>) {
+        for (b in bevandeBottiglia) {
+            val nBevanda = BevandeBottigliaMI(
+                b.nome, b.descrizione, sizesToArray(b.taglie), b.prezzo.toTypedArray(), MenuCategory.BERE,
                 FoodType.values()[b.tipo]
             )
             lst.add(nBevanda)

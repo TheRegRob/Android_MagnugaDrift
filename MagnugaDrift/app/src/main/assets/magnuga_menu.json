@@ -809,7 +809,7 @@
     {
       "bevande_spina": [
         {
-          "nome": "Coca-Cola",
+          "nome": "Coca-Cola alla spina",
           "descrizione": null,
           "ingredienti": null,
           "taglie": [
@@ -822,6 +822,140 @@
             2.8,
             3.0
         ],
+          "tipo": 0
+        },
+        {
+          "nome": "Birra alla spina",
+          "descrizione": null,
+          "ingredienti": null,
+          "taglie": [
+            0,
+            1
+          ],
+          "prezzo": [
+            2.2,
+            3.3
+          ],
+          "tipo": 0
+        }
+      ],
+      "bevande_lattina": [
+        {
+          "nome": "Coca-Cola in lattina",
+          "descrizione": "[Classica/Zero] Lattina 33cl",
+          "ingredienti": null,
+          "taglie": null,
+          "prezzo": [
+            2.0
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Sprite in lattina",
+          "descrizione": "Lattina 33cl",
+          "ingredienti": null,
+          "taglie": null,
+          "prezzo": [
+            2.0
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Fanta in lattina",
+          "descrizione": "Lattina 33cl",
+          "ingredienti": null,
+          "taglie": null,
+          "prezzo": [
+            2.0
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Brodies tea in bottiglietta",
+          "descrizione": "[Pesca/Limone] Bottiglia 33cl",
+          "ingredienti": null,
+          "taglie": null,
+          "prezzo": [
+            2.0
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Lipton tea in lattina",
+          "descrizione": "[Pesca/Limone] Lattina 33cl",
+          "ingredienti": null,
+          "taglie": null,
+          "prezzo": [
+            2.0
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Sanpellegrino in lattina",
+          "descrizione": "[Classica/Zero] Lattina 33cl",
+          "ingredienti": null,
+          "taglie": null,
+          "prezzo": [
+            2.0
+          ],
+          "tipo": 0
+        }
+      ],
+      "bevande_bottiglia": [
+        {
+          "nome": "Lipton tea in bottiglia",
+          "descrizione": "[Pesca/Limone/Verde] Bottiglia 50cl",
+          "ingredienti": null,
+          "taglie": [
+            0,
+            1
+          ],
+          "prezzo": [
+            2.90,
+            3.90
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Fuze tea in bottiglia",
+          "descrizione": "[Pesca/Limone] Bottiglia 40cl/1.25l",
+          "ingredienti": null,
+          "taglie": [
+            0,
+            1
+          ],
+          "prezzo": [
+            2.90,
+            3.90
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Coca-Cola in bottiglia",
+          "descrizione": "[Normale/Zero] Bottiglia 50cl/1.35l",
+          "ingredienti": null,
+          "taglie": [
+            0,
+            1
+          ],
+          "prezzo": [
+            2.90,
+            3.90
+          ],
+          "tipo": 0
+        },
+        {
+          "nome": "Acqua in bottiglia",
+          "descrizione": "[Naturale/Frizzante] Bottiglia 50cl/1.5l",
+          "ingredienti": null,
+          "taglie": [
+            0,
+            1
+          ],
+          "prezzo": [
+            1.00,
+            3.30
+          ],
           "tipo": 0
         }
       ]

@@ -30,6 +30,7 @@ class DrinkFamiliesContent(
 ) {
     class DrinkEntry(
         val nome: String,
+        val descrizione: String?,
         val taglie: List<Int>?,
         val prezzo: List<Float>,
         val tipo: Int
