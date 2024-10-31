@@ -25,33 +25,96 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="80dp">
+            android:layout_marginBottom="40dp">
+
             <Button
                 android:id="@+id/btNewOrder"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="170dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="40dp"
                 android:background="@drawable/ripple_effect_generalbutton"
                 android:text="Nuovo Ordine"
-                android:textStyle="bold"
                 android:textSize="20sp"
-                android:layout_margin="40dp"
-                android:layout_centerInParent="true">
-            </Button>
+                android:textStyle="bold"></Button>
 
             <ImageView
                 android:id="@+id/ivNewOrderAnim"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:layout_centerInParent="true"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="170dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="40dp"
-                android:src="@drawable/new_order_anim_shape">
-            </ImageView>
+                android:src="@drawable/new_order_anim_shape"></ImageView>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_OpeningDays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:gravity="left"
+                        android:text="Lunedì:
+                    \nMartedì:
+                    \nMercoledì:
+                    \nVenerdì:
+                    \nSabato:
+                    \nDomenica:"
+                        android:textColor="@color/black"
+                        android:textSize="19sp"
+                        android:textStyle="bold"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_OpeningHrs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:text="12:00 - 01:00
+                    \nChiuso
+                    \n12:00 - 01:00
+                    \n12:00 - 01:00
+                    \n12:00 - 01:00
+                    \n12:00 - 01:00"
+                        android:textColor="@color/black"
+                        android:textSize="19sp"
+                        android:textStyle="bold"></TextView>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_ReleaseVer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="50dp"
+                    android:text="Version: "
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="italic"></TextView>
+            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
